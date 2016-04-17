@@ -1,0 +1,119 @@
+%        File: BEC_notes.tex
+%     Created: Sun Apr 17 03:00 PM 2016 C
+% Last Change: Sun Apr 17 03:00 PM 2016 C
+%
+
+\documentclass[a4paper]{article}
+
+\title{Bose-Einstein Condensates }
+\date{}
+\author{}
+
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{esint}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem*{claim}{Claim}
+\newtheorem*{problem}{Problem}
+%\newtheorem*{lemma}{Lemma}
+\newtheorem{definition}{Definition}[section]
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\supp}[1]{\mathop{\mathrm{supp}}\left(#1\right)}
+\newcommand{\lip}[1]{\mathop{\mathrm{Lip}}\left(#1\right)}
+\newcommand{\curl}{\mathrm{curl}}
+\newcommand{\la}{\left \langle}
+\newcommand{\ra}{\right \rangle}
+\renewcommand{\vec}[1]{\mathbf{#1}}
+\renewcommand{\div}{\mathrm{div}}
+
+\newenvironment{solution}{\emph{Solution.}}
+
+\begin{document}
+\maketitle
+
+(I will be ignoring subscripts of $\varepsilon$ whenever possible.)
+
+Take the PDE
+\begin{equation} \label{eqn:BEC}
+  \partial_t u = \Delta u + \frac{1}{\varepsilon^2}u (p^2 - |u|^2)
+\end{equation}
+This equation gives rise to the Thomas-Fermi profile
+\begin{equation} \label{eqn:TF}
+  0 = \Delta \eta + \frac{1}{\varepsilon^2} \eta( p^2 - \eta^2 )
+\end{equation}
+
+From this Thomas-Fermi profile, we can write solutions to equation \eqref{eqn:BEC} as $u = w \eta$ where $w$ satisfies
+\begin{equation} \label{eqn:w}
+  i \eta^2 \partial_t w = \div (\eta^2 (\partial_t w, \nabla w))
+\end{equation}
+
+Assume the modulated energy we are after is of the form
+\begin{equation} \label{eqn:energy_form_primitive}
+  E = \int_{}^{} \chi \left( \frac{1}{2} \eta^2 |\nabla w - i N_\varepsilon w v|^2 + \frac{\eta^4}{4 \varepsilon^2} ( 1 - |w|^2)^2 + f(\psi) g(|w|^2) \right)
+\end{equation}
+where $N_\varepsilon$ is the number of vortices, $\xi$ is a smooth cutoff function, $v$ is the mean field equation we wish to find, $\psi$ is some
+function of the mean field equation, and $f$ and $g$ are some functions.
+
+We want to find the time derivative of $E$ and put a bound on it using Gronwall.
+Before we start taking derivatives, we will expand the first term of our energy.
+
+\begin{align*}
+  |\nabla w + iN_\varepsilon w v|^2 &= ( \nabla w - iN_\varepsilon w v , \nabla w - iN_\varepsilon w v ) \\
+  &= (\nabla w, \nabla w ) - 2 ( \nabla w, iN_\varepsilon w v ) + ( i N_\varepsilon w v, i N_\varepsilon w v ) \\
+  &= | \nabla w |^2 - 2 N_\varepsilon v ( \nabla w, iw ) + N_\varepsilon^2 v^2 |w|^2 \\
+  &= | \nabla w |^2 - 2 N_\varepsilon v j_\varepsilon + N_\varepsilon^2 v^2 |w|^2 \\
+  &= | \nabla w |^2 - 2 N_\varepsilon v j_\varepsilon + N_\varepsilon^2 v^2 - N_\varepsilon^2 ( 1 - |w|^2 )v^2
+\end{align*}
+where $j_\varepsilon(u) = (iu, \nabla u)$ is the current.
+Using this, we rewrite our energy as
+\begin{equation} \label{eqn:energy_form}
+  E = \int_{}^{} \chi \left( \frac{1}{2} \eta^2 \left( | \nabla w |^2 - 2 N_\varepsilon v j_\varepsilon + N_\varepsilon^2 v^2
+  \right) + \frac{\eta^4}{4 \varepsilon^2} ( 1 - |w|^2)^2 + \tilde{f} \tilde{g} \right)
+\end{equation}
+where $\tilde{f} \tilde{g} = fg - N_\varepsilon^2 (1 - |w|^2) v^2$.
+
+Next, we will take derivatives of some pieces individually.
+\begin{align} \label{eqn:current_deriv}
+  \partial_t j_\varepsilon &= \partial_t (\nabla w, iw) \nonumber \\
+  &= ( \nabla w_t, iw ) + ( \nabla w, i w_t) \nonumber \\
+  &= \nabla( w_t, iw) - (w_t, i \nabla w) + ( \nabla w, i w_t) \nonumber \\
+  &= \nabla( w_t, iw) + (\nabla w, i w_t) + ( \nabla w, i w_t) \nonumber \\
+  &= \nabla( w_t, iw) + 2(\nabla w, i w_t) \\
+  &= \nabla q + V \nonumber
+\end{align}
+where $V$ is the velocity(?) and $q$ is the (?) and are defined from these equations.
+
+Also,
+\begin{align} \label{eqn:?}
+  \partial_t \left( \frac{1}{2} \eta^2 | \nabla w |^2 + \frac{\eta^4}{4 \varepsilon^2} (1-|w|^2)^2 \right) &= \partial_t \left( \frac{1}{2} \eta^2
+  (\nabla w, \nabla w) + \frac{\eta^4}{4 \varepsilon^2} ( 1 - (w,w))^2 \right) \nonumber \\
+  &= \eta^2 (\nabla w_t, \nabla w) - \frac{\eta^4}{ \varepsilon^2} (1 - |w|^2) (w_t,w) \nonumber \\
+  &= \eta^2 (\nabla w_t, \nabla w) - \left( w_t, \frac{\eta^4}{\varepsilon^2} (1 - |w|^2)w \right) \nonumber \\
+  &= \eta^2 (\nabla w_t, \nabla w) - (w_t, i \eta^2 w_t - \div(\eta^2 \nabla w) ) \nonumber \\
+  &= \eta^2 (\nabla w_t, \nabla w) + (w_t, \div(\eta^2 \nabla w)) \nonumber \\
+  &= \eta^2 (\nabla w_t, \nabla w) + \div (\eta^2 (w_t, \nabla w)) - \eta^2 (\nabla w_t, \nabla w) \nonumber \\
+  &= \div( \eta^2 ( w_t, \nabla w) )
+\end{align}
+
+Using equations \eqref{eqn:current_deriv} and \eqref{eqn:?} and differentiating under the integral, we get
+\begin{align}
+  \partial_t E &= \int_{}^{} \chi \left( \div(\eta^2 (w_t, \nabla w)) - \eta^2 N_\varepsilon v_t j_\varepsilon - \eta^2 N_\varepsilon (V + \nabla q) +
+  \eta^2 \partial_t |v|^2 + \partial_t (\tilde{f} \tilde{g}) \right) \nonumber \\
+  &= \int \nabla \chi \cdot \eta^2 (w_t, \nabla w) - \chi \eta^2 N_\varepsilon v_t j_\varepsilon - \chi \eta^2 N_\varepsilon(V + \nabla q) + \chi \eta^2
+  \partial_t |v|^2 + \chi \partial_t (\tilde{f} \tilde{g}) \nonumber \\
+  &=
+  \label{<++>}
+\end{align}<++>
+
+\end{document}
+
+
