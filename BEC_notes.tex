@@ -90,7 +90,7 @@ If we follow Sylvia's example, our modulated stress-energy tensor should be defi
 \begin{align} \label{eqn:mod_stress_energy}
   (\tilde{\mathbb{T}}(w))_{jk} &= (\partial_j w- i w N_\varepsilon v, \partial_k w - i w N_\varepsilon v) + N_\varepsilon^2 (1 - |w|^2) v_j v_k
   \nonumber \\
-  &- \delta_{jk} \frac{1}{2} \left( |\nabla w - i w N_\varepsilon v|^2 + (1-|u|^2) N_\varepsilon^2 |v|^2 + \frac{1}{2 \varepsilon^2} (1 - |w|^2)^2
+  &- \delta_{jk} \frac{1}{2} \left( |\nabla w - i w N_\varepsilon v|^2 + (1-|w|^2) N_\varepsilon^2 |v|^2 + \frac{1}{2 \varepsilon^2} (1 - |w|^2)^2
   \right)
 \end{align}
 
@@ -119,6 +119,16 @@ This tells us that
 \end{equation}
 
 Now, we move on to the modulated stress-energy tensor.
+
+\begin{align}
+  (\div \tilde{\mathbb{T}})_k &= \partial_j (\tilde{\mathbb{T}}_{jk}) \nonumber \\
+  &= \partial_j (\partial_j w - iw N_\varepsilon v, \partial_k w - iw N_\varepsilon v) + N_\varepsilon^2 \partial_j \left( (1-|w|^2) v_j v_k \right)
+  \nonumber \\
+  &\quad - \frac{1}{2} \delta_{jk} \partial_j \left( |\nabla w - iw N_\varepsilon v|^2 + (1-|w|^2)N_\varepsilon^2 |v|^2 + \frac{1}{2 \varepsilon^2}
+  (1-|w|^2)^2 \right) \nonumber \\
+  &=
+  \label{<++>}
+\end{align}<++>
 
 \section{Defining Modulated Energy}
 Assume the modulated energy we are after is of the form
