@@ -22,6 +22,7 @@
 \newtheorem*{problem}{Problem}
 %\newtheorem*{lemma}{Lemma}
 \newtheorem{definition}{Definition}[section]
+\renewcommand{\div}{\mathrm{div}}
 
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\N}{\mathbb{N}}
@@ -43,9 +44,11 @@ stress-energy tensor. This will closely follow Sylvia's work with more detail pr
 
 \section{The PDE}
 We will be considering the Gross-Pitaevskii equation
-\begin{equation} \label{GP}
+\begin{equation} \label{eqn:GP}
   i \partial_t u = \Delta u + \frac{1}{\varepsilon^2} u (1-|u|^2)
 \end{equation}
+
+Throughout these calculations, we will assume $u$ satisfies equation \eqref{eqn:GP}.
 
 We will let $v$ be the solution to our mean-field equations, which we must still find.
 
@@ -67,6 +70,12 @@ We need to take the derivative of $E$ with respect to time. Before we begin with
   \label{eqn:mod_grad}
 \end{align}
 
+With this we will temporarily rewrite our modulated energy as
+\begin{equation} \label{eqn:mod_energy2}
+  E(u) = \frac{1}{2} \int \chi \left( |\nabla u|^2 - 2N_\varepsilon v j_\varepsilon + N_\varepsilon^2 |v|^2 - N_\varepsilon^2(1-|u|^2)|v|^2 +
+  \frac{1}{2 \varepsilon^2} (1 - |u|^2)^2 + f(|u|^2) g(\psi) \right)
+\end{equation}
+
 We now take derivatives of some smaller pieces.
 
 \begin{align}
@@ -79,6 +88,35 @@ We now take derivatives of some smaller pieces.
   \label{eqn:deriv_current}
 \end{align}
 where we define $q = (u_t, iu)$ and $V=2(\nabla u, iu_t)$ to be the velocity.
+
+We also have
+\begin{align}
+  \partial_t \left( |\nabla u|^2 + \frac{1}{2 \varepsilon^2} (1-|u|^2)^2 \right)
+  &= \partial_t \left( (\nabla u, \nabla u) + \frac{1}{2 \varepsilon^2} (1-(u,u))^2 \right) \nonumber \\
+  &= 2 (\nabla u_t, \nabla u) - \frac{2}{\varepsilon^2} (1-|u|^2) (u_t, u) \nonumber \\
+  &= 2( \nabla u_t, \nabla u) - 2 ( u_t, \frac{1}{\varepsilon^2} (1-|u|^2)u ) \nonumber \\
+  &= 2( \nabla u_t, \nabla u) - 2( u_t, iu_t - \Delta u) \nonumber \\
+  &= 2( \nabla u_t, \nabla u) - 2( u_t, i u_t) + 2(u_t, \Delta u) \nonumber \\
+  &= 2( \nabla u_t, \nabla u) + 2(u_t, \Delta u) \nonumber \\
+  &= 2( \nabla u_t, \nabla u) + 2 \div (u_t, \nabla u) - 2 (\nabla u_t, \nabla u) \nonumber \\
+  &= 2 \div (u_t, \nabla u)
+  \label{eqn:deriv_?}
+\end{align}
+
+Using equations \eqref{eqn:deriv_current} and \eqref{eqn:deriv_?}, we have
+\begin{align}
+  \partial_t E(u) &= \int \chi \left( \div (u_t, \nabla u) - N_\varepsilon \partial_t(v j_\varepsilon) + \frac{1}{2} N_\varepsilon^2 \partial_t |v|^2
+  - \frac{1}{2} N_\varepsilon^2 \partial_t \left( (1-|u|^2) |v|^2 \right) + \partial_t (f(|u|^2)g(\psi)) \right) \nonumber \\
+  &= \int \chi \div(u_t,\nabla u) - \chi N_\varepsilon j_\varepsilon v_t - \chi N_\varepsilon v (\nabla q + V) \nonumber \\
+  &\quad \quad \frac{1}{2} \chi N_\varepsilon^2 \partial_t |v|^2 - \frac{1}{2} \chi N_\varepsilon^2 \partial_t( (1-|u|^2)|v|^2) + \chi \partial_t(
+  f(|u|^2) g(\psi)) \nonumber \\
+  &= \int - \nabla \chi \cdot (u_t, \nabla u) - \chi N_\varepsilon j_\varepsilon v_t + \nabla \chi N_\varepsilon v q + \chi N_\varepsilon q \div v -
+  \chi N_\varepsilon v V \nonumber \\
+  &\quad \quad \frac{1}{2} \chi N_\varepsilon^2 \partial_t |v|^2 - \frac{1}{2} \chi N_\varepsilon^2 \partial_t( (1-|u|^2)|v|^2) + \chi \partial_t(
+  f(|u|^2) g(\psi)) \nonumber \\
+  &=
+  \label{<++>}
+\end{align}<++>
 
 \end{document}
 
