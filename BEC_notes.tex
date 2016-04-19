@@ -90,9 +90,10 @@ If we follow Sylvia's example, our modulated stress-energy tensor should be defi
 \begin{align} \label{eqn:mod_stress_energy}
   (\tilde{\mathbb{T}}(w))_{jk} &= (\partial_j w- i w N_\varepsilon v, \partial_k w - i w N_\varepsilon v) + N_\varepsilon^2 (1 - |w|^2) v_j v_k
   \nonumber \\
-  &- \delta_{jk} \frac{1}{2} \left( |\nabla w - i w N_\varepsilon v|^2 + (1-|w|^2) N_\varepsilon^2 |v|^2 + \frac{1}{2 \varepsilon^2} (1 - |w|^2)^2
+  &- \delta_{jk} \frac{1}{2} \left( |\nabla w - i w N_\varepsilon v|^2 + (1-|w|^2) N_\varepsilon^2 |v|^2 + \frac{\eta^2}{2 \varepsilon^2} (1 - |w|^2)^2
   \right)
 \end{align}
+\textbf{THIS IS PROBABLY MISSING $\eta$'s}
 
 We will need to know the divergence of this tensor for future calculations. This is the same stress-energy tensor Sylvia defines, but there is a
 dependence on $v$, so we must calculate the divergence at this point without assuming any knowledge of the equation $v$ must satisfy.
@@ -124,9 +125,14 @@ Now, we move on to the modulated stress-energy tensor.
   (\div \tilde{\mathbb{T}})_k &= \partial_j (\tilde{\mathbb{T}}_{jk}) \nonumber \\
   &= \partial_j (\partial_j w - iw N_\varepsilon v, \partial_k w - iw N_\varepsilon v) + N_\varepsilon^2 \partial_j \left( (1-|w|^2) v_j v_k \right)
   \nonumber \\
-  &\quad - \frac{1}{2} \delta_{jk} \partial_j \left( |\nabla w - iw N_\varepsilon v|^2 + (1-|w|^2)N_\varepsilon^2 |v|^2 + \frac{1}{2 \varepsilon^2}
+  &\quad - \frac{1}{2} \delta_{jk} \partial_j \left( |\nabla w - iw N_\varepsilon v|^2 + (1-|w|^2)N_\varepsilon^2 |v|^2 + \frac{\eta^2}{2 \varepsilon^2}
   (1-|w|^2)^2 \right) \nonumber \\
-  &=
+  &= \partial_j \left[ (\partial_j w, \partial_k w) - N_\varepsilon v (\partial_j w, w) - N_\varepsilon v (\partial_k w, w) + N_\varepsilon^2 |v|^2
+  (w,w) \right] + N_\varepsilon^2 \partial_j ( (1-(w,w) ) v_j v_k ) \nonumber \\
+  &\quad- \frac{1}{2} \delta_{jk} \partial_j \left( ( \nabla w, \nabla w ) - 2 N_\varepsilon
+  v(\nabla w, iw) + N_\varepsilon^2 |v|^2 (w,w) + (1-(w,w) ) N_\varepsilon^2 |v|^2 + \frac{\eta^2}{2 \varepsilon^2} (1-(w,w) )^2 \right) \nonumber \\
+  &= \left( \partial_j (\partial_j w, \partial_k w) - \frac{1}{2} \delta_{jk} \partial_j \left( |\nabla w|^2 + \frac{\eta^2}{2 \varepsilon^2}
+  (1-|w|^2)^2 \right) \right) + \dots
   \label{<++>}
 \end{align}<++>
 
@@ -135,26 +141,26 @@ Assume the modulated energy we are after is of the form
 \begin{equation} \label{eqn:energy_form_primitive}
   E = \int_{}^{} \chi \left( \frac{1}{2} \eta^2 |\nabla w - i N_\varepsilon w v|^2 + \frac{\eta^4}{4 \varepsilon^2} ( 1 - |w|^2)^2 + f(\psi) g(|w|^2) \right)
 \end{equation}
-where $N_\varepsilon$ is the number of vortices, $\xi$ is a smooth cutoff function, $v$ is the mean field equation we wish to find, $\psi$ is some
+where $N_\varepsilon$ is the number of vortices, $\chi$ is a smooth cutoff function, $v$ is the mean field equation we wish to find, $\psi$ is some
 function of the mean field equation, and $f$ and $g$ are some functions.
 
 We want to find the time derivative of $E$ and put a bound on it using Gronwall.
 Before we start taking derivatives, we will expand the first term of our energy.
 
 \begin{align*}
-  |\nabla w + iN_\varepsilon w v|^2 &= ( \nabla w - iN_\varepsilon w v , \nabla w - iN_\varepsilon w v ) \\
+  |\nabla w - iN_\varepsilon w v|^2 &= ( \nabla w - iN_\varepsilon w v , \nabla w - iN_\varepsilon w v ) \\
   &= (\nabla w, \nabla w ) - 2 ( \nabla w, iN_\varepsilon w v ) + ( i N_\varepsilon w v, i N_\varepsilon w v ) \\
-  &= | \nabla w |^2 - 2 N_\varepsilon v ( \nabla w, iw ) + N_\varepsilon^2 v^2 |w|^2 \\
-  &= | \nabla w |^2 - 2 N_\varepsilon v j_\varepsilon + N_\varepsilon^2 v^2 |w|^2 \\
-  &= | \nabla w |^2 - 2 N_\varepsilon v j_\varepsilon + N_\varepsilon^2 v^2 - N_\varepsilon^2 ( 1 - |w|^2 )v^2
+  &= | \nabla w |^2 - 2 N_\varepsilon v ( \nabla w, iw ) + N_\varepsilon^2 |v|^2 |w|^2 \\
+  &= | \nabla w |^2 - 2 N_\varepsilon v j_\varepsilon + N_\varepsilon^2 |v|^2 |w|^2 \\
+  &= | \nabla w |^2 - 2 N_\varepsilon v j_\varepsilon + N_\varepsilon^2 |v|^2 - N_\varepsilon^2 ( 1 - |w|^2 )|v|^2
 \end{align*}
 where $j_\varepsilon(u) = (iu, \nabla u)$ is the current.
 Using this, we rewrite our energy as
 \begin{equation} \label{eqn:energy_form}
-  E = \int_{}^{} \chi \left( \frac{1}{2} \eta^2 \left( | \nabla w |^2 - 2 N_\varepsilon v j_\varepsilon + N_\varepsilon^2 v^2
+  E = \int_{}^{} \chi \left( \frac{1}{2} \eta^2 \left( | \nabla w |^2 - 2 N_\varepsilon v j_\varepsilon + N_\varepsilon^2 |v|^2
   \right) + \frac{\eta^4}{4 \varepsilon^2} ( 1 - |w|^2)^2 + \tilde{f} \tilde{g} \right)
 \end{equation}
-where $\tilde{f} \tilde{g} = fg - N_\varepsilon^2 (1 - |w|^2) v^2$.
+where $\tilde{f} \tilde{g} = fg - N_\varepsilon^2 (1 - |w|^2) |v|^2$.
 
 Next, we will take derivatives of some pieces individually.
 \begin{align} \label{eqn:current_deriv}

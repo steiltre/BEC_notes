@@ -1,0 +1,85 @@
+%        File: GP_find_MFE.tex
+%     Created: Tue Apr 19 08:00 AM 2016 C
+% Last Change: Tue Apr 19 08:00 AM 2016 C
+%
+
+\documentclass[a4paper]{article}
+
+\title{Gross-Pitaevskii Mean-Field Equation Derivation}
+\date{}
+\author{}
+
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{esint}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem*{claim}{Claim}
+\newtheorem*{problem}{Problem}
+%\newtheorem*{lemma}{Lemma}
+\newtheorem{definition}{Definition}[section]
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\supp}[1]{\mathop{\mathrm{supp}}\left(#1\right)}
+\newcommand{\lip}[1]{\mathop{\mathrm{Lip}}\left(#1\right)}
+\newcommand{\curl}{\mathrm{curl}}
+\newcommand{\la}{\left \langle}
+\newcommand{\ra}{\right \rangle}
+\renewcommand{\vec}[1]{\mathbf{#1}}
+
+\newenvironment{solution}{\emph{Solution.}}
+
+\begin{document}
+\maketitle
+We will attempt to derive the mean field equations for the Gross-Pitaevskii case using just the general forms for the modulated energy and modulated
+stress-energy tensor. This will closely follow Sylvia's work with more detail present.
+
+\section{The PDE}
+We will be considering the Gross-Pitaevskii equation
+\begin{equation} \label{GP}
+  i \partial_t u = \Delta u + \frac{1}{\varepsilon^2} u (1-|u|^2)
+\end{equation}
+
+We will let $v$ be the solution to our mean-field equations, which we must still find.
+
+\section{Modulated Energy}
+We will define the modulated energy to be of the form
+\begin{equation} \label{eqn:mod_energy_form}
+  E(u) = \frac{1}{2} \int \chi \left( |\nabla u - i uN_\varepsilon v|^2 + \frac{1}{2\varepsilon^2} (1-|u|^2)^2 + f(|u|^2) g(\psi) \right)
+\end{equation}
+where $N_\varepsilon$ is the number of vortices, $\chi$ is a smooth cutoff function, $v$ is the mean field equation we wish to find, $\psi$ is some
+function of the mean field equation, and $f$ and $g$ are some functions.
+
+We need to take the derivative of $E$ with respect to time. Before we begin with that, we will start by looking at individual pieces of the energy.
+
+\begin{align}
+  | \nabla u - i u N_\varepsilon v|^2 &= (\nabla u - i u N_\varepsilon v, \nabla u - i u N_\varepsilon v) \nonumber \\
+  &= (\nabla u, \nabla u) - 2N_\varepsilon v ( \nabla u, iu ) + N_\varepsilon^2 |v|^2 (u,u) \nonumber \\
+  &= |\nabla u|^2 - 2 N_\varepsilon v j_\varepsilon + N_\varepsilon^2 |v|^2 |u|^2 \nonumber \\
+  &= |\nabla u|^2 - 2N_\varepsilon v j_\varepsilon + N_\varepsilon^2 |v|^2 - N_\varepsilon^2 (1 - |u|^2)|v|^2
+  \label{eqn:mod_grad}
+\end{align}
+
+We now take derivatives of some smaller pieces.
+
+\begin{align}
+  \partial_t j_\varepsilon &= \partial_t (\nabla u, iu) \nonumber \\
+  &= ( \nabla u_t, iu) + ( \nabla u, i u_t) \nonumber \\
+  &= \nabla (u_t, iu) - (u_t, i \nabla u) + (\nabla u, iu_t) \nonumber \\
+  &= \nabla (u_t, iu) + (\nabla u, iu_t) + (\nabla u, iu_t) \nonumber \\
+  &= \nabla (u_t, iu) + 2 (\nabla u, iu_t) \nonumber \\
+  &= \nabla q + V
+  \label{eqn:deriv_current}
+\end{align}
+where we define $q = (u_t, iu)$ and $V=2(\nabla u, iu_t)$ to be the velocity.
+
+\end{document}
+
+
