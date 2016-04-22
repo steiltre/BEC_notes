@@ -210,18 +210,75 @@ From here, we should be able to calculate the divergence of $\tilde{\mathbb{T}}$
   &= (\div \mathbb{T}(u))_k - N_\varepsilon (iu, \partial_k u) \partial_j v_j - N_\varepsilon v_j (i \partial_j u, \partial_k u) - N_\varepsilon v_j
   (iu, \partial_j \partial_k u) \nonumber \\
   &\quad - N_\varepsilon (\partial_j u, iu ) \partial_j v_k - N_\varepsilon v_k (\partial_j \partial_j u, iu) - N_\varepsilon v_k (\partial_j u, i
-  \partial_k u) \nonumber \\
+  \partial_j u) \nonumber \\
   &\quad + N_\varepsilon^2 ( v_k \partial_j v_j + v_j \partial_j v_k ) + N_\varepsilon j_\varepsilon \partial_k v + N_\varepsilon v \partial_k
   j_\varepsilon - N_\varepsilon^2 v_l \partial_k v_l \nonumber \\
   &= (\div \mathbb{T}(u))_k - N_\varepsilon (iu, \partial_k u ) \partial_j v_j - N_\varepsilon v_j (i \partial_j u, \partial_k u) - N_\varepsilon v_j
   (iu, \partial_j \partial_k u ) \nonumber \\
-  &\quad - N_\varepsilon ( \partial_j u, iu ) \partial_j v_k - N_\varepsilon v_k (\partial_j \partial_j u, iu ) - N_\varepsilon v_k ( \partial_j u, i
-  \partial_k u ) \nonumber \\
-  &\quad + N_\varepsilon^2 (v_k \partial_j v_j + v_j \partial_j v_k - v_j \partial_k v_j) + N_\varepsilon j_\varepsilon \partial_k v + N_\varepsilon v
-  \partial_k j_\varepsilon \nonumber \\
-  &=
+  &\quad - N_\varepsilon ( \partial_j u, iu ) \partial_j v_k - N_\varepsilon v_k (\partial_j \partial_j u, iu ) \nonumber \\
+  &\quad + N_\varepsilon^2 (v_k \partial_j v_j + v_j \partial_j v_k - v_j \partial_k v_j) + N_\varepsilon \partial_k v_j (\partial_j u, iu)  \nonumber \\
+  &\quad + N_\varepsilon v_j (\partial_k \partial_j u, iu) + N_\varepsilon v_j (\partial_j u, i \partial_k u) \nonumber \\
+  &= (\div \mathbb{T}(u))_k - N_\varepsilon (iu, \partial_k u) \partial_j v_j - N_\varepsilon v_j (i \partial_j u, \partial_k u) - N_\varepsilon
+  \partial_j v_k (\partial_j u, iu ) \nonumber \\
+  &\quad - N_\varepsilon v_k (\partial_j \partial_j u, iu) + N_\varepsilon^2 (v_k \partial_j v_j + v_j \partial_j v_k - v_j \partial_k v_j) +
+  N_\varepsilon \partial_k v_j (\partial_j u, iu) \nonumber \\
+  &\quad + N_\varepsilon v_j ( \partial_j u, i \partial_k u )
   \label{eqn:div_mod_stress_energy}
-\end{align}<++>
+\end{align}
+
+Now we will try to express these terms in simpler ways.
+First, we see
+\begin{equation}
+  (v \div v)_k = v_k \partial_j v_j
+  \label{eqn:v_div_v}
+\end{equation}
+
+By writing out all of terms carefully, we also get
+\begin{equation}
+  (v^\perp \curl v)_k = v_j \partial_j v_k - v_j \partial_k v_j
+  \label{eqn:v^perp_curl_v}
+\end{equation}
+
+Also,
+\begin{equation}
+  (j_\varepsilon \div v)_k = (\partial_k u, i u) \partial_j v_j
+  \label{eqn:j_div_v}
+\end{equation}
+
+By writing out all of the terms, we also see
+\begin{equation}
+  (j_\varepsilon^\perp \curl v)_k = (\partial_j u, iu) \partial_j v_k - (\partial_j u, iu) \partial_k v_j
+  \label{eqn:j^perp_curl_v}
+\end{equation}
+
+And
+\begin{equation}
+  (v \div j_\varepsilon)_k = v_k (\partial_j \partial_j u, iu)
+  \label{eqn:v_div_j}
+\end{equation}
+
+Also
+\begin{equation}
+  (v^\perp \mu)_k = v_j (\partial_k u, i \partial_j u) - v_j ( \partial_j u, i \partial_k u)
+  \label{eqn:v^perp_mu}
+\end{equation}
+where $\mu = \curl j_\varepsilon$.
+
+By plugging equations \eqref{eqn:v_div_v}, \eqref{eqn:v^perp_curl_v}, \eqref{eqn:j_div_v}, \eqref{eqn:j^perp_curl_v}, and \eqref{eqn:v^perp_mu} into
+equation \eqref{eqn:div_mod_stress_energy}, we find
+\begin{align}
+  (\div \tilde{\mathbb{T}}(u))_k &= (\div \mathbb{T}(u))_k + N_\varepsilon^2 (v \div v)_k + N_\varepsilon^2 (v^\perp \curl v)_k \nonumber \\
+  &\quad - N_\varepsilon (j_\varepsilon \div v)_k - N_\varepsilon (j_\varepsilon^\perp \curl v)_k - N_\varepsilon (v \div j_\varepsilon)_k - N_\varepsilon (v^\perp \mu)_k
+  \label{eqn:simp_div_mod_stress_energy_comp}
+\end{align}
+
+Therefore,
+\begin{align}
+  \div \tilde{\mathbb{T}}(u) &= \div \mathbb{T}(u) + N_\varepsilon^2 v \div v + N_\varepsilon^2 v^\perp \curl v \nonumber \\
+  &\quad - N_\varepsilon j_\varepsilon \div v - N_\varepsilon j_\varepsilon^\perp \curl v - N_\varepsilon v \div j_\varepsilon - N_\varepsilon v^\perp \mu
+  \label{eqn:simp_div_mod_stress_energy}
+\end{align}
+
 
 \end{document}
 
