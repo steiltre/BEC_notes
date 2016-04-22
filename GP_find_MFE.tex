@@ -115,7 +115,112 @@ Using equations \eqref{eqn:deriv_current} and \eqref{eqn:deriv_?}, we have
   &\quad \quad \frac{1}{2} \chi N_\varepsilon^2 \partial_t |v|^2 - \frac{1}{2} \chi N_\varepsilon^2 \partial_t( (1-|u|^2)|v|^2) + \chi \partial_t(
   f(|u|^2) g(\psi)) \nonumber \\
   &=
-  \label{<++>}
+  \label{eqn:deriv_energy}
+\end{align}<++>
+
+\section{Stress-Energy Tensor}
+We first define the stress energy tensor by
+\begin{equation}
+  (\mathbb{T}(u))_{jk} = (\partial_j u, \partial_k u) - \frac{1}{2} \left( |\nabla u|^2 + \frac{1}{2 \varepsilon^2} (1 - |u|^2)^2 \right) \delta_{jk}
+  \label{eqn:stress_energy}
+\end{equation}
+
+Then we can calculate
+\begin{align}
+  (\div \mathbb{T}(u))_k &= \partial_j (\mathbb{T}(u))_jk \nonumber \\
+  &= \partial_j (\partial_j u, \partial_k u) - \frac{1}{2} \partial_j \left( |\nabla u|^2 + \frac{1}{2 \varepsilon^2} ( 1 - |u|^2)^2 \right)
+  \delta_{jk} \nonumber \\
+  &= (\partial_j \partial_j u, \partial_k u) + (\partial_j u, \partial_j \partial_k u) - \frac{1}{2} \left( 2( \partial_k \partial_l u, \partial_l u)
+  - \frac{2}{\varepsilon^2} (1- |u|^2) (\partial_k u, u) \right) \nonumber \\
+  &= (\partial_j \partial_j u, \partial_k u) + \frac{1}{\varepsilon^2} (1-|u|^2) (\partial_k u, u) \nonumber \\
+  &= ( \partial_k u, \Delta u, \frac{1}{\varepsilon^2} (1 - |u|^2)u)
+  \label{eqn:div_stress_energy_comp}
+\end{align}
+
+Therefore, we have
+\begin{equation}
+  \div \mathbb{T}(u) = (\nabla u, \Delta u + \frac{1}{\varepsilon^2} (1-|u|^2)u)
+  \label{eqn:div_stress_energy}
+\end{equation}
+
+Now we begin working with the modulated stress-energy tensor which is defined by
+\begin{align}
+  (\tilde{\mathbb{T}}(u))_{jk} &= ( \partial_j u - i u N_\varepsilon v_j, \partial_k u - iu N_\varepsilon v_k) + N_\varepsilon^2(1-|u|^2)v_j v_k
+  \nonumber \\
+  &\quad - \frac{1}{2} \left( |\nabla u - iu N_\varepsilon v|^2 + (1-|u|^2) N_\varepsilon^2 |v|^2 + \frac{1}{2 \varepsilon^2} (1-|u|^2)^2 \right) \delta_{jk}
+  \label{eqn:mod_stress_energy}
+\end{align}
+
+We must now compute the divergence of this modulated stress-energy tensor.
+
+\begin{align}
+  (\div \tilde{\mathbb{T}}(u))_k &= \partial_j (\tilde{\mathbb{T}}(u))_{jk} \nonumber \\
+  &= \partial_j ( \partial_j u - i u N_\varepsilon v_j, \partial_k u - iu N_\varepsilon v_k) + N_\varepsilon^2 \partial_j \left( (1-|u|^2)v_j v_k
+  \right) \nonumber \\
+  &\quad - \frac{1}{2} \partial_j \left( |\nabla u - iu N_\varepsilon v|^2 + (1-|u|^2) N_\varepsilon^2 |v|^2 + \frac{1}{2 \varepsilon^2} (1-|u|^2)^2
+  \right) \delta_{jk} \nonumber \\
+  &= \partial_j (\partial_j u, \partial_k u) - \partial_j (iuN_\varepsilon v_j, \partial_k u) - \partial_j (\partial_j u, iu N_\varepsilon v_k) +
+  \partial_j (u N_\varepsilon v_j, u N_\varepsilon v_k) \nonumber \\
+  &\quad + N_\varepsilon^2 \partial_j \left( (1-(u,u) )^2 v_j v_k \right) - \frac{1}{2} \partial_k (\nabla u, \nabla u) + \partial_k
+  ( \nabla u, iu N_\varepsilon v) + \frac{1}{2} \partial_k (u N_\varepsilon v, u N_\varepsilon v) \nonumber \\
+  &\quad + \partial_k \left( (1-(u,u) ) N_\varepsilon^2 (v,v) \right) + \frac{1}{2 \varepsilon^2} \partial_k ((1 - |u|^2)^2) \nonumber \\
+  &= (\div \mathbb{T}(u))_k - \partial_j (iu N_\varepsilon v_j, \partial_k u) - \partial_j ( \partial_j u, iu N_\varepsilon v_k) + \partial_j ( u
+  N_\varepsilon v_j, u N_\varepsilon v_k) \nonumber \\
+  &\quad + N_\varepsilon^2 \partial_j \left( (1-(u,u))^2 v_j v_k \right) + \partial_k ( \nabla u, iu N_\varepsilon v) + \frac{1}{2} \partial_k (u
+  N_\varepsilon v, u N_\varepsilon v) + \partial_k \left( (1-(u,u)) N_\varepsilon^2 (v,v) \right) \nonumber \\
+  % &= (\div \mathbb{T}(u))_k - \partial_j (N_\varepsilon v_j (j_\varepsilon)_k) - \partial_j( N_\varepsilon v_k (j_\varepsilon)_j) + N_\varepsilon^2 \partial_j (v_j
+  % v_k (u,u)) \nonumber \\
+  % &\quad + N_\varepsilon^2 \partial_j \left( ( 1 - (u,u) )^2 v_j v_k \right) + N_\varepsilon \partial_k (\partial_l, iu v_l) + \frac{1}{2} N_\varepsilon^2
+  % \partial_k \left( |v|^2 (u,u) \right) + N_\varepsilon^2 \partial_k \left( (1-(u,u)) (v,v) \right) \nonumber \\
+  &= ( \div \mathbb{T}(u))_k - N_\varepsilon v_j (i \partial_j u, \partial_k u) - N_\varepsilon v_j (i u, \partial_j \partial_k u) + N_\varepsilon
+  \partial_j (v_j) (i u, \partial_k u) \nonumber \\
+  &\quad - N_\varepsilon N_\varepsilon v_k (\partial_j \partial_j u, iu) - N_\varepsilon v_k (\partial_j u, i \partial_j u) - N_\varepsilon \partial_j
+  (v_k) (\partial_j u, iu) \nonumber \\
+  &\quad + 2 N_\varepsilon^2 v_j v_k (\partial_j u, u) + N_\varepsilon^2 \partial_j (v_j v_k) |u|^2 - 4 N_\varepsilon^2 v_j v_k (1-|u|^2) (\partial_j
+  u, u) + N_\varepsilon^2 (1-|u|^2)^2 \partial_j (v_j v_k) \nonumber \\
+  &\quad + N_\varepsilon v_l (\partial_k \partial_l u, iu) + N_\varepsilon \partial_j (v_l) (\partial_l u, iu) + N_\varepsilon^2 |v|^2 (\partial_k u,
+  u) + N_\varepsilon^2 |u|^2 (\partial_k v, v) \nonumber \\
+  &\quad - 2 N_\varepsilon^2 (\partial_k u, u) |v|^2 + 2 N_\varepsilon^2 |u|^2 (\partial_k v, v)
+  \label{eqn:div_mod_stress_energy_wrong}
+\end{align}
+\textbf{THIS CALCULATION SEEMS HORRIBLE AND WRONG, AND I'M NOWHERE N3AR WHERE I WANT TO BE.}
+
+Attempt number 2:
+Using equation \eqref{eqn:mod_grad} we can write
+\begin{align}
+  (\tilde{\mathbb{T}}(u))_{jk} &= ( \partial_j u - i u N_\varepsilon v_j, \partial_k u - iu N_\varepsilon v_k) + N_\varepsilon^2(1-|u|^2)v_j v_k
+  \nonumber \\
+  &\quad - \frac{1}{2} \left( |\nabla u - iu N_\varepsilon v|^2 + (1-|u|^2) N_\varepsilon^2 |v|^2 + \frac{1}{2 \varepsilon^2} (1-|u|^2)^2 \right)
+  \delta_{jk} \nonumber \\
+  &= (\partial_j u - i u N_\varepsilon v_j, \partial_k u - i u N_\varepsilon v_k ) + N_\varepsilon^2(1-|u|^2) v_j v_k \nonumber \\
+  &\quad -\frac{1}{2} \delta_{jk} \left( |\nabla u|^2 - 2N_\varepsilon v j_\varepsilon + N_\varepsilon^2 |v|^2 + \frac{1}{2 \varepsilon^2} (1-|u|^2)^2 \right)
+  \label{eqn:mod_stress_energy2}
+\end{align}
+
+From here, we should be able to calculate the divergence of $\tilde{\mathbb{T}}$ more easily.
+\begin{align}
+  (\div \tilde{\mathbb{T}}(u))_k &= \partial_j (\tilde{\mathbb{T}}(u)_{jk}) \nonumber \\
+  &= \partial_j ( \partial_j u, \partial_k u ) - N_\varepsilon \partial_j \left( v_j (iu, \partial_k u) \right) - N_\varepsilon \partial_j \left( v_k (\partial_j
+  u, iu) \right) + N_\varepsilon^2 \partial_j \left( v_j v_k |u|^2 \right) + N_\varepsilon^2 \partial_j \left( (1-|u|^2) v_j v_k \right) \nonumber \\
+  &\quad - \frac{1}{2} \partial_j \delta_{jk} \left( |\nabla u|^2 + \frac{1}{2\varepsilon^2}(1-|u|^2)^2 \right) - \frac{1}{2} \partial_j \delta_{jk} \left( - 2
+  N_\varepsilon v j_\varepsilon + N_\varepsilon^2 |v|^2 \right) \nonumber \\
+  &= (\div \mathbb{T}(u))_k - N_\varepsilon \partial_j (v_j (iu,\partial_k u) ) - N_\varepsilon \partial_j ( v_k ( \partial_j u, iu ) ) +
+  N_\varepsilon^2 \partial_j ( v_j v_k ) \nonumber \\
+  &\quad - \frac{1}{2} \partial_j \delta_{jk} ( -2 N_\varepsilon v j_\varepsilon + N_\varepsilon^2 |v|^2) \nonumber \\
+  &= (\div \mathbb{T}(u))_k - N_\varepsilon (iu, \partial_k u) \partial_j v_j - N_\varepsilon v_j (i \partial_j u, \partial_k u) - N_\varepsilon v_j
+  (iu, \partial_j \partial_k u) \nonumber \\
+  &\quad - N_\varepsilon (\partial_j u, iu ) \partial_j v_k - N_\varepsilon v_k (\partial_j \partial_j u, iu) - N_\varepsilon v_k (\partial_j u, i
+  \partial_k u) \nonumber \\
+  &\quad + N_\varepsilon^2 ( v_k \partial_j v_j + v_j \partial_j v_k ) + N_\varepsilon j_\varepsilon \partial_k v + N_\varepsilon v \partial_k
+  j_\varepsilon - N_\varepsilon^2 v_l \partial_k v_l \nonumber \\
+  &= (\div \mathbb{T}(u))_k - N_\varepsilon (iu, \partial_k u ) \partial_j v_j - N_\varepsilon v_j (i \partial_j u, \partial_k u) - N_\varepsilon v_j
+  (iu, \partial_j \partial_k u ) \nonumber \\
+  &\quad - N_\varepsilon ( \partial_j u, iu ) \partial_j v_k - N_\varepsilon v_k (\partial_j \partial_j u, iu ) - N_\varepsilon v_k ( \partial_j u, i
+  \partial_k u ) \nonumber \\
+  &\quad + N_\varepsilon^2 (v_k \partial_j v_j + v_j \partial_j v_k - v_j \partial_k v_j) + N_\varepsilon j_\varepsilon \partial_k v + N_\varepsilon v
+  \partial_k j_\varepsilon \nonumber \\
+  &=
+  \label{eqn:div_mod_stress_energy}
 \end{align}<++>
 
 \end{document}
