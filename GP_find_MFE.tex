@@ -108,11 +108,11 @@ Using equations \eqref{eqn:deriv_current} and \eqref{eqn:deriv_?}, we have
   \partial_t E(u) &= \int \chi \left( \div (u_t, \nabla u) - N_\varepsilon \partial_t(v j_\varepsilon) + \frac{1}{2} N_\varepsilon^2 \partial_t |v|^2
   - \frac{1}{2} N_\varepsilon^2 \partial_t \left( (1-|u|^2) |v|^2 \right) + \partial_t (f(|u|^2)g(\psi)) \right) \nonumber \\
   &= \int \chi \div(u_t,\nabla u) - \chi N_\varepsilon j_\varepsilon v_t - \chi N_\varepsilon v (\nabla q + V) \nonumber \\
-  &\quad \quad \frac{1}{2} \chi N_\varepsilon^2 \partial_t |v|^2 - \frac{1}{2} \chi N_\varepsilon^2 \partial_t( (1-|u|^2)|v|^2) + \chi \partial_t(
+  &\quad \quad + \frac{1}{2} \chi N_\varepsilon^2 \partial_t |v|^2 - \frac{1}{2} \chi N_\varepsilon^2 \partial_t( (1-|u|^2)|v|^2) + \chi \partial_t(
   f(|u|^2) g(\psi)) \nonumber \\
   &= \int - \nabla \chi \cdot (u_t, \nabla u) - \chi N_\varepsilon j_\varepsilon v_t + \nabla \chi N_\varepsilon v q + \chi N_\varepsilon q \div v -
   \chi N_\varepsilon v V \nonumber \\
-  &\quad \quad \frac{1}{2} \chi N_\varepsilon^2 \partial_t |v|^2 - \frac{1}{2} \chi N_\varepsilon^2 \partial_t( (1-|u|^2)|v|^2) + \chi \partial_t(
+  &\quad \quad + \frac{1}{2} \chi N_\varepsilon^2 \partial_t |v|^2 - \frac{1}{2} \chi N_\varepsilon^2 \partial_t( (1-|u|^2)|v|^2) + \chi \partial_t(
   f(|u|^2) g(\psi)) \nonumber \\
   &=
   \label{eqn:deriv_energy}
