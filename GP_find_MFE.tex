@@ -48,7 +48,13 @@ We will be considering the Gross-Pitaevskii equation
   i \partial_t u = \Delta u + \frac{1}{\varepsilon^2} u (1-|u|^2)
 \end{equation}
 
-Throughout these calculations, we will assume $u$ satisfies equation \eqref{eqn:GP}.
+In order to get a nontrivial limiting equation, we will have to rescale the equation as
+\begin{equation}
+  i N_\varepsilon \partial_t u = \Delta u + \frac{1}{\varepsilon^2} u (1-|u|^2)
+  \label{eqn:rescaled_GP}
+\end{equation}
+
+Throughout these calculations, we will assume $u$ satisfies equation \eqref{eqn:rescaled_GP}.
 
 We will let $v$ be the solution to our mean-field equations, which we must still find.
 
@@ -95,8 +101,8 @@ We also have
   &= \partial_t \left( (\nabla u, \nabla u) + \frac{1}{2 \varepsilon^2} (1-(u,u))^2 \right) \nonumber \\
   &= 2 (\nabla u_t, \nabla u) - \frac{2}{\varepsilon^2} (1-|u|^2) (u_t, u) \nonumber \\
   &= 2( \nabla u_t, \nabla u) - 2 ( u_t, \frac{1}{\varepsilon^2} (1-|u|^2)u ) \nonumber \\
-  &= 2( \nabla u_t, \nabla u) - 2( u_t, iu_t - \Delta u) \nonumber \\
-  &= 2( \nabla u_t, \nabla u) - 2( u_t, i u_t) + 2(u_t, \Delta u) \nonumber \\
+  &= 2( \nabla u_t, \nabla u) - 2( u_t, i N_\varepsilon u_t - \Delta u) \nonumber \\
+  &= 2( \nabla u_t, \nabla u) - 2 N_\varepsilon ( u_t, i u_t) + 2(u_t, \Delta u) \nonumber \\
   &= 2( \nabla u_t, \nabla u) + 2(u_t, \Delta u) \nonumber \\
   &= 2( \nabla u_t, \nabla u) + 2 \div (u_t, \nabla u) - 2 (\nabla u_t, \nabla u) \nonumber \\
   &= 2 \div (u_t, \nabla u)
@@ -122,7 +128,7 @@ Using equations \eqref{eqn:deriv_current} and \eqref{eqn:deriv_?}, we have
 %   N_\varepsilon v 2 (\nabla u, iu_t) \nonumber \\
 %   &\quad \quad + \chi N_\varepsilon^2 |u|^2 v_t \cdot v + \chi N_\varepsilon^2 |v|^2 (u, u_t) + \chi \partial_t ( f(|u|^2) g(\psi) )
 %   \label{eqn:deriv_energy}
-% \end{align}<++>
+% \end{align}
 
 
 \begin{align}
@@ -157,6 +163,7 @@ Using equations \eqref{eqn:deriv_current} and \eqref{eqn:deriv_?}, we have
   &= \int_{}^{} - \nabla \chi \cdot (\nabla u - iu N_\varepsilon v, u_t) + \chi N_\varepsilon \div v (u_t, iu) - \chi N_\varepsilon j_\varepsilon v_t - 2 \chi
   N_\varepsilon v \cdot (\nabla u, iu_t) \nonumber \\
   &\quad \quad + \chi N_\varepsilon^2 |u|^2 v_t \cdot v + \chi N_\varepsilon^2 |v|^2 (u_t, u) + \frac{1}{2} \chi \partial_t (f(|u|^2) g(\psi))
+  \label{eqn:mod_energy_deriv}
 \end{align}
 
 \section{Stress-Energy Tensor}
@@ -319,7 +326,82 @@ Therefore,
   \label{eqn:simp_div_mod_stress_energy}
 \end{align}
 
+\section{Putting It Together}
+We now combine the modulated stress-energy tensor with the derivative of our modulated energy.
+First we compute
+\begin{align}
+  \div j_\varepsilon &= \div (\nabla u, iu) \nonumber \\
+  &= ( \Delta u, iu ) + (\nabla u, i \nabla u) \nonumber \\
+  &= ( \Delta u, iu ) \nonumber \\
+  &= ( \Delta u + \frac{1}{\varepsilon^2} (1-|u|^2) u, iu ) \nonumber \\
+  &= N_\varepsilon ( i u_t , iu ) \quad \parbox{5cm}{by \eqref{eqn:rescaled_GP}} \nonumber \\
+  &= N_\varepsilon ( u_t, u )
+  \label{eqn:div_j}
+\end{align}
 
+Taking the inner product of equation \eqref{eqn:simp_div_mod_stress_energy} with $2 \chi v$ gives us
+\begin{align*}
+  2 \chi \div \tilde{\mathbb{T}}(u) \cdot v &= 2 \chi ( \div \mathbb{T}(u) \cdot v + N_\varepsilon^2 |v|^2 \div v \nonumber \\
+  &\quad - N_\varepsilon \div v j_\varepsilon \cdot v - N_\varepsilon \curl v j_\varepsilon^\perp \cdot v - N_\varepsilon |v|^2 \div j_\varepsilon )
+  \nonumber \\
+  &= 2 \chi \big( (\nabla u, \Delta u + \frac{1}{\varepsilon^2} (1-|u|^2)u) \cdot v + N_\varepsilon^2 |v|^2 \div v \nonumber \\
+  &\quad - N_\varepsilon \div v j_\varepsilon \cdot v + N_\varepsilon \curl v j_\varepsilon \cdot v^\perp - N_\varepsilon |v|^2 \div j_\varepsilon
+  \big) \quad \parbox{5cm}{by \eqref{eqn:div_stress_energy}} \nonumber \\
+  &= 2 \chi \big( N_\varepsilon (\nabla u, i u_t) \cdot v + N_\varepsilon^2 |v|^2 \div v \nonumber \\
+  &\quad - N_\varepsilon \div v j_\varepsilon \cdot v + N_\varepsilon \curl v j_\varepsilon \cdot v^\perp - N_\varepsilon |v|^2 \div j_\varepsilon
+  \big) \quad \parbox{5cm}{by \eqref{eqn:rescaled_GP}} \nonumber \\
+  &= 2 \chi \big( N_\varepsilon ( \nabla u, i u_t) \cdot v + N_\varepsilon^2 |v|^2 \div v \nonumber \\
+  &\quad - N_\varepsilon \div v j_\varepsilon \cdot v + N_\varepsilon \curl v j_\varepsilon \cdot v^\perp - N_\varepsilon^2 |v|^2 (u_t, u) \big) \quad
+  \parbox{5cm}{by \eqref{eqn:div_j}}
+\end{align*}
+
+Rearranging this, we have
+\begin{align}
+  - 2 \chi N_\varepsilon (\nabla u, i u_t) \cdot v &= 2 \chi \big( - \div \tilde{\mathbb{T}}(u) \cdot v + N_\varepsilon^2 |v|^2 \div v \nonumber \\
+  &\quad - N_\varepsilon \div v j_\varepsilon \cdot v + N_\varepsilon \curl v j_\varepsilon \cdot v^\perp - N_\varepsilon^2 |v|^2 (u_t, u) \big)
+  \label{eqn:2chi_div}
+\end{align}
+
+Putting this in equation \eqref{eqn:mod_energy_deriv} gives us
+\begin{align}
+  \partial_t E(u) &= \int_{}^{} - \nabla \chi \cdot ( \nabla u - i u N_\varepsilon v, u_t) + \chi N_\varepsilon \div v (u_t,iu) - \chi N_\varepsilon
+  j_\varepsilon v_t \nonumber \\
+  &\quad \quad - 2 \chi \div \tilde{\mathbb{T}}(u) \cdot v + 2 \chi N_\varepsilon^2 |v|^2 \div v - 2 \chi N_\varepsilon \div v j_\varepsilon \cdot v +
+  2 \chi N_\varepsilon \curl v j_\varepsilon \cdot v^\perp - 2 \chi N_\varepsilon^2 |v|^2 (u_t,u) \nonumber \\
+  &\quad \quad + \chi N_\varepsilon^2 |u|^2 v_t \cdot v + \chi N_\varepsilon^2 |v|^2 (u_t, u) + \frac{1}{2} \chi \partial_t (f(|u|^2)g(\psi))
+  \label{eqn:mod_energy_deriv_stress_energy}
+\end{align}
+
+From here, we must work to try picking what equation $v$ must satisfy.
+
+We expect to have $j_\varepsilon \to N_\varepsilon v$. So $\div j_\varepsilon \to N_\varepsilon \div v$. With this, we should see $\div v = 0$ as
+$N_\varepsilon$ grows ($j_\varepsilon$ must be bounded in some way).
+
+Putting $\div v = 0$ into equation \eqref{eqn:mod_energy_deriv_stress_energy} gives
+\begin{align*}
+  \partial_t E(u) &= \int_{}^{} - \nabla \chi \cdot ( \nabla u - i u N_\varepsilon v, u_t) - \chi N_\varepsilon j_\varepsilon v_t - 2 \chi \div
+  \tilde{\mathbb{T}}(u) + 2 \chi N_\varepsilon \curl v j_\varepsilon \cdot v^\perp \\
+  &\quad \quad - 2 \chi N_\varepsilon^2 |v|^2 (u_t, u) + \chi N_\varepsilon^2 |u|^2 v_t \cdot v + \chi N_\varepsilon^2 |v|^2 (u_t, u) +
+  \frac{1}{2} \chi \partial_t (f(|u|^2) g(\psi))
+\end{align*}
+
+Comparing the $\chi N_\varepsilon j_\varepsilon v_t$ term and the $2 \chi N_\varepsilon \curl v j_\varepsilon \cdot v^\perp$ term, we expect $v_t = - 2
+\curl v v^\perp$. $v$ is then going to be the solution to
+\begin{equation}
+  \begin{cases}
+    v_t = 2 \curl v v^\perp + \nabla p \\
+    \div v = 0
+  \end{cases}
+  \label{eqn:v_t}
+\end{equation}
+where we have to add a pressure term for a reason I can't remember (\textbf{FIND OUT WHY PRESSURE IS N33DED}.)
+
+With such a $v$, we have
+\begin{align*}
+  \partial_t E(u) &= \int_{}^{} - \nabla \chi \cdot ( \nabla u - i u N_\varepsilon v, u_t ) - 2 \chi \div \tilde{\mathbb{T}}(u) - 2 \chi
+  N_\varepsilon^2 |v|^2 (u_t, u) \\
+  &\quad \quad - \chi N_\varepsilon j_\varepsilon \nabla p + \chi N_\varepsilon^2 |v|^2 (u_t, u) + \frac{1}{2} \chi \partial_t (f(|u|^2) g(\psi))
+\end{align*}<++>
 \end{document}
 
 
