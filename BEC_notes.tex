@@ -13,6 +13,7 @@
 \usepackage{amsthm}
 \usepackage{amssymb}
 \usepackage{esint}
+\usepackage{cancel}
 
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{corollary}{Corollary}[section]
@@ -192,7 +193,7 @@ Now we move onto our modulated stress-energy tensor defined by
 \begin{align}
   \tilde{\mathbb{T}}(w)_{kl} &= \eta^2 ( \partial_k w - i N_\varepsilon w v_k, \partial_l w - i N_\varepsilon w v_l) + N_\varepsilon^2 \eta^2 (1-|w|^2)
   v_k v_l \nonumber \\
-  &\quad - \frac{1}{2} \delta_{kl} \left( \eta^2 | \nabla w - i N_\varepsilon w v |^2 + \eta^2 N_\varepsilon^2 |v|^2 (1 - |w|^2) + \frac{\eta^4}{2 \varepsilon^2} (1-|w|^2)^2 + g \right)
+  &\quad - \frac{1}{2} \delta_{kl} \left( \eta^2 | \nabla w - i N_\varepsilon w v |^2 + \eta^2 N_\varepsilon^2 |v|^2 (1 - |w|^2) + \frac{\eta^4}{2 \varepsilon^2} (1-|w|^2)^2 \right)
   \label{eqn:def_mod_stress_energy}
 \end{align}
 
@@ -219,27 +220,28 @@ Expanding the first term, we have
 Now we must take the divergence of our modulated stress-energy tensor.
 \begin{align}
   ( \div \tilde{\mathbb{T}}(w) )_l &= \partial_k \tilde{\mathbb{T}}(w)_{kl} \nonumber \\
-  &= ( \div \mathbb{T}(w) )_l + \partial_k \left( - \eta^2 N_\varepsilon v_k (j_\varepsilon)_l - \eta^2 N_\varepsilon v_l (j_\varepsilon)_k +
-  N_\varepsilon^2 \eta^2 v_k v_l \right) \nonumber \\
-  &\quad - \frac{1}{2} \partial_l ( -2 \eta^2 N_\varepsilon v \cdot j_\varepsilon + \eta^2 N_\varepsilon^2 |v|^2 ) \nonumber \\
-  &= (\div \mathbb{T}(w))_l - N_\varepsilon (j_\varepsilon)_l \partial_k (\eta^2 v_k) - N_\varepsilon \eta^2 v_k \partial_k ( j_\varepsilon )_l -
-  N_\varepsilon (j_\varepsilon)_k \partial_k (\eta^2 v_l) - N_\varepsilon \eta^2 v_l \partial_k (j_\varepsilon)_k \nonumber \\
-  &\quad + N_\varepsilon^2 \partial_k \left( \frac{\eta^2 v_k \eta^2 v_l}{\eta^2} \right) + N_\varepsilon j_\varepsilon \cdot \partial_l (\eta^2 v) +
-  N_\varepsilon \eta^2 v \cdot \partial_l (j_\varepsilon) - \frac{1}{2} N_\varepsilon^2 \partial_l \left( \frac{(\eta |v|)^2}{\eta^2} \right)
+  &= ( \div \mathbb{T}(w) )_l + \partial_k \left( - N_\varepsilon \frac{\eta^2 v_k (\eta^2 j_\varepsilon)_l}{\eta^2} - N_\varepsilon \frac{\eta^2 v_l
+  (\eta^2 j_\varepsilon)_k}{\eta^2} +  N_\varepsilon^2 \frac{\eta^2 v_k \eta^2 v_l}{\eta^2} \right) \nonumber \\
+  &\quad - \frac{1}{2} \partial_l \left( -2 N_\varepsilon \frac{\eta^2 v \cdot \eta^2 j_\varepsilon}{\eta^2} + N_\varepsilon^2 \frac{\eta^4
+  |v|^2}{\eta^2} \right) \nonumber \\
+  &= (\div \mathbb{T}(w))_l - N_\varepsilon \partial_k \left( \frac{\eta^2 v_k (\eta^2 j_\varepsilon)_l}{\eta^2} \right) - N_\varepsilon
+  \partial_k \left( \frac{\eta^2 v_l (\eta^2 j_\varepsilon)_k}{\eta^2} \right) + N_\varepsilon^2 \partial_k \left( \frac{\eta^2 v_k \eta^2
+  v_l}{\eta^2} \right) \nonumber \\
+  &\quad + N_\varepsilon \partial_l \left( \frac{\eta^2 v \cdot \eta^2 j_\varepsilon}{\eta^2} \right) - \frac{1}{2} N_\varepsilon^2 \partial_l \left( \frac{(\eta |v|)^2}{\eta^2} \right)
   \label{eqn:div_mod_stress_energy1}
 \end{align}
 
-Now we will try to find simpler ways of expressing these terms.
+Now we will try to find simpler ways of expressing these terms. We begin with the $N_\varepsilon^2$ terms.
 
 By the quotient rule, we have
 \begin{equation}
-  \partial_k \left( \frac{\eta^2 v_k \eta^2 v_l}{\eta^2} \right) = v_l \partial_k (\eta^2 v_k) + v_k \partial_k(\eta^2 v_l) - 2 \eta v_k v_l
-  \partial_k \eta
+  \partial_k \left( \frac{\eta^2 v_k \eta^2 v_l}{\eta^2} \right) = v_l \partial_k (\eta^2 v_k) + v_k \partial_k(\eta^2 v_l) - v_k v_l \partial_k
+  \eta^2
   \label{eqn:quot_rule1}
 \end{equation}
 and
 \begin{equation}
-  \partial_l \left( \frac{(\eta |v|)^2}{\eta^2} \right) = 2 v_k \partial_l (\eta^2 v_k) - 2 \eta |v|^2 \partial_l \eta
+  \partial_l \left( \frac{(\eta |v|)^2}{\eta^2} \right) = 2 v_k \partial_l (\eta^2 v_k) - |v|^2 \partial_l \eta^2
   \label{eqn:quot_rule2}
 \end{equation}
 
@@ -247,24 +249,46 @@ This gives us
 \begin{align}
   \partial_k \left( \frac{\eta^2 v_k \eta^2 v_l}{\eta^2} \right) - \frac{1}{2} \partial_l \left( \frac{(\eta |v|)^2}{\eta^2} \right) &= v_l \partial_k (\eta^2
   v_k) + v_k \partial_k( \eta^2 v_l ) \nonumber \\
-  &\quad - v_k \partial_l (\eta^2 v_k) - 2 \eta v_k v_l \partial_k \eta + \eta |v|^2 \partial_l \eta \nonumber \\
-  &= (v \div( \eta^2 v ) )_l + (v^\perp \curl( \eta^2 v) )_l - 2 \eta v_k v_l \partial_k \eta + \eta |v|^2 \partial_l \eta
+  &\quad - v_k \partial_l (\eta^2 v_k) - v_k v_l \partial_k \eta^2 + \frac{1}{2} |v|^2 \partial_l \eta^2 \nonumber \\
+  &= (v \div( \eta^2 v ) )_l + (v^\perp \curl( \eta^2 v) )_l - v_k v_l \partial_k \eta^2 + \frac{1}{2} |v|^2 \partial_l \eta^2
   \label{eqn:quot_rules}
 \end{align}
 
-Now we express other terms in similar ways.
+Now we look at the $N_\varepsilon$ terms.
+We have the following
+\begin{align}
+  \partial_k \left( \frac{\eta^2 v_k (\eta^2 j_\varepsilon)_l}{\eta^2} \right) &= v_k \partial_k (\eta^2 j_\varepsilon)_l + (j_\varepsilon)_l
+  \partial_k (\eta^2 v_k) - v_k (j_\varepsilon)_l \partial_k (\eta^2)
+  \label{eqn:quot_rule3}
+\end{align}
 
-% By definition
-% \begin{equation}
-%   (v \div( \eta^2 v ))_l = v_l \partial_k (\eta^2 v_k)
-%   \label{eqn:v_div_eta^2v}
-% \end{equation}
-%
-% By writing out all terms carefully, we see
-% \begin{equation}
-%   (v^\perp \curl (\eta^2 v) )_l = v_k \partial_k(\eta^2 v_l) - v_k \partial_l ( \eta^2 v_k )
-%   \label{eqn:v_curl_eta^2v}
-% \end{equation}
+\begin{align}
+  \partial_k \left( \frac{\eta^2 v_l (\eta^2 j_\varepsilon)_k}{\eta^2} \right) &= v_l \partial_k (\eta^2 j_\varepsilon)_k + (j_\varepsilon)_k
+  \partial_k (\eta^2 v_l) - v_l (j_\varepsilon)_k \partial_k (\eta^2)
+  \label{eqn:quot_rule4}
+\end{align}
+
+and
+
+\begin{align}
+  \partial_l \left( \frac{\eta^2 v \cdot \eta^2 j_\varepsilon}{\eta^2} \right) &= v \cdot \partial_l j_\varepsilon + j_\varepsilon \cdot \partial_l v
+  - v \cdot j_\varepsilon \partial_l \eta^2 \nonumber \\
+  &= v_k \partial_l (j_\varepsilon)_k + (j_\varepsilon)_k \partial_l v_k - v_k (j_\varepsilon)_k \partial_l \eta^2
+  \label{eqn:quot_rule5}
+\end{align}
+
+These combine to give
+\begin{align}
+  - \partial_k \left( \frac{\eta^2 v_k (\eta^2 j_\varepsilon)_l}{\eta^2} \right) &- \partial_k \left( \frac{\eta^2 v_l (\eta^2
+  j_\varepsilon)_k}{\partial^2} \right) + \partial_l \left( \frac{\eta^2 v \cdot \eta^2 j_\varepsilon}{\eta^2} \right) \\
+  &= - (j_\varepsilon)_l \partial_k(\eta^2 v_k) - v_l \partial_k(\eta^2 j_\varepsilon)_k \nonumber \\
+  &\quad - \left( (j_\varepsilon)_k \partial_k (\eta^2 v_l) - (j_\varepsilon)_k \partial_l v_k \right) - \left( v_k \partial_k (\eta^2 j_\varepsilon) - v_k \partial_l
+  (j_\varepsilon)_k \right) \nonumber \\
+  &\quad + v_k (j_\varepsilon)_l \partial_k (\eta^2) + v_l (j_\varepsilon)_k \partial_k \eta^2 - v_k (j_\varepsilon)_k \partial_l \eta^2
+  \label{eqn:quot_rules2}
+\end{align}
+
+Now we express these terms in terms of our physical quantities.
 
 We easily see by definition that
 \begin{equation}
@@ -274,7 +298,7 @@ We easily see by definition that
 
 By writing out all of the terms, we see
 \begin{equation}
-  (j_\varepsilon^\perp \curl ( \eta^2 v ) )_l = (j_\varepsilon)_k \partial_k ( \eta^2 v_l ) - (j\varepsilon)_k \partial_l ( \eta^2 v_k )
+  (j_\varepsilon^\perp \curl ( \eta^2 v ) )_l = (j_\varepsilon)_k \partial_k ( \eta^2 v_l ) - (j_\varepsilon)_k \partial_l ( \eta^2 v_k )
   \label{eqn:j_curl_eta^2v}
 \end{equation}
 
@@ -286,97 +310,26 @@ By definition
 
 By writing out all of the terms, we get
 \begin{equation}
-  ( \eta^2 v^\perp \mu )_l = \eta^2 v_k \partial_k (j_\varepsilon)_l - \eta^2 v_k \partial_l (j_\varepsilon)_k
+  ( v^\perp \tilde{\mu} )_l = v_k \partial_k (\eta^2 j_\varepsilon)_l - v_k \partial_l (\eta^2 j_\varepsilon)_k
   \label{eqn:eta^2v^perp_mu}
 \end{equation}
+where
+\begin{equation}
+  \tilde{\mu} = \curl ( \eta^2 j_\varepsilon )
+  \label{eqn:mu}
+\end{equation}
 
-Using \eqref{eqn:quot_rules}, \eqref{eqn:j_div_eta^2v}, \eqref{eqn:j_curl_eta^2v}, \eqref{eqn:eta^2v_div_j}, and \eqref{eqn:eta^2v^perp_mu} with
+Using \eqref{eqn:quot_rules}, \eqref{eqn:quot_rules2}, \eqref{eqn:j_div_eta^2v}, \eqref{eqn:j_curl_eta^2v}, \eqref{eqn:eta^2v_div_j}, and \eqref{eqn:eta^2v^perp_mu} with
 \eqref{eqn:div_mod_stress_energy1}, we get
 \begin{align}
-  \div \tilde{\mathbb{T}}(w) &= \div \mathbb{T}(w) - N_\varepsilon j_\varepsilon \div(\eta^2 v) - N_\varepsilon \eta^2 v^\perp \mu - N_\varepsilon
-  j_\varepsilon^\perp \curl ( \eta^2 v ) \nonumber - N_\varepsilon \eta^2 v \div j_\varepsilon \\
-  &\quad + N_\varepsilon^2 v \div (\eta^2 v) + N_\varepsilon^2 v^\perp \curl ( \eta^2 v ) - 2 N_\varepsilon^2 (v \cdot \nabla \eta) v +
-  N_\varepsilon^2 \eta |v|^2 \nabla \eta
+  \div \tilde{\mathbb{T}}(w) &= \div \mathbb{T}(w) - N_\varepsilon j_\varepsilon \div(\eta^2 v) - N_\varepsilon v \div (\eta^2 j_\varepsilon) -
+  N_\varepsilon j_\varepsilon^\perp \curl( \eta^2 v ) - N_\varepsilon v^\perp \tilde{\mu} \nonumber \\
+  &\quad + N_\varepsilon j_\varepsilon ( v \cdot \nabla \eta^2 ) + v (j_\varepsilon \cdot \nabla \eta^2 ) - \nabla \eta^2 (v \cdot j) \nonumber \\
+  &\quad + N_\varepsilon^2 v \div (\eta^2 v) + N_\varepsilon^2 v^\perp \curl ( \eta^2 v ) - N_\varepsilon^2 v (v \cdot \nabla \eta^2) + \frac{1}{2}
+  N_\varepsilon^2 |v|^2 \nabla
+  \eta^2
   \label{eqn:div_mod_stress_energy}
-\end{align}<++>
-
-% We begin by investigating the stress-energy tensor before modulation. We can calculate
-% \begin{align}
-%   \bigg( \frac{\partial_k w}{\eta^2}, &\partial_j (\eta^2 \partial_j w) + \frac{1}{\varepsilon^2} \eta^4 (1-|w|^2)w \bigg) \nonumber \\
-%   &= \partial_j \left( \frac{\partial_k w}{\eta^2}, \eta^2 \partial_j w \right) - \left( \partial_j \left( \frac{\partial_k w}{\eta^2} \right), \eta^2 \partial_j w
-%   \right) + \left( \frac{\partial_k w}{\eta^2}, \frac{1}{\varepsilon^2} \eta^4 (1- |w|^2)w \right) \nonumber \\
-%   &= \partial_j( \partial_k w, \partial_j w) - (\partial_j \partial_k w, \partial_j w) + 2 \left( \frac{\partial_j \eta}{\eta} \partial_k w, \partial_j w \right) + \frac{\eta^2}{\varepsilon^2} ( \partial_k w, (1-|w|^2)w )
-%   \nonumber \\
-%   &= \partial_j (\partial_k w, \partial_j w) - \frac{1}{2} \partial_k ( |\nabla w|^2 ) + \partial_j (\log \eta^2) (\partial_k w, \partial_j w) + \frac{\eta^2}{\varepsilon^2} (
-%   \partial_k w, (1-|w|^2)w) \nonumber \\
-%   &= \partial_j (\partial_k w, \partial_j w) - \frac{1}{2} \partial_k ( |\nabla w|^2 ) + \partial_j (\log \eta^2) (\partial_k w, \partial_j w) +
-%   \frac{\eta^2}{2 \varepsilon^2} (1-|w|^2) \partial_k |w|^2 \nonumber \\
-%   &= \partial_j (\partial_k w, \partial_j w) - \frac{1}{2} \partial_k ( |\nabla w|^2 ) + \partial_j (\log \eta^2) (\partial_k w, \partial_j w) -
-%   \frac{\eta^2}{4 \varepsilon^2} \partial_k((1-|w|^2)^2) \nonumber \\
-%   &= \partial_j (\partial_k w, \partial_j w) - \frac{1}{2} \partial_k ( |\nabla w|^2 ) + \partial_j (\log \eta^2) (\partial_k w, \partial_j w) -
-%   \partial_k \left( \frac{\eta^2}{ 4 \varepsilon^2} (1-|w|^2)^2 \right) + \partial_k(\eta^2) \frac{1}{4 \varepsilon^2} (1-|w|^2)^2 \nonumber \\
-%   &= \partial_j (\partial_k w, \partial_j w) - \frac{1}{2} \partial_k \left( |\nabla w |^2 + \frac{\eta^2}{2 \varepsilon^2} (1-|w|^2)^2 \right) +
-%   \partial_j (\log \eta^2) (\partial_k w, \partial_j w) + \partial_k(\eta^2) \frac{1}{4 \varepsilon^2} (1 - |w|^2)^2 \nonumber \\
-%   &= \partial_j \left[ (\nabla w \otimes \nabla w)_{jk} - \delta_{jk} \frac{1}{2} \left( |\nabla w|^2 + \frac{\eta^2}{2 \varepsilon^2} (1 -
-%   |w|^2)^2 \right) \right] + \partial_j( \log \eta^2) (\partial_k w, \partial_j w) + \partial_k(\eta^2) \frac{1}{4\varepsilon^2} (1-|w|^2)^2 \nonumber
-%   \label{eqn:tens_calc}
-% \end{align}
-%
-% Using this, we define the stress-energy tensor as
-% \begin{equation} \label{eqn:stress_energy}
-%   \mathbb{T}_{jk}(w) = (\partial_j w, \partial_k w) - \delta_{jk} \frac{1}{2} \left( |\nabla w|^2 + \frac{\eta^2}{2 \varepsilon^2} (1-|w|^2)^2 \right)
-% \end{equation}
-% and we will have to somehow deal with the extra terms left out of the stress-energy tensor.
-%
-% If we follow Sylvia's example, our modulated stress-energy tensor should be defined by
-% \begin{align} \label{eqn:mod_stress_energy}
-%   (\tilde{\mathbb{T}}(w))_{jk} &= (\partial_j w- i w N_\varepsilon v, \partial_k w - i w N_\varepsilon v) + N_\varepsilon^2 (1 - |w|^2) v_j v_k
-%   \nonumber \\
-%   &- \delta_{jk} \frac{1}{2} \left( |\nabla w - i w N_\varepsilon v|^2 + (1-|w|^2) N_\varepsilon^2 |v|^2 + \frac{\eta^2}{2 \varepsilon^2} (1 - |w|^2)^2
-%   \right)
-% \end{align}
-% \textbf{THIS IS PROBABLY MISSING $\eta$'s}
-%
-% We will need to know the divergence of this tensor for future calculations. This is the same stress-energy tensor Sylvia defines, but there is a
-% dependence on $v$, so we must calculate the divergence at this point without assuming any knowledge of the equation $v$ must satisfy.
-%
-% We will warm up by computing $\div \mathbb{T}$. Recall that the divergence of a tensor is a vector with entries given by taking the divergence of
-% columns of the tensor. This gives
-% \begin{align}
-%   (\div \mathbb{T})_k &= \partial_j (\mathbb{T}_{jk}) \nonumber \\
-%   &= \partial_j (\partial_j w, \partial_k w) - \frac{1}{2} \delta_{jk} \partial_j \left( |\nabla w|^2 + \frac{\eta^2}{2 \varepsilon^2} (1-|w|^2)^2
-%   \right) \nonumber \\
-%   &= \partial_j (\partial_j w, \partial_k w) - \frac{1}{2} \delta_{jk} \partial_j \left( (\partial_l w, \partial_l w) + \frac{\eta^2}{2 \varepsilon^2}
-%   (1 - (w,w))^2 \right) \nonumber \\
-%   &= (\partial_j \partial_j w, \partial_k w) + (\partial_j w, \partial_j \partial_k w) - (\partial_k \partial_l w, \partial_l w) \nonumber \\
-%   &\quad + \frac{\eta^2}{\varepsilon^2} (1 - |w|^2) (\partial_k w, w) - \partial_k (\eta^2) \frac{1}{4 \varepsilon^2} (1 - |w|^2)^2 \nonumber \\
-%   &= (\partial_j \partial_j w, \partial_k w) + \frac{\eta^2}{\varepsilon^2} (1 - |w|^2) (\partial_k w, w) - \partial_k(\eta^2) \frac{1}{4
-%   \varepsilon^2} (1 - |w|^2)^2 \nonumber \\
-%   &= (\partial_k w, \Delta w + \frac{\eta^2}{\varepsilon^2} (1 - |w|^2)w) - \partial_k(\eta^2) \frac{1}{4\varepsilon^2} (1 - |w|^2)^2
-%   \label{eqn:div_stress_energy_comp}
-% \end{align}
-%
-% This tells us that
-% \begin{equation} \label{eqn:div_stress_energy}
-%   \div \mathbb{T} = ( \nabla w, \Delta w + \frac{\eta^2}{\varepsilon^2} (1 - |w|^2)w) - \nabla(\eta^2) \frac{1}{4 \varepsilon^2} (1 - |w|^2)^2
-% \end{equation}
-%
-% Now, we move on to the modulated stress-energy tensor.
-%
-% \begin{align}
-%   (\div \tilde{\mathbb{T}})_k &= \partial_j (\tilde{\mathbb{T}}_{jk}) \nonumber \\
-%   &= \partial_j (\partial_j w - iw N_\varepsilon v, \partial_k w - iw N_\varepsilon v) + N_\varepsilon^2 \partial_j \left( (1-|w|^2) v_j v_k \right)
-%   \nonumber \\
-%   &\quad - \frac{1}{2} \delta_{jk} \partial_j \left( |\nabla w - iw N_\varepsilon v|^2 + (1-|w|^2)N_\varepsilon^2 |v|^2 + \frac{\eta^2}{2 \varepsilon^2}
-%   (1-|w|^2)^2 \right) \nonumber \\
-%   &= \partial_j \left[ (\partial_j w, \partial_k w) - N_\varepsilon v (\partial_j w, w) - N_\varepsilon v (\partial_k w, w) + N_\varepsilon^2 |v|^2
-%   (w,w) \right] + N_\varepsilon^2 \partial_j ( (1-(w,w) ) v_j v_k ) \nonumber \\
-%   &\quad- \frac{1}{2} \delta_{jk} \partial_j \left( ( \nabla w, \nabla w ) - 2 N_\varepsilon
-%   v(\nabla w, iw) + N_\varepsilon^2 |v|^2 (w,w) + (1-(w,w) ) N_\varepsilon^2 |v|^2 + \frac{\eta^2}{2 \varepsilon^2} (1-(w,w) )^2 \right) \nonumber \\
-%   &= \left( \partial_j (\partial_j w, \partial_k w) - \frac{1}{2} \delta_{jk} \partial_j \left( |\nabla w|^2 + \frac{\eta^2}{2 \varepsilon^2}
-%   (1-|w|^2)^2 \right) \right) + \dots
-%   \label{<++>}
-% \end{align}<++>
+\end{align}
 
 \section{Combining Modulated Energy and Modulated Stress-Energy Tensor}
 Using \eqref{eqn:div_stress_energy} and \eqref{eqn:div_mod_stress_energy}, we have
@@ -384,22 +337,32 @@ Using \eqref{eqn:div_stress_energy} and \eqref{eqn:div_mod_stress_energy}, we ha
   - \chi \eta^2 N_\varepsilon v \cdot V &= -2 \frac{N_\varepsilon}{M_\varepsilon} \chi v \cdot \div \mathbb{T}(w) - \frac{N_\varepsilon}{M_\varepsilon}
   \chi \eta^2 \nabla( \log \eta^2 ) \cdot v \left( | \nabla w |^2 + \frac{\eta^2}{\varepsilon^2} (1-|w|^2)^2 \right) \nonumber \\
   &= -2 \frac{N_\varepsilon}{M_\varepsilon} \chi v \cdot \div \tilde{\mathbb{T}}(w) - 2 \frac{N_\varepsilon^2}{M_\varepsilon} \chi \div(\eta^2v) j_\varepsilon
-  \cdot v - 2 \frac{N_\varepsilon^2}{M_\varepsilon} \chi \curl(\eta^2 v) j_\varepsilon^\perp \cdot v \nonumber \\
-  &\quad - 2\frac{N_\varepsilon^2}{M_\varepsilon} \chi \eta^2 \div j_\varepsilon |v|^2 + 2 \frac{N_\varepsilon^3}{M_\varepsilon} \chi \div (\eta^2 v)
-  |v|^2 - 4 \frac{N_\varepsilon^3}{M_\varepsilon} \chi (v \cdot \nabla \eta) |v|^2 \nonumber \\
-  &\quad + 2 \frac{N_\varepsilon^3}{M_\varepsilon} \chi \eta ( \nabla \eta \cdot v ) |v|^2 - \frac{N_\varepsilon}{M_\varepsilon}
-  \chi \eta^2 \nabla( \log \eta^2 ) \cdot v \left( | \nabla w |^2 + \frac{\eta^2}{\varepsilon^2} (1-|w|^2)^2 \right)
+  \cdot v - 2 \frac{N_\varepsilon^2}{M_\varepsilon} \chi |v|^2 \div( \eta^2 j_\varepsilon ) \nonumber \\
+  &\quad - 2 \frac{N_\varepsilon^2}{M_\varepsilon} \chi \curl(\eta^2 v) j_\varepsilon^\perp \cdot v + \cancel{ 2 \frac{N_\varepsilon^2}{M_\varepsilon} \chi
+  (j_\varepsilon \cdot v) (v \cdot \nabla \eta^2) } + 2 \frac{N_\varepsilon^2}{M_\varepsilon} \chi |v|^2 (j_\varepsilon \cdot \nabla \eta^2) -
+  \cancel{ 2 \frac{N_\varepsilon^2}{M_\varepsilon} \chi (v \cdot j_\varepsilon) (v \cdot \nabla \eta^2) } \nonumber \\
+  &\quad + 2 \frac{N_\varepsilon^3}{M_\varepsilon} \chi \div (\eta^2 v)
+  |v|^2 - \cancel{2} \frac{N_\varepsilon^3}{M_\varepsilon} \chi (v \cdot \nabla \eta^2) |v|^2 \nonumber + \cancel{ \frac{N_\varepsilon^3}{M_\varepsilon} \chi ( \nabla
+  \eta^2 \cdot v ) |v|^2 } \nonumber \\
+  &\quad - \frac{N_\varepsilon}{M_\varepsilon} \chi \eta^2 \nabla( \log \eta^2 ) \cdot v \left( | \nabla w |^2 + \frac{\eta^2}{\varepsilon^2} (1-|w|^2)^2 \right)
+  &= -2 \frac{N_\varepsilon}{M_\varepsilon} \chi v \cdot \div \tilde{\mathbb{T}}(w) - 2 \frac{N_\varepsilon^2}{M_\varepsilon} \chi \div(\eta^2v) j_\varepsilon
+  \cdot v - 2 \frac{N_\varepsilon^2}{M_\varepsilon} \chi |v|^2 \div( \eta^2 j_\varepsilon ) \nonumber \\
+  &= -2 \frac{N_\varepsilon}{M_\varepsilon} \chi v \cdot \div \tilde{\mathbb{T}}(w) - 2 \frac{N_\varepsilon^2}{M_\varepsilon} \chi \div(\eta^2v) j_\varepsilon
+  \cdot v - 2 \frac{N_\varepsilon^2}{M_\varepsilon} \chi |v|^2 \div( \eta^2 j_\varepsilon ) \nonumber \\
+  &\quad - 2 \frac{N_\varepsilon^2}{M_\varepsilon} \chi \curl(\eta^2 v) j_\varepsilon^\perp \cdot v + 2 \frac{N_\varepsilon^2}{M_\varepsilon} \chi |v|^2 (j_\varepsilon \cdot \nabla \eta^2) \nonumber \\
+  &\quad + 2 \frac{N_\varepsilon^3}{M_\varepsilon} \chi \div (\eta^2 v)
+  |v|^2 - \frac{N_\varepsilon^3}{M_\varepsilon} \chi (v \cdot \nabla \eta^2) |v|^2 \nonumber \nonumber \\
+  &\quad - \frac{N_\varepsilon}{M_\varepsilon} \chi \eta^2 \nabla( \log \eta^2 ) \cdot v \left( | \nabla w |^2 + \frac{\eta^2}{\varepsilon^2} (1-|w|^2)^2 \right)
   \label{eqn:substitution1}
 \end{align}
 
 If we use the fact that we expect $\div ( \eta^2 v ) = 0$, we can simplify this to
 \begin{align}
-  - \chi \eta^2 N_\varepsilon v \cdot V &= -2 \frac{N_\varepsilon}{M_\varepsilon} \chi v \cdot \div \tilde{\mathbb{T}}(w) + 2
-  \frac{N_\varepsilon^2}{M_\varepsilon} \chi \curl(\eta^2 v) j_\varepsilon \cdot v^\perp \nonumber \\
-  &\quad - 2\frac{N_\varepsilon^2}{M_\varepsilon} \chi \eta^2 \div j_\varepsilon |v|^2 + 2 \frac{N_\varepsilon^3}{M_\varepsilon} \chi (v \cdot \nabla
-  \eta) |v|^2 (\eta - 2) \nonumber \\
-  &\quad - \frac{N_\varepsilon}{M_\varepsilon}
-  \chi \eta^2 \nabla( \log \eta^2 ) \cdot v \left( | \nabla w |^2 + \frac{\eta^2}{\varepsilon^2} (1-|w|^2)^2 \right)
+  - \chi \eta^2 N_\varepsilon v \cdot V &= -2 \frac{N_\varepsilon}{M_\varepsilon} \chi v \cdot \div \tilde{\mathbb{T}}(w) - 2
+  \frac{N_\varepsilon^2}{M_\varepsilon} \chi |v|^2 \div ( \eta^2 j_\varepsilon ) \nonumber \\
+  &\quad + 2 \frac{N_\varepsilon^2}{M_\varepsilon} \chi \curl(\eta^2 v) j_\varepsilon \cdot v^\perp + 2 \frac{N_\varepsilon^2}{M_\varepsilon} \chi
+  |v|^2 (j_\varepsilon \cdot \nabla \eta^2) \nonumber \\
+  &\quad + \frac{N_\varepsilon^3}{M_\varepsilon} \chi (v \cdot \nabla \eta^2) |v|^2 - \frac{N_\varepsilon}{M_\varepsilon} \chi \eta^2 \nabla( \log \eta^2 ) \cdot v \left( | \nabla w |^2 + \frac{\eta^2}{\varepsilon^2} (1-|w|^2)^2 \right)
   \label{eqn:substitution2}
 \end{align}
 
@@ -407,22 +370,52 @@ If we substitute \eqref{eqn:substitution2} into \eqref{eqn:energy_deriv}, the de
 \begin{align}
   \partial_t E &= \int_{}^{} \nabla \chi \cdot \eta^2 ( \nabla w - i w N_\varepsilon v, w_t) - \chi \eta^2 N_\varepsilon v_t j_\varepsilon \nonumber
   \\
-  &\quad \quad -2 \frac{N_\varepsilon}{M_\varepsilon} \chi v \cdot \div \tilde{\mathbb{T}}(w) + 2
-  \frac{N_\varepsilon^2}{M_\varepsilon} \chi \curl(\eta^2 v) j_\varepsilon \cdot v^\perp \nonumber \\
-  &\quad \quad - 2\frac{N_\varepsilon^2}{M_\varepsilon} \chi \eta^2 \div j_\varepsilon |v|^2 + 2 \frac{N_\varepsilon^3}{M_\varepsilon} \chi (v \cdot \nabla
-  \eta) |v|^2 (\eta - 2) \nonumber \\
-  &\quad \quad - \frac{N_\varepsilon}{M_\varepsilon}
-  \chi \eta^2 \nabla( \log \eta^2 ) \cdot v \left( | \nabla w |^2 + \frac{\eta^2}{\varepsilon^2} (1-|w|^2)^2 \right) \nonumber \\
+  &\quad \quad -2 \frac{N_\varepsilon}{M_\varepsilon} \chi v \cdot \div \tilde{\mathbb{T}}(w) - 2
+  \frac{N_\varepsilon^2}{M_\varepsilon} \chi |v|^2 \div ( \eta^2 j_\varepsilon ) \nonumber \\
+  &\quad \quad+ 2 \frac{N_\varepsilon^2}{M_\varepsilon} \chi \curl(\eta^2 v) j_\varepsilon \cdot v^\perp + 2 \frac{N_\varepsilon^2}{M_\varepsilon} \chi
+  |v|^2 (j_\varepsilon \cdot \nabla \eta^2) \nonumber \\
+  &\quad \quad + \frac{N_\varepsilon^3}{M_\varepsilon} \chi (v \cdot \nabla \eta^2) |v|^2 - \frac{N_\varepsilon}{M_\varepsilon} \chi \eta^2 \nabla(
+  \log \eta^2 ) \cdot v \left( | \nabla w |^2 + \frac{\eta^2}{\varepsilon^2} (1-|w|^2)^2 \right) \nonumber \\
   &\quad \quad + \frac{1}{2} \chi \eta^2 N_\varepsilon^2 \partial_t |v|^2 + \chi \partial_t \tilde{f}
   \label{eqn:deriv_energy}
 \end{align}
 where we have again used $\div(\eta^2 v) = 0$.
 
+By taking the inner product of \eqref{eqn:rescaled_w} with $iw$, we see
+\begin{align}
+  M_\varepsilon \eta^2 \partial_t |w|^2 &= M_\varepsilon \eta^2 (i \partial_t w, iw) \nonumber \\
+  &= ( \div ( \eta^2 \nabla w ) + \frac{\eta^4}{\varepsilon^2} (1-|w|^2)w, iw) \nonumber \\
+  &= ( \div ( \eta^2 \nabla w ), iw ) \nonumber \\
+  &= \div (\eta^2 \nabla w, iw) - ( \eta^2 \nabla w, i \nabla w ) \nonumber \\
+  &= \div (\eta^2 \nabla w, iw) \nonumber \\
+  &= \div (\eta^2 j_\varepsilon)
+  \label{eqn:div_eta^2j}
+\end{align}
+
+Substituting \eqref{eqn:div_eta^2j} into \eqref{eqn:deriv_energy} gives
+
+\begin{align}
+  \partial_t E &= \int_{}^{} \nabla \chi \cdot \eta^2 ( \nabla w - i w N_\varepsilon v, w_t) - \chi \eta^2 N_\varepsilon v_t j_\varepsilon \nonumber
+  \\
+  &\quad \quad -2 \frac{N_\varepsilon}{M_\varepsilon} \chi v \cdot \div \tilde{\mathbb{T}}(w) -
+  N_\varepsilon^2 \chi \eta^2 |v|^2 \partial_t |w|^2  \nonumber \\
+  &\quad \quad+ 2 \frac{N_\varepsilon^2}{M_\varepsilon} \chi \curl(\eta^2 v) j_\varepsilon \cdot v^\perp + 2 \frac{N_\varepsilon^2}{M_\varepsilon} \chi
+  |v|^2 (j_\varepsilon \cdot \nabla \eta^2) \nonumber \\
+  &\quad \quad + \frac{N_\varepsilon^3}{M_\varepsilon} \chi (v \cdot \nabla \eta^2) |v|^2 - \frac{N_\varepsilon}{M_\varepsilon} \chi \eta^2 \nabla(
+  \log \eta^2 ) \cdot v \left( | \nabla w |^2 + \frac{\eta^2}{\varepsilon^2} (1-|w|^2)^2 \right) \nonumber \\
+  &\quad \quad + \frac{1}{2} \chi \eta^2 N_\varepsilon^2 \partial_t |v|^2 + \chi \partial_t \tilde{f}
+  \label{eqn:deriv_energy2}
+\end{align}
+
 Many of these terms are similar to those in Sylvia's paper. The exceptions being
-\[ 2 \frac{N_\varepsilon^3}{M_\varepsilon} \chi ( v \cdot \nabla \eta) ( \eta - 2 ) \]
+\[ 2 \frac{N_\varepsilon^2}{M_\varepsilon} \chi |v|^2 (j_\varepsilon \cdot \nabla \eta^2) , \]
+\[ \frac{N_\varepsilon^3}{M_\varepsilon} \chi (v \cdot \nabla \eta^2) |v|^2 , \]
 and
 \[ - \frac{N_\varepsilon}{M_\varepsilon} \chi \eta^2 \nabla ( \log \eta^2 ) \cdot v \left( | \nabla w |^2 + \frac{\eta^2}{\varepsilon^2} ( 1-|w|^2)^2
 \right) \]
+
+We also see in deriving \eqref{eqn:substitution1}, we get partial cancellation of our $ (v \cdot \nabla \eta^2) |v|^2$ terms. If there is a small
+error above (which is very possible), this term may be completely cancelled.
 
 \end{document}
 
