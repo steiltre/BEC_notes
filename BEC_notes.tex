@@ -90,7 +90,7 @@ Using \eqref{eqn:modulus_cov_grad}, we rewrite our energy as
   E = \int_{}^{} \chi \left( \frac{1}{2} \eta^2 \left( | \nabla w |^2 - 2 N_\varepsilon v j_\varepsilon + N_\varepsilon^2 |v|^2
   \right) + \frac{\eta^4}{4 \varepsilon^2} ( 1 - |w|^2)^2 + \tilde{f} \right)
 \end{equation}
-where $\tilde{f} = f - N_\varepsilon^2 (1 - |w|^2) |v|^2$.
+where $\tilde{f} = f - \frac{1}{2} \eta^2 N_\varepsilon^2 (1 - |w|^2) |v|^2$.
 
 Next, we will take derivatives of some pieces individually.
 \begin{align} \label{eqn:current_deriv}
@@ -138,8 +138,7 @@ Using equations \eqref{eqn:current_deriv} and \eqref{eqn:?} and differentiating 
   &\hspace{2cm} \text{Because } q = (w_t, iw) \text{, we get cancellation with a previous $\nabla \chi$ term to get} \nonumber \\
   &= \int - \nabla \chi \cdot \eta^2 ( \nabla w - iw N_\varepsilon v, w_t) - \chi \eta^2 N_\varepsilon v_t j_\varepsilon \nonumber \\
   &\quad \quad - \chi \eta^2 N_\varepsilon v \cdot V + \chi N_\varepsilon \div (\eta^2 v) q +
-  \frac{1}{2} \chi \eta^2 N_\varepsilon^2 \partial_t |v|^2 + \chi \partial_t \tilde{f} \nonumber \\
-  &=
+  \frac{1}{2} \chi \eta^2 N_\varepsilon^2 \partial_t |v|^2 + \chi \partial_t \tilde{f}
   \label{eqn:energy_deriv}
 \end{align}
 
@@ -324,7 +323,7 @@ Using \eqref{eqn:quot_rules}, \eqref{eqn:quot_rules2}, \eqref{eqn:j_div_eta^2v},
 \begin{align}
   \div \tilde{\mathbb{T}}(w) &= \div \mathbb{T}(w) - N_\varepsilon j_\varepsilon \div(\eta^2 v) - N_\varepsilon v \div (\eta^2 j_\varepsilon) -
   N_\varepsilon j_\varepsilon^\perp \curl( \eta^2 v ) - N_\varepsilon v^\perp \tilde{\mu} \nonumber \\
-  &\quad + N_\varepsilon j_\varepsilon ( v \cdot \nabla \eta^2 ) + v (j_\varepsilon \cdot \nabla \eta^2 ) - \nabla \eta^2 (v \cdot j) \nonumber \\
+  &\quad + N_\varepsilon j_\varepsilon ( v \cdot \nabla \eta^2 ) + v (j_\varepsilon \cdot \nabla \eta^2 ) - \nabla \eta^2 (v \cdot j_\varepsilon) \nonumber \\
   &\quad + N_\varepsilon^2 v \div (\eta^2 v) + N_\varepsilon^2 v^\perp \curl ( \eta^2 v ) - N_\varepsilon^2 v (v \cdot \nabla \eta^2) + \frac{1}{2}
   N_\varepsilon^2 |v|^2 \nabla
   \eta^2
@@ -392,7 +391,14 @@ By taking the inner product of \eqref{eqn:rescaled_w} with $iw$, we see
   \label{eqn:div_eta^2j}
 \end{align}
 
-Substituting \eqref{eqn:div_eta^2j} into \eqref{eqn:deriv_energy} gives
+Because $\tilde{f} = f - \frac{1}{2} N_\varepsilon^2 \eta^2 (1-|w|^2)|v|^2$, we have
+\begin{align}
+  \partial_t \tilde{f} &= \partial_t f - \frac{1}{2} N_\varepsilon^2 \eta^2 \partial_t |v|^2 + \frac{1}{2} N_\varepsilon^2 \eta^2 \partial_t ( |w|^2
+  |v|^2 )
+  \label{eqn:deriv_tilde_f}
+\end{align}
+
+Substituting \eqref{eqn:div_eta^2j} and \eqref{eqn:deriv_tilde_f} into \eqref{eqn:deriv_energy} gives
 
 \begin{align}
   \partial_t E &= \int_{}^{} \nabla \chi \cdot \eta^2 ( \nabla w - i w N_\varepsilon v, w_t) - \chi \eta^2 N_\varepsilon v_t j_\varepsilon \nonumber
@@ -403,7 +409,7 @@ Substituting \eqref{eqn:div_eta^2j} into \eqref{eqn:deriv_energy} gives
   |v|^2 (j_\varepsilon \cdot \nabla \eta^2) \nonumber \\
   &\quad \quad + \frac{N_\varepsilon^3}{M_\varepsilon} \chi (v \cdot \nabla \eta^2) |v|^2 - \frac{N_\varepsilon}{M_\varepsilon} \chi \eta^2 \nabla(
   \log \eta^2 ) \cdot v \left( | \nabla w |^2 + \frac{\eta^2}{\varepsilon^2} (1-|w|^2)^2 \right) \nonumber \\
-  &\quad \quad + \frac{1}{2} \chi \eta^2 N_\varepsilon^2 \partial_t |v|^2 + \chi \partial_t \tilde{f}
+  &\quad \quad + \frac{1}{2} \chi \eta^2 N_\varepsilon^2 \partial_t (|w|^2 |v|^2) + \chi \partial_t f
   \label{eqn:deriv_energy2}
 \end{align}
 
