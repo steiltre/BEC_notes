@@ -361,7 +361,7 @@ If we use the fact that we expect $\div ( \eta^2 v ) = 0$, we can simplify this 
   \frac{N_\varepsilon^2}{M_\varepsilon} \chi |v|^2 \div ( \eta^2 j_\varepsilon ) \nonumber \\
   &\quad + 2 \frac{N_\varepsilon^2}{M_\varepsilon} \chi \curl(\eta^2 v) j_\varepsilon \cdot v^\perp + 2 \frac{N_\varepsilon^2}{M_\varepsilon} \chi
   |v|^2 (j_\varepsilon \cdot \nabla \eta^2) \nonumber \\
-  &\quad + \frac{N_\varepsilon^3}{M_\varepsilon} \chi (v \cdot \nabla \eta^2) |v|^2 - \frac{N_\varepsilon}{M_\varepsilon} \chi \eta^2 \nabla( \log \eta^2 ) \cdot v \left( | \nabla w |^2 + \frac{\eta^2}{\varepsilon^2} (1-|w|^2)^2 \right)
+  &\quad - \frac{N_\varepsilon^3}{M_\varepsilon} \chi (v \cdot \nabla \eta^2) |v|^2 - \frac{N_\varepsilon}{M_\varepsilon} \chi \eta^2 \nabla( \log \eta^2 ) \cdot v \left( | \nabla w |^2 + \frac{\eta^2}{\varepsilon^2} (1-|w|^2)^2 \right)
   \label{eqn:substitution2}
 \end{align}
 
@@ -373,7 +373,7 @@ If we substitute \eqref{eqn:substitution2} into \eqref{eqn:energy_deriv}, the de
   \frac{N_\varepsilon^2}{M_\varepsilon} \chi |v|^2 \div ( \eta^2 j_\varepsilon ) \nonumber \\
   &\quad \quad+ 2 \frac{N_\varepsilon^2}{M_\varepsilon} \chi \curl(\eta^2 v) j_\varepsilon \cdot v^\perp + 2 \frac{N_\varepsilon^2}{M_\varepsilon} \chi
   |v|^2 (j_\varepsilon \cdot \nabla \eta^2) \nonumber \\
-  &\quad \quad + \frac{N_\varepsilon^3}{M_\varepsilon} \chi (v \cdot \nabla \eta^2) |v|^2 - \frac{N_\varepsilon}{M_\varepsilon} \chi \eta^2 \nabla(
+  &\quad \quad - \frac{N_\varepsilon^3}{M_\varepsilon} \chi (v \cdot \nabla \eta^2) |v|^2 - \frac{N_\varepsilon}{M_\varepsilon} \chi \eta^2 \nabla(
   \log \eta^2 ) \cdot v \left( | \nabla w |^2 + \frac{\eta^2}{\varepsilon^2} (1-|w|^2)^2 \right) \nonumber \\
   &\quad \quad + \frac{1}{2} \chi \eta^2 N_\varepsilon^2 \partial_t |v|^2 + \chi \partial_t \tilde{f}
   \label{eqn:deriv_energy}
@@ -407,21 +407,62 @@ Substituting \eqref{eqn:div_eta^2j} and \eqref{eqn:deriv_tilde_f} into \eqref{eq
   N_\varepsilon^2 \chi \eta^2 |v|^2 \partial_t |w|^2  \nonumber \\
   &\quad \quad+ 2 \frac{N_\varepsilon^2}{M_\varepsilon} \chi \curl(\eta^2 v) j_\varepsilon \cdot v^\perp + 2 \frac{N_\varepsilon^2}{M_\varepsilon} \chi
   |v|^2 (j_\varepsilon \cdot \nabla \eta^2) \nonumber \\
-  &\quad \quad + \frac{N_\varepsilon^3}{M_\varepsilon} \chi (v \cdot \nabla \eta^2) |v|^2 - \frac{N_\varepsilon}{M_\varepsilon} \chi \eta^2 \nabla(
+  &\quad \quad - \frac{N_\varepsilon^3}{M_\varepsilon} \chi (v \cdot \nabla \eta^2) |v|^2 - \frac{N_\varepsilon}{M_\varepsilon} \chi \eta^2 \nabla(
   \log \eta^2 ) \cdot v \left( | \nabla w |^2 + \frac{\eta^2}{\varepsilon^2} (1-|w|^2)^2 \right) \nonumber \\
   &\quad \quad + \frac{1}{2} \chi \eta^2 N_\varepsilon^2 \partial_t (|w|^2 |v|^2) + \chi \partial_t f
   \label{eqn:deriv_energy2}
 \end{align}
 
-Many of these terms are similar to those in Sylvia's paper. The exceptions being
-\[ 2 \frac{N_\varepsilon^2}{M_\varepsilon} \chi |v|^2 (j_\varepsilon \cdot \nabla \eta^2) , \]
-\[ \frac{N_\varepsilon^3}{M_\varepsilon} \chi (v \cdot \nabla \eta^2) |v|^2 , \]
-and
-\[ - \frac{N_\varepsilon}{M_\varepsilon} \chi \eta^2 \nabla ( \log \eta^2 ) \cdot v \left( | \nabla w |^2 + \frac{\eta^2}{\varepsilon^2} ( 1-|w|^2)^2
-\right) \]
+The term $| \nabla w |^2 + \frac{\eta^2}{\varepsilon^2} (1-|w|^2)^2$ looks like the unmodulated energy density. We eventually want to be using
+Gr\"{o}nwall's inequality, so we would like this to be our modulated energy density. We see
+\begin{align}
+  | \nabla w |^2 &= | \nabla w - i N_\varepsilon w v + i N_\varepsilon w v |^2 \nonumber \\
+  &= ( \nabla w - i N_\varepsilon w v + i N_\varepsilon w v , \nabla w - i N_\varepsilon wv + i N_\varepsilon wv ) \nonumber \\
+  &= | \nabla w - i N_\varepsilon w v |^2 + N_\varepsilon^2 |w|^2 |v|^2 + 2 ( \nabla w, i N_\varepsilon w v) - 2 N_\varepsilon^2 |w|^2 |v|^2 \nonumber
+  \\
+  &= | \nabla w - i N_\varepsilon w v |^2 + 2 N_\varepsilon v \cdot j_\varepsilon - N_\varepsilon^2 |w|^2 |v|^2
+  \label{eqn:nabla_w}
+\end{align}
 
-We also see in deriving \eqref{eqn:substitution1}, we get partial cancellation of our $ (v \cdot \nabla \eta^2) |v|^2$ terms. If there is a small
-error above (which is very possible), this term may be completely cancelled.
+Substituting \eqref{eqn:nabla_w} into \eqref{eqn:deriv_energy2}, we have
+\begin{align}
+  \partial_t E &= \int_{}^{} \nabla \chi \cdot \eta^2 ( \nabla w - i N_\varepsilon v, w_t ) - \chi \eta^2 N_\varepsilon v_t j_\varepsilon \nonumber \\
+  &\quad \quad - 2 \frac{N_\varepsilon}{M_\varepsilon} \chi v \cdot \div \tilde{\mathbb{T}} (w) - N_\varepsilon^2 \chi \eta^2 |v|^2 \partial_t |w|^2
+  \nonumber \\
+  &\quad \quad + 2 \frac{N_\varepsilon^2}{M_\varepsilon} \chi \curl ( \eta^2 v ) j_\varepsilon \cdot v^\perp + 2 \frac{N_\varepsilon^2}{M_\varepsilon}
+  \chi \left( |v|^2 ( j_\varepsilon \cdot \nabla \eta^2 ) - (v \cdot \nabla \eta^2) ( v \cdot j_\varepsilon ) \right) \nonumber \\
+  &\quad \quad - \frac{N_\varepsilon^3}{M_\varepsilon} \chi ( 1 - |w|^2 ) (v \cdot \nabla \eta^2) |v|^2 - \frac{N_\varepsilon}{M_\varepsilon} \chi
+  \eta^2 \nabla \eta^2 \left( | \nabla w - i N_\varepsilon w v |^2 + \frac{\eta^4}{\varepsilon^2} ( 1 - |w|^2)^2 \right) \nonumber \\
+  &\quad \quad + \frac{1}{2} \chi \eta^2 N_\varepsilon^2 \partial_t ( |w|^2 |v|^2 ) + \chi \partial_t f
+  \label{eqn:deriv_energy3}
+\end{align}
+
+% Many of these terms are similar to those in Sylvia's paper. The exceptions being
+% \[ 2 \frac{N_\varepsilon^2}{M_\varepsilon} \chi |v|^2 (j_\varepsilon \cdot \nabla \eta^2) , \]
+% \[ \frac{N_\varepsilon^3}{M_\varepsilon} \chi (v \cdot \nabla \eta^2) |v|^2 , \]
+% and
+% \[ - \frac{N_\varepsilon}{M_\varepsilon} \chi \eta^2 \nabla ( \log \eta^2 ) \cdot v \left( | \nabla w |^2 + \frac{\eta^2}{\varepsilon^2} ( 1-|w|^2)^2
+% \right) \]
+%
+% We also see in deriving \eqref{eqn:substitution1}, we get partial cancellation of our $ (v \cdot \nabla \eta^2) |v|^2$ terms. If there is a small
+% error above (which is very possible), this term may be completely cancelled.
+
+\section{Comparisons to Sylvia's Work}
+In Sylvia's work, we must use $\alpha = 0, \beta = 1$ in order to compare to the work above.
+In Sylvia's paper, we have that $v$ satisfies (1.10)
+\begin{equation}
+  \begin{cases}
+    \partial_t v = 2 v^\perp \curl v + \nabla p &\quad \text{in } \R^2 \\
+    \div v = 0 &\quad \text{in } \R^2
+  \end{cases}
+  \label{eqn:1.10}
+\end{equation}
+
+She also defines $\varphi(t)$, which in our case is given by
+\begin{equation}
+  \varphi(t) = p(t)
+  \label{eqn:phi}
+\end{equation}
 
 \end{document}
 
