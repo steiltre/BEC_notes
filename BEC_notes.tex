@@ -155,7 +155,7 @@ By using \eqref{eqn:rescaled_w}, we get
   \frac{1}{2} M_\varepsilon \eta^2 V_l &= M_\varepsilon \eta^2 (\partial_l w, i \partial_t w) \nonumber \\
   &= (\partial_l w, i M_\varepsilon \eta^2 \partial_t w) \nonumber \\
   &= ( \partial_l w, \partial_k (\eta^2 \partial_k w) + \frac{\eta^4}{\varepsilon^2} (1-|w|^2)w ) \nonumber \\
-  &= (\partial_k (\partial_w, \eta^2 \partial_k w) - \eta^2 ( \partial_k \partial_l w, \partial_k w) - \frac{\eta^4}{4 \varepsilon^2} \partial_l
+  &= \partial_k (\partial_k w, \eta^2 \partial_k w) - \eta^2 ( \partial_k \partial_l w, \partial_k w) - \frac{\eta^4}{4 \varepsilon^2} \partial_l
   (1-|w|^2)^2 \nonumber \\
   &= \partial_k (\partial_l w, \eta^2 \partial_k w) - \frac{1}{2} \eta^2 \partial_l | \nabla w |^2 - \frac{\eta^4}{4 \varepsilon^2} \partial_l
   (1-|w|^2)^2 \nonumber \\
@@ -163,13 +163,13 @@ By using \eqref{eqn:rescaled_w}, we get
   \nabla w |^2 \nonumber \\
   &\quad - \partial_l \left( \frac{\eta^4}{4 \varepsilon^2} (1-|w|^2)^2 \right) + \partial_l (\eta^4) \frac{1}{4 \varepsilon^2} (1-|w|^2)^2 \nonumber
   \\
-  &= (\div \mathbb{T}(w))_k + \partial_l \left( \frac{\eta^2}{2} \right) | \nabla w |^2 + \partial_l (\eta^4) \frac{1}{4\varepsilon^2} (1-|w|^2)^2
+  &= (\div \mathbb{T}(w))_l + \partial_l \left( \frac{\eta^2}{2} \right) | \nabla w |^2 + \partial_l (\eta^4) \frac{1}{4\varepsilon^2} (1-|w|^2)^2
   \nonumber \\
-  &= ( \div \mathbb{T}(w) )_k + \partial_l \left( \frac{\eta^2}{2} \right) | \nabla w |^2 + \partial_l \left( \left( \frac{\eta^2}{2} \right)^2
+  &= ( \div \mathbb{T}(w) )_l + \partial_l \left( \frac{\eta^2}{2} \right) | \nabla w |^2 + \partial_l \left( \left( \frac{\eta^2}{2} \right)^2
   \right) \frac{1}{\varepsilon^2} (1-|w|^2)^2 \nonumber \\
-  &= ( \div \mathbb{T}(w) )_k + \partial_l \left( \frac{\eta^2}{2} \right) | \nabla w |^2 + \partial_l \left( \frac{\eta^2}{2} \right)
+  &= ( \div \mathbb{T}(w) )_l + \partial_l \left( \frac{\eta^2}{2} \right) | \nabla w |^2 + \partial_l \left( \frac{\eta^2}{2} \right)
   \frac{\eta^2}{\varepsilon^2} (1-|w|^2)^2 \nonumber \\
-  &= ( \div \mathbb{T}(w) )_k + \partial_l \left( \frac{\eta^2}{2} \right) \left( | \nabla w |^2 + \frac{\eta^2}{\varepsilon^2} (1-|w|^2)^2 \right)
+  &= ( \div \mathbb{T}(w) )_l + \partial_l \left( \frac{\eta^2}{2} \right) \left( | \nabla w |^2 + \frac{\eta^2}{\varepsilon^2} (1-|w|^2)^2 \right)
   \label{eqn:vel_1}
 \end{align}
 
@@ -431,7 +431,7 @@ Substituting \eqref{eqn:nabla_w} into \eqref{eqn:deriv_energy2}, we have
   &\quad \quad + 2 \frac{N_\varepsilon^2}{M_\varepsilon} \chi \curl ( \eta^2 v ) j_\varepsilon \cdot v^\perp + 2 \frac{N_\varepsilon^2}{M_\varepsilon}
   \chi \left( |v|^2 ( j_\varepsilon \cdot \nabla \eta^2 ) - (v \cdot \nabla \eta^2) ( v \cdot j_\varepsilon ) \right) \nonumber \\
   &\quad \quad - \frac{N_\varepsilon^3}{M_\varepsilon} \chi ( 1 - |w|^2 ) (v \cdot \nabla \eta^2) |v|^2 - \frac{N_\varepsilon}{M_\varepsilon} \chi
-  \eta^2 \nabla \eta^2 \left( | \nabla w - i N_\varepsilon w v |^2 + \frac{\eta^4}{\varepsilon^2} ( 1 - |w|^2)^2 \right) \nonumber \\
+  v \cdot \nabla \log \eta^2 \left( \eta^2 | \nabla w - i N_\varepsilon w v |^2 + \frac{\eta^4}{\varepsilon^2} ( 1 - |w|^2)^2 \right) \nonumber \\
   &\quad \quad + \frac{1}{2} \chi \eta^2 N_\varepsilon^2 \partial_t ( |w|^2 |v|^2 ) + \chi \partial_t f
   \label{eqn:deriv_energy3}
 \end{align}
