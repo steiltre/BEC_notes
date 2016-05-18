@@ -6,7 +6,7 @@
 \documentclass[a4paper]{article}
 
 \title{Bose-Einstein Condensates }
-\date{}
+\date{\today}
 \author{}
 
 \usepackage{amsmath}
@@ -226,7 +226,8 @@ Now we must take the divergence of our modulated stress-energy tensor.
   &= (\div \mathbb{T}(w))_l - N_\varepsilon \partial_k \left( \frac{\eta^2 v_k (\eta^2 j_\varepsilon)_l}{\eta^2} \right) - N_\varepsilon
   \partial_k \left( \frac{\eta^2 v_l (\eta^2 j_\varepsilon)_k}{\eta^2} \right) + N_\varepsilon^2 \partial_k \left( \frac{\eta^2 v_k \eta^2
   v_l}{\eta^2} \right) \nonumber \\
-  &\quad + N_\varepsilon \partial_l \left( \frac{\eta^2 v \cdot \eta^2 j_\varepsilon}{\eta^2} \right) - \frac{1}{2} N_\varepsilon^2 \partial_l \left( \frac{(\eta |v|)^2}{\eta^2} \right)
+  &\quad + N_\varepsilon \partial_l \left( \frac{\eta^2 v \cdot \eta^2 j_\varepsilon}{\eta^2} \right) - \frac{1}{2} N_\varepsilon^2 \partial_l \left(
+  \frac{(\eta^2 |v|)^2}{\eta^2} \right)
   \label{eqn:div_mod_stress_energy1}
 \end{align}
 
@@ -240,13 +241,13 @@ By the quotient rule, we have
 \end{equation}
 and
 \begin{equation}
-  \partial_l \left( \frac{(\eta |v|)^2}{\eta^2} \right) = 2 v_k \partial_l (\eta^2 v_k) - |v|^2 \partial_l \eta^2
+  \partial_l \left( \frac{(\eta^2 |v|)^2}{\eta^2} \right) = 2 v_k \partial_l (\eta^2 v_k) - |v|^2 \partial_l \eta^2
   \label{eqn:quot_rule2}
 \end{equation}
 
 This gives us
 \begin{align}
-  \partial_k \left( \frac{\eta^2 v_k \eta^2 v_l}{\eta^2} \right) - \frac{1}{2} \partial_l \left( \frac{(\eta |v|)^2}{\eta^2} \right) &= v_l \partial_k (\eta^2
+  \partial_k \left( \frac{\eta^2 v_k \eta^2 v_l}{\eta^2} \right) - \frac{1}{2} \partial_l \left( \frac{(\eta^2 |v|)^2}{\eta^2} \right) &= v_l \partial_k (\eta^2
   v_k) + v_k \partial_k( \eta^2 v_l ) \nonumber \\
   &\quad - v_k \partial_l (\eta^2 v_k) - v_k v_l \partial_k \eta^2 + \frac{1}{2} |v|^2 \partial_l \eta^2 \nonumber \\
   &= (v \div( \eta^2 v ) )_l + (v^\perp \curl( \eta^2 v) )_l - v_k v_l \partial_k \eta^2 + \frac{1}{2} |v|^2 \partial_l \eta^2
@@ -279,10 +280,10 @@ and
 These combine to give
 \begin{align}
   - \partial_k \left( \frac{\eta^2 v_k (\eta^2 j_\varepsilon)_l}{\eta^2} \right) &- \partial_k \left( \frac{\eta^2 v_l (\eta^2
-  j_\varepsilon)_k}{\partial^2} \right) + \partial_l \left( \frac{\eta^2 v \cdot \eta^2 j_\varepsilon}{\eta^2} \right) \\
+  j_\varepsilon)_k}{\eta^2} \right) + \partial_l \left( \frac{\eta^2 v \cdot \eta^2 j_\varepsilon}{\eta^2} \right) \\
   &= - (j_\varepsilon)_l \partial_k(\eta^2 v_k) - v_l \partial_k(\eta^2 j_\varepsilon)_k \nonumber \\
-  &\quad - \left( (j_\varepsilon)_k \partial_k (\eta^2 v_l) - (j_\varepsilon)_k \partial_l v_k \right) - \left( v_k \partial_k (\eta^2 j_\varepsilon) - v_k \partial_l
-  (j_\varepsilon)_k \right) \nonumber \\
+  &\quad - \left( (j_\varepsilon)_k \partial_k (\eta^2 v_l) - (j_\varepsilon)_k \partial_l (\eta^2 v_k) \right) - \left( v_k \partial_k (\eta^2
+  j_\varepsilon)_k - v_k \partial_l (\eta^2 j_\varepsilon)_k \right) \nonumber \\
   &\quad + v_k (j_\varepsilon)_l \partial_k (\eta^2) + v_l (j_\varepsilon)_k \partial_k \eta^2 - v_k (j_\varepsilon)_k \partial_l \eta^2
   \label{eqn:quot_rules2}
 \end{align}
@@ -323,7 +324,7 @@ Using \eqref{eqn:quot_rules}, \eqref{eqn:quot_rules2}, \eqref{eqn:j_div_eta^2v},
 \begin{align}
   \div \tilde{\mathbb{T}}(w) &= \div \mathbb{T}(w) - N_\varepsilon j_\varepsilon \div(\eta^2 v) - N_\varepsilon v \div (\eta^2 j_\varepsilon) -
   N_\varepsilon j_\varepsilon^\perp \curl( \eta^2 v ) - N_\varepsilon v^\perp \tilde{\mu} \nonumber \\
-  &\quad + N_\varepsilon j_\varepsilon ( v \cdot \nabla \eta^2 ) + v (j_\varepsilon \cdot \nabla \eta^2 ) - \nabla \eta^2 (v \cdot j_\varepsilon) \nonumber \\
+  &\quad + N_\varepsilon j_\varepsilon ( v \cdot \nabla \eta^2 ) + N_\varepsilon v (j_\varepsilon \cdot \nabla \eta^2 ) - N_\varepsilon \nabla \eta^2 (v \cdot j_\varepsilon) \nonumber \\
   &\quad + N_\varepsilon^2 v \div (\eta^2 v) + N_\varepsilon^2 v^\perp \curl ( \eta^2 v ) - N_\varepsilon^2 v (v \cdot \nabla \eta^2) + \frac{1}{2}
   N_\varepsilon^2 |v|^2 \nabla
   \eta^2
