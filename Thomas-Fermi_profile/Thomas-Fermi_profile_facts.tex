@@ -1,0 +1,78 @@
+%        File: Thomas-Fermi_profile_facts.tex
+%     Created: Wed Sep 14 05:00 PM 2016 C
+% Last Change: Wed Sep 14 05:00 PM 2016 C
+%
+
+\documentclass[a4paper]{article}
+
+\title{Facts About Thomas-Fermi Profile }
+\date{}
+\author{Trevor Steil}
+
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{esint}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem*{claim}{Claim}
+\newtheorem*{problem}{Problem}
+%\newtheorem*{lemma}{Lemma}
+\newtheorem{definition}{Definition}[section]
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\supp}[1]{\mathop{\mathrm{supp}}\left(#1\right)}
+\newcommand{\lip}[1]{\mathop{\mathrm{Lip}}\left(#1\right)}
+\newcommand{\curl}{\mathrm{curl}}
+\newcommand{\la}{\left \langle}
+\newcommand{\ra}{\right \rangle}
+\renewcommand{\vec}[1]{\mathbf{#1}}
+
+\newenvironment{solution}{\emph{Solution.}}
+
+\begin{document}
+\maketitle
+
+\section{Introduction}
+
+The Gross-Pitaevskii equation
+\begin{equation}
+  i \partial_t u - \Delta u + \frac{1}{\varepsilon^2} ( V(x) + |u|^2 ) u = 0
+  \label{eqn:GP}
+\end{equation}
+with potential $V(x) \to \infty$ as $|x| \to \infty$ has the associated energy
+
+\begin{equation}
+  E_{\varepsilon, V} (u) = \int_{\R^2}^{} \frac{| \nabla u|^2}{2} + \frac{1}{\varepsilon^2} \left( V(x) \frac{|u|^2}{2} + \frac{|u|^4}{4} \right)
+  \label{eqn:energy_functional}
+\end{equation}
+
+Let $M(u) = \|u\|_{L^2}$. For any $m>0$, there exists at least one positive ground state $\eta \equiv \eta_{\varepsilon, m} : \R^2 \to \R^+$
+satisfying
+\begin{equation}
+  E_{\varepsilon, V}(\eta) = \inf \{ E_{\varepsilon, V}(g), g \in H^1( \R^2, \C), M(g) = m \}
+  \label{eqn:ground_state_min}
+\end{equation}
+and also satisfying the Euler-Lagrange equation
+\begin{equation}
+  -\Delta \eta + \frac{1}{\varepsilon^2} ( V + \eta^2 ) \eta = \frac{1}{\varepsilon^2} \lambda \eta
+  \label{eqn:ground_state_Euler_Lagrange}
+\end{equation}
+for some $\lambda$.
+
+In the limit $\varepsilon \to 0$, we get
+\[ \eta^2 \to \rho_{TF} \quad \text{in } L^2(\R^2) .\]
+$\rho_{TF}$ is known as the Thomas-Fermi profile and is given by
+\[ \rho_{TF}(x) := (\lambda_0 - V)^+(x) \]
+where $\lambda_0$ is uniquely determined to satisfy
+\[ \int_{\R^2}^{} (\lambda_0 - V(x))^+ dx = m .\]
+
+\end{document}
+
+
