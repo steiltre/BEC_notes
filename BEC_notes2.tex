@@ -106,10 +106,10 @@ where $q = (\partial_t w, iw )$ and $V = 2 (i \partial_t w, \nabla w)$.
 
 Next, we have
 \begin{align*}
-  \partial_t &( \frac{1}{2} \eta^2 |\nabla w|^2 + \frac{\eta^4}{4\varepsilon^2} ( 1 - |w|^2)^2 ) \\
+  \partial_t \left( \frac{1}{2} \eta^2 |\nabla w|^2 + \frac{\eta^4}{4\varepsilon^2} ( 1 - |w|^2)^2 \right)
   &= \eta^2 ( \nabla w, \nabla \partial_t w ) + \frac{\eta^4}{\varepsilon^2} ( 1 - |w|^2 )(\partial_t w, w) \\
   &= \div \left[ \eta^2 ( \nabla w, \partial_t w) \right] - ( \div(\eta^2 \nabla w), \partial_t w) - \frac{\eta^4}{\varepsilon^2} ( \partial_t w,
-  (1-|w|^w)w) \\
+  (1-|w|^2)w) \\
   &= \div \left[ \eta^2 ( \nabla w, \partial_t w) \right] - ( \partial_t w, i M \eta^2 \partial_t w ) \\
   &= \div \left[ \eta^2 ( \nabla w, \partial_t w) \right]
 \end{align*}
@@ -142,6 +142,47 @@ Combining the above calculations, we get
 \end{align}
 
 We don't like the $v \cdot V$ term, so we will define our modulated stress-energy tensor and use it to handle this term.
+
+\section{Modulated Stress-Energy Tensor}
+
+We begin by defining the stress-energy tensor
+\begin{equation}
+  \mathbb{T}(w)_{kl} = \eta^2 ( \partial_k w, \partial_l w) - \frac{1}{2} \delta_{kl} \left( \eta^2 | \nabla w |^2 + \frac{\eta^4}{2 \varepsilon^2} ( 1 - |w|^2
+  )^2 \right).
+  \label{eq:stress-energy}
+\end{equation}
+
+We know
+\begin{align*}
+  \frac{1}{2} M \eta^2 V_l &= M \eta^2 ( \partial_l w, i \partial_t w ) \\
+  &= (\partial_l w, i M \eta^2 \partial_t w ) \\
+  &= \left( \partial_l w, \div( \eta^2 \nabla w) + \frac{\eta^4}{\varepsilon^2} ( 1 - |w|^2)w \right) \\
+  &= ( \partial_l w, \partial_k ( \eta^2 \partial_k w ) ) + \frac{\eta^4}{\varepsilon^2} ( 1 - |w|^2 ) ( \partial_l w, w ) \\
+  &= \partial_k ( \partial_l w, \eta^2 \partial_k w ) - \eta^2 ( \partial_k \partial_l w, \partial_k w ) - \frac{\eta^4}{4 \varepsilon^2} \partial_l (
+  1 - |w|^2)^2 \\
+  &= \partial_k ( \partial_l w, \eta^2 \partial_k w ) - \frac{1}{2} \eta^2 \partial_l | \nabla w |^2 - \frac{\eta^4}{4 \varepsilon^2} \partial_l ( 1 -
+  |w|^2)^2 \\
+  &= \partial_k ( \partial_l w, \eta^2 \partial_k w ) - \frac{1}{2}\eta^2 \partial_l | \nabla w |^2  \\
+  &\hspace{\horizspace} - \frac{1}{4 \varepsilon^2} \partial_l \left[ \eta^4 ( 1-|w|^2)^2 \right] + \frac{1}{4 \varepsilon^2} \partial_l(\eta^4) ( 1 -
+  |w|^2 )^2 \\
+  &= \partial_k ( \partial_l w, \eta^2 \partial_k w ) - \frac{1}{2} \partial_l ( \eta^2 | \nabla w |^2 ) + \frac{1}{2} \partial_l (\eta^2) | \nabla w
+  |^2 \\
+  &\hspace{\horizspace} - \frac{1}{4 \varepsilon^2} \partial_l \left[ \eta^4 ( 1 - |w|^2 )^2 \right] + \frac{1}{4 \varepsilon^2} \partial_l
+  \left( \left( \eta^2 \right)^2 \right) ( 1 - |w|^2 )^2 \\
+  &= \left( \div \mathbb{T}(w) \right)_l + \frac{1}{2} \partial_l ( \eta^2) | \nabla w |^2 + \frac{\eta^2}{2 \varepsilon^2} \partial_l \left( \eta^2 \right)
+  ( 1 - |w|^2 )^2 \\
+  &= ( \div \mathbb{T}(w) )_l + \frac{1}{2} \partial_l \left( \eta^2 \right) \left( |\nabla w|^2 + \frac{\eta^2}{\varepsilon^2} ( 1 - |w|^2 )^2
+  \right) \\
+  &= ( \div \mathbb{T}(w)_l + \frac{1}{2} \partial_l \left( \log \eta^2 \right) \left( \eta^2 |\nabla w|^2 + \frac{\eta^4}{\varepsilon^2} (1-|w|^2)^2 \right)
+\end{align*}
+
+Therefore, we have
+\begin{equation}
+  \div \mathbb{T} (w) = \frac{1}{2} M \eta^2 V + \frac{1}{2} \nabla ( \log \eta^2 ) \left( \eta^2 |\nabla w|^2 + \frac{\eta^4}{\varepsilon^2} ( 1 -
+  |w|^2 )^2 \right)
+  \label{eq:stress-energy-div}
+\end{equation}<++>
+
 \end{document}
 
 
