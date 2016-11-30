@@ -49,12 +49,14 @@
 \algnewcommand{\And}{\textbf{ or }}
 
 \newlength{\horizspace}
+\newlength{\smallspace}
 
 \begin{document}
 \maketitle
 
 % Initialize variable to hold length for horizontal spacing of expressions spanning multiple lines
 \setlength{\horizspace}{1.5cm}
+\setlength{\smallspace}{.7cm}
 
 \section{Setup}
 Consider
@@ -181,7 +183,26 @@ Therefore, we have
   \div \mathbb{T} (w) = \frac{1}{2} M \eta^2 V + \frac{1}{2} \nabla ( \log \eta^2 ) \left( \eta^2 |\nabla w|^2 + \frac{\eta^4}{\varepsilon^2} ( 1 -
   |w|^2 )^2 \right)
   \label{eq:stress-energy-div}
-\end{equation}<++>
+\end{equation}
+
+Now we define our modulated stress-energy tensor by
+\begin{align}
+  \tilde{\mathbb{T}}(w)_{kl} &= \eta^2 (\partial_k w - iw N v_k, \partial_l w - i w N v_l ) + N^2 \eta^2 ( 1 - |w|^2) v_k v_l \\
+  &\hspace{\smallspace} - \frac{1}{2} \delta_{kl} \left( \eta^2 | \nabla w - i w N v|^2 + \eta^2 ( 1 - |w|^2 ) N^2 |v|^2 + \frac{\eta^4}{2 \varepsilon^2} ( 1 - |w|^2 )^2
+  \right) \\
+  &= \eta^2 ( \partial_k w - i w N v_k, \partial_l w - i w N v_l ) + N^2 \eta^2 ( 1 - |w|^2 ) v_k v_l \\
+  &\hspace{\smallspace} - \frac{1}{2} \delta_{kl} \left( \eta^2 | \nabla w |^2 - 2 \eta^2 N v \cdot j + \eta^2 N^2 |v|^2 + \frac{\eta^4}{2
+  \varepsilon^2} ( 1 - |w|^2 )^2 \right)
+  \label{eq:mod_stress-energy}
+\end{align}
+
+To emulate Sylvia's work, we define
+\begin{equation}
+  \overline{S}_v = \frac{1}{\eta^2} \left( (\eta^2 v) \otimes (\eta^2 v) - \frac{1}{2} | \eta^2 v |^2 I \right)
+  \label{eq:S_v}
+\end{equation}
+
+We would like to use $\overline{S}_v$ to express $\tilde{\mathbb{T}}$. We
 
 \end{document}
 
