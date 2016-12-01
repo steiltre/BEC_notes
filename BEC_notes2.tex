@@ -140,7 +140,7 @@ Combining the above calculations, we get
   &\quad + \int_{}^{} \chi \bigg( N \div( \eta^2 v) q - N \eta^2 j \cdot \partial_t v - N \eta^2 v \cdot V + N^2 \eta^2 v \cdot \partial_t v \nonumber
   \\
   &\hspace{\horizspace} - \frac{1}{2} N^2 \partial_t ( \eta^2 |v|^2 ( 1 - |w|^2 ) + \partial_t f \bigg)
-  \label{eq:modulated_energy_deriv}
+  \label{eq:deriv_mod_energy}
 \end{align}
 
 We don't like the $v \cdot V$ term, so we will define our modulated stress-energy tensor and use it to handle this term.
@@ -187,10 +187,10 @@ Therefore, we have
 
 Now we define our modulated stress-energy tensor by
 \begin{align}
-  \tilde{\mathbb{T}}(w)_{kl} &= \eta^2 (\partial_k w - iw N v_k, \partial_l w - i w N v_l ) + N^2 \eta^2 ( 1 - |w|^2) v_k v_l \\
+  \tilde{\mathbb{T}}(w)_{kl} &= \eta^2 (\partial_k w - iw N v_k, \partial_l w - i w N v_l ) + N^2 \eta^2 ( 1 - |w|^2) v_k v_l \nonumber \\
   &\hspace{\smallspace} - \frac{1}{2} \delta_{kl} \left( \eta^2 | \nabla w - i w N v|^2 + \eta^2 ( 1 - |w|^2 ) N^2 |v|^2 + \frac{\eta^4}{2 \varepsilon^2} ( 1 - |w|^2 )^2
-  \right) \\
-  &= \eta^2 ( \partial_k w - i w N v_k, \partial_l w - i w N v_l ) + N^2 \eta^2 ( 1 - |w|^2 ) v_k v_l \\
+  \right) \nonumber \\
+  &= \eta^2 ( \partial_k w - i w N v_k, \partial_l w - i w N v_l ) + N^2 \eta^2 ( 1 - |w|^2 ) v_k v_l \nonumber \\
   &\hspace{\smallspace} - \frac{1}{2} \delta_{kl} \left( \eta^2 | \nabla w |^2 - 2 \eta^2 N v \cdot j + \eta^2 N^2 |v|^2 + \frac{\eta^4}{2
   \varepsilon^2} ( 1 - |w|^2 )^2 \right)
   \label{eq:mod_stress-energy}
@@ -198,11 +198,114 @@ Now we define our modulated stress-energy tensor by
 
 To emulate Sylvia's work, we define
 \begin{equation}
-  \overline{S}_v = \frac{1}{\eta^2} \left( (\eta^2 v) \otimes (\eta^2 v) - \frac{1}{2} | \eta^2 v |^2 I \right)
+  S_v = v \otimes v - \frac{1}{2} |v|^2 I
   \label{eq:S_v}
 \end{equation}
+and
+\begin{equation}
+  \overline{S}_v = \frac{1}{\eta^2} \left( (\eta^2 v) \otimes (\eta^2 v) - \frac{1}{2} | \eta^2 v |^2 I \right)
+  \label{eq:S_v_bar}
+\end{equation}
 
-We would like to use $\overline{S}_v$ to express $\tilde{\mathbb{T}}$. We
+We would like to use $\overline{S}_v$ to express $\tilde{\mathbb{T}}$. Similar to Sylvia's work, we see that we can write
+\begin{equation}
+  \tilde{\mathbb{T}}(w) = \mathbb{T}(w) + N^2 \overline{S}_v - \frac{1}{\eta^2} N \left( (\eta^2 v) \otimes (\eta^2 j) + ( \eta^2 j ) \otimes ( \eta^2
+  v ) - ( \eta^2 j \cdot \eta^2 v ) I \right)
+  \label{eq:mod_stress-energy2}
+\end{equation}
+
+We will be using this to calculate $\div \tilde{\mathbb{T}}$. Sylvia calculates
+\[ \div S_v = v \div v + v^\perp \curl v .\]
+Using this and the fact that $- \nabla ( \log \eta^2 ) = \eta^2 \nabla \left( \frac{1}{\eta^2} \right)$, we are able to see
+\begin{align}
+  \div \overline{S}_v &= \frac{1}{\eta^2} \left( \eta^2 v \div ( \eta^2 v ) + \eta^2 v^\perp \curl (\eta^2 v) \right) - \eta^2 \nabla ( \log \eta^2 )
+  \cdot S_v \nonumber \\
+  &= v \div ( \eta^2 v ) + v^\perp \curl(\eta^2 v) - \eta^2 \nabla ( \log \eta^2 ) \cdot S_v
+  \label{eq:div_S_v_bar}
+\end{align}
+
+Now we need to calculate the divergence of the remaining terms in \eqref{eq:mod_stress-energy2}. For this, we define
+\[ R = v \otimes j + j \otimes v - (j \cdot v) I \]
+and
+\[ \overline{R} = \frac{1}{\eta^2} \left((\eta^2 v) \otimes (\eta^2 j) + (\eta^2 j) \otimes (\eta^2 v) - (\eta^2 j \cdot \eta^2 v)I \right) .\]
+
+For general vector fields $X_1$ and $X_2$, we have the identity
+\[ \div( X_1 \otimes X_2 ) = X_2 \div X_1 + (X_1 \cdot \nabla) X_2 .\]
+
+This lets us compute
+\begin{align}
+  \div \overline{R} &= \frac{1}{\eta^2} \left( (\eta^2 j) \div (\eta^2 v) + (\eta^2 v \cdot \nabla) (\eta^2 j) + (\eta^2 v) \div ( \eta^2 j ) +
+  (\eta^2j \cdot \nabla) (\eta^2 v) - \nabla ( \eta^2 j \cdot \eta^2 v ) \right) \nonumber \\
+  &\hspace{\smallspace} - \eta^2 \nabla ( \log \eta^2 ) \cdot R \nonumber \\
+  &= j \div( \eta^2 v ) + (v \cdot \nabla) (\eta^2 j) + v \div ( \eta^2 j ) + ( j \cdot \nabla )(\eta^2 v) - \frac{1}{\eta^2} \nabla (\eta^2 j \cdot
+  \eta^2 v) - \eta^2 \nabla (\log \eta^2) \cdot R
+  \label{eq:div_R_bar}
+\end{align}
+
+We will need the dot product of $v$ with \eqref{eq:div_S_v_bar} and \eqref{eq:div_R_bar}. These give
+\begin{align}
+  \div \overline{S}_v \cdot v &= v_k v_k \div(\eta^2 v) - \eta^2 \partial_l (\log \eta^2) (S_v)_{lk} v_k
+  \label{eq:v_dot_div_S}
+\end{align}
+and
+\begin{align*}
+  \div \overline{R} \cdot v &= v_k j_k \partial_l (\eta^2 v_l) + v_k v_l \partial_l (\eta^2 j_k) + v_k v_k \partial_l (\eta^2 j_l) + v_k j_l
+  \partial_l (\eta^2 v_k) \nonumber \\
+  &\hspace{\smallspace} - v_k j_l \partial_k (\eta^2 v_l) - v_k v_l \partial_k (\eta^2 j_l) - \eta^2 \partial_l( \log \eta^2 ) R_{lk} v_k
+\end{align*}
+
+We can simplify by noting
+\[ j^\perp \cdot v \curl (\eta^2 v) = v_k j_l \partial_l (\eta^2 v_k) - v_k j_l \partial_k (\eta^2 v_l) \]
+and seeing some cancellation in the remaining terms. This leaves
+\begin{align}
+  \div \overline{R} \cdot v = v \cdot j \div (\eta^2 v) + |v|^2 \div (\eta^2 j) + v \cdot j^\perp \curl (\eta^2 v) - \eta^2 \partial_l ( \log \eta^2)
+  R_{lk} v_k
+  \label{eq:v_dot_div_R}
+\end{align}
+
+We are now ready to start putting this together in a way that's useful for our modulated stress-energy tensor.
+\begin{align}
+  -N \eta^2 v \cdot V &= -2 \frac{N}{M} \div \mathbb{T}(w) \cdot v + \frac{M}{N} v \cdot \nabla (\log \eta^2) \left( \eta^2 |\nabla w|^2 +
+  \frac{\eta^4}{\varepsilon^2} (1 - |w|^2) w \right) \nonumber \\
+  &= -2 \frac{N}{M} \div \tilde{\mathbb{T}}(w) \cdot v + 2 \frac{N^3}{M} \div \overline{S}_v \cdot v - 2 \frac{N^2}{M} \div \overline{R} \cdot v
+  \nonumber \\
+  &\hspace{\smallspace} + \frac{N}{M} v \cdot \nabla( \log \eta^2 ) \left( \eta^2 |\nabla w|^2 + \frac{\eta^4}{\varepsilon^2} ( 1 - |w|^2) w \right) \nonumber \\
+  &= -2 \frac{N}{M} \div \tilde{\mathbb{T}} \cdot v + 2 \frac{N^3}{M} \left( |v|^2 \div (\eta^2 v) - \eta^2 \partial_l ( \log \eta^2 ) (S_v)_{lk} v_k
+  \right) \nonumber \\
+  &\hspace{\smallspace} - 2 \frac{N^2}{M} \left( v \cdot j \div(\eta^2 v) + |v|^2 \div (\eta^2 j) + v \cdot j^\perp \curl( \eta^2 v) - \eta^2
+  \partial_l ( \log \eta^2 ) R_{lk} v_k \right) \nonumber \\
+  &\hspace{\smallspace} + \frac{N}{M} v \cdot \nabla ( \log \eta^2 ) \left( \eta^2 | \nabla w |^2 + \frac{\eta^4}{\varepsilon^2} ( 1 - |w|^2 ) w
+  \right)
+  \label{eq:v_dot_V}
+\end{align}
+
+Substituting this into \eqref{eq:deriv_mod_energy} gives
+\begin{align*}
+  \partial_t E(w) &= \int_{}^{} - \nabla \chi \cdot \eta^2 ( \partial_t w, \nabla w - i w N v ) \nonumber \\
+  &\hspace{\smallspace} + \int_{}^{} \chi \bigg( N \div( \eta^2 v ) q - N \eta^2 j \cdot \partial_t v + N^2 \eta^2 v \cdot \partial_t v \nonumber \\
+  &\hspace{\horizspace} - 2 \frac{N}{M} \div \tilde{\mathbb{T}} \cdot v + 2 \frac{N^3}{M} \left( |v|^2 \div(\eta^2 v) - \eta^2 \partial_l (\log
+  \eta^2) (S_v)_{lk} v_k \right) \\
+  &\hspace{\horizspace} - 2 \frac{N^2}{M} \left( v \cdot j \div(\eta^2 v) + |v|^2 \div (\eta^2 j) + v \cdot j^\perp \curl( \eta^2 v ) - \eta^2
+  \partial_l (\log \eta^2) R_{lk} v_k \right) \\
+  &\hspace{\horizspace} + \frac{N}{M} v \cdot \nabla (\log \eta^2) \left( \eta^2 |\nabla w|^2 + \frac{\eta^4}{\varepsilon^2} ( 1 - |w|^2 )w \right) \\
+  &\hspace{\horizspace} - \frac{1}{2} N^2 \partial_t ( \eta^2 |v|^2 (1-|w|^2)) + \partial_t f \bigg)
+\end{align*}
+
+At this point, we will use our guess that we expect $\div( \eta^2 v ) = 0$. This simplifies our derivative to
+\begin{align}
+  \partial_t E(w) &= \int_{}^{} - \nabla \chi \cdot \eta^2 (\partial_t w, \nabla w - i w N v) \nonumber \\
+  &\hspace{\smallspace} + \int_{}^{} \chi \bigg( - N \eta^2 j \cdot \partial_t v \nonumber \\
+  &\hspace{\horizspace} + N^2 \eta^2 v \cdot \partial_t v \nonumber \\
+  &\hspace{\horizspace} - 2 \frac{N}{M} \div \tilde{\mathbb{T}} \cdot v \nonumber \\
+  &\hspace{\horizspace} - 2 \frac{N^3}{M} \eta^2 \partial_l ( \log \eta^2 ) (S_v)_{lk} v_k \nonumber \\
+  &\hspace{\horizspace} - 2 \frac{N^2}{M} |v|^2 \div( \eta^2 j) \nonumber \\
+  &\hspace{\horizspace} - 2 \frac{N^2}{M} v \cdot j^\perp \curl( \eta^2 v ) \nonumber \\
+  &\hspace{\horizspace} + 2 \eta^2 \partial_l ( \log \eta^2 ) R_{lk} v_k \nonumber \\
+  &\hspace{\horizspace} + \frac{N}{M} v \cdot \nabla ( \log \eta^2 ) \left( \eta^2 |\nabla w|^2 + \frac{\eta^4}{\varepsilon^2} (1-|w|^2)w \right)
+  \nonumber \\
+  &\hspace{\horizspace} - \frac{1}{2} N^2 \partial_t ( \eta^2 |v|^2 ( 1 - |w|^2 )) + \partial_t f \bigg)
+  \label{eq:deriv_mod_energy2}
+\end{align}<++>
 
 \end{document}
 
