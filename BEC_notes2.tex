@@ -305,7 +305,23 @@ At this point, we will use our guess that we expect $\div( \eta^2 v ) = 0$. This
   \nonumber \\
   &\hspace{\horizspace} - \frac{1}{2} N^2 \partial_t ( \eta^2 |v|^2 ( 1 - |w|^2 )) + \partial_t f \bigg)
   \label{eq:deriv_mod_energy2}
-\end{align}<++>
+\end{align}
+
+We need to understand which of these terms we already have control of so we can use the equation for $v$ to get control of the other terms.
+The first integral will be okay by choosing $\chi$ appropriately. Similarly, $-2 \frac{N}{M} \div \tilde{\mathbb{T}} \cdot v$ will be handled after
+integrating by parts (although we don't have $\div v = 0$ this time).
+
+The $-2\frac{N^2}{M} |v|^2 \div(\eta^2 j)$ shouldn't be an issue because $j \approx Nv$ and $\div(\eta^2 v)=0$. We expect to get cancellation between
+the $S$ and $R$ terms (may be off by a factor of 2 to get complete cancellation).
+
+The $\partial_t (\eta^2 |v|^2 ( 1 - |w|^2 )) + \partial_t f$ will define $f$ to handle this term.
+
+This leaves
+\[ -N \eta^2 j \cdot \partial_t v + N^2 \eta^2 v \cdot \partial_t v - 2 \frac{N^2}{M} v \cdot j^\perp \curl( \eta^2 v ) + \frac{N}{M} v \cdot \nabla (
+\log \eta^2 ) \left( \dots \right) \]
+to determine the equation for $v$. In Sylvia's problem, the first and third terms gave $\partial_t v$ as a multiple of $v^\perp$, which killed the
+second term, and there was no fourth term present. One way we may be able to deal with the last term is get $v$ which is somehow perpendicular to
+$\nabla ( \log \eta^2 )$.
 
 \end{document}
 
