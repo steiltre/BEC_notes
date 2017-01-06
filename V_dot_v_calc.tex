@@ -1,0 +1,225 @@
+%        File: V_dot_v_calc.tex
+%     Created: Wed Jan 04 10:00 PM 2017 C
+% Last Change: Wed Jan 04 10:00 PM 2017 C
+%
+
+\documentclass[a4paper]{article}
+
+\title{$-N \eta^2 V \cdot v$ Calculation }
+\date{\today}
+\author{Trevor Steil}
+
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{esint}
+\usepackage{enumitem}
+\usepackage{algorithm}
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
+\usepackage{bbm}
+\usepackage{xcolor}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem*{claim}{Claim}
+\newtheorem*{problem}{Problem}
+%\newtheorem*{lemma}{Lemma}
+\newtheorem{definition}{Definition}[section]
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\supp}[1]{\mathop{\mathrm{supp}}\left(#1\right)}
+\newcommand{\lip}[1]{\mathop{\mathrm{Lip}}\left(#1\right)}
+\newcommand{\curl}{\mathrm{curl}}
+\newcommand{\la}{\left \langle}
+\newcommand{\ra}{\right \rangle}
+\renewcommand{\vec}[1]{\mathbf{#1}}
+\renewcommand{\div}{\mathrm{div}}
+
+\newenvironment{solution}[1][]{\emph{Solution #1}}
+
+\algnewcommand{\Or}{\textbf{ or }}
+\algnewcommand{\And}{\textbf{ or }}
+
+\begin{document}
+\maketitle
+
+We have the equation
+\begin{equation}
+  i M \partial_t w = \div (\eta^2 \nabla w) + \frac{\eta^4}{\varepsilon^2} (1-|w|^2)^2 w
+  \label{eq:PDE}
+\end{equation}
+
+The quantity we need to understand is $-N \eta^2 V \cdot v$ where
+\begin{equation}
+  V = 2 ( i \partial_t w, \nabla w )
+  \label{def:V}
+\end{equation}
+
+We define the stress-energy tensor as
+\begin{equation}
+  \mathbb{T}(w)_{kl} = \eta^2 (\partial_k w, \partial_l w) - \frac{1}{2} \delta_{kl} \left( \eta^2 | \nabla w |^2 + \frac{\eta^4}{2 \varepsilon^2}
+  (1-|w|^w)^w \right)
+  \label{def:T}
+\end{equation}
+
+Then by definition
+\begin{equation}
+  [ \div \mathbb{T}(w) ]_l = \partial_k \left( \eta^2 (\partial_k, w, \partial_l w) - \frac{1}{2} \delta_{kl} \left( \eta^2 |\nabla w|^2 +
+  \frac{\eta^4}{2 \varepsilon^2} ( 1- |w|^2 )^2 \right) \right)
+  \label{eq:div_T}
+\end{equation}
+
+Using \eqref{eq:PDE}, we have
+\begin{align}
+  \frac{1}{2} M \eta^2 V_l &= M \eta^2 ( \partial_l w, i \partial_t w ) \nonumber \\
+  &= \left( \partial_l w, \div ( \eta^2 \nabla w ) + \frac{\eta^4}{\varepsilon^2}( 1 - |w|^2 )w \right) \nonumber \\
+  &= ( \partial_l w, \partial_k ( \eta^2 \partial_k w ) ) + \frac{\eta^4}{\varepsilon^2} ( 1 - |w|^2 ) ( \partial_l w, w )
+  \label{eq:V_l}
+\end{align}
+
+We will look at each of these terms and try to express them in terms of $\div \mathbb{T}$.
+
+First,
+\begin{align}
+  ( \partial_l w, \partial_k ( \eta^2 \partial_k w ) ) &= \partial_k ( \partial_l w, \eta^2 \partial_k 2) - \eta^2 ( \partial_l \partial_k w,
+  \partial_k w ) \nonumber \\
+  &= \partial_k ( \partial_l w, \eta2 \partial_k w) - \frac{1}{2} \eta^2 \partial_l ( | \nabla w |^2 ) \nonumber \\
+  &= { \color{blue} \partial_k ( \partial_l w, \eta^2 \partial_k w) - \frac{1}{2} \partial_l ( \eta^2 |\nabla w|^2 ) } + \frac{1}{2} \partial_l
+  (\eta^2) | \nabla w |^2
+  \label{eq:V_l_term1}
+\end{align}
+
+Next,
+\begin{align}
+  \frac{\eta^4}{\varepsilon^2} (1-|w|^w) (\partial_l w, w) &= \frac{\eta^4}{2 \varepsilon^2 } (1 - |w|^w) \partial_l ( |\nabla w|^2 ) \nonumber \\
+  &= - \frac{\eta^4}{4 \varepsilon^2} \partial_l \left( (1-|w|^2)^2 \right) \nonumber \\
+  &= - \partial_l \left( \frac{\eta^4}{4 \varepsilon^2} (1-|w|^2)^2 \right) + \partial_l (\eta^4) \frac{1}{4 \varepsilon^2} (1-|w|^2)^2 \nonumber \\
+  &= { \color{blue} - \partial_l \left( \frac{\eta^4}{4 \varepsilon^2} (1-|w|^2)^2 \right) } + \partial_l (\eta^2) \frac{\eta^2}{2 \varepsilon^2}
+  (1-|w|^2)^2
+  \label{eq:V_l_term2}
+\end{align}
+
+Combining the blue terms above gives $[\div \mathbb{T}]_l$. Using this and $\partial_l (\eta^2) = \eta^2 \partial_l (\log \eta^2)$, we have
+\begin{align}
+  \frac{1}{2} M \eta^2 V_l &= [ \div \mathbb{T}(w) ]_l + \frac{1}{2} \partial_l (\log \eta^2) \left( \eta^2 |\nabla w|^2 + \frac{\eta^4}{\varepsilon^2} (
+  1-|w|^2)^2 \right) \nonumber \\
+  &= [ \div \mathbb{T}(w) ]_l + \frac{1}{2} \partial_l (\log \eta^2) \bigg( \eta^2 | \nabla w - i w N v |^2 + 2 N \eta^2 v \cdot j - N^2 \eta^2 |v|^2
+  \nonumber \\
+  &\hspace{5cm} + N^2 \eta^2 |v|^2 (1-|w|^2) + \frac{\eta^4}{\varepsilon^2} (1-|w|^2)^2 \bigg) \nonumber \\
+  &= [ \div \mathbb{T}(w) ]_l + \frac{1}{2} \partial_l (\log \eta^2) \bigg( \eta^2 |\nabla w - i w N v|^2 - 2N^2 \eta^2 v \cdot \left( v -
+  \frac{j}{N} \right) - N^2 \eta^2 |v|^2 \nonumber \\
+  &\hspace{5cm} + N^2 \eta^2 |v|^2 (1-|w|^2) + \frac{\eta^4}{\varepsilon^2} (1-|w|^2)^2 \bigg)
+  \label{eq:V_l-final}
+\end{align}
+where we have also used the modulation identity
+\begin{equation}
+  | \nabla w - i w N v |^2 = |\nabla w|^2 - 2N v \cdot j + N^2 |v|^2 - N^2 |v|^2 (1-|w|^2)
+  \label{eq:mod_identity}
+\end{equation}
+
+We need to use a modulated version of the stress-energy tensor for our analysis. We define
+\begin{align}
+  \tilde{\mathbb{T}}(w)_{kl} = &\eta^2 (\partial_k w - i w N v_k, \partial_l w - i w N v_l) + N^2 \eta^2 (1-|w|^2)v_k v_l \nonumber \\
+  &- \frac{1}{2} \delta_{kl} \left( \eta^2 |\nabla w - i w N v|^2 + \eta^2 (1-|w|^2)N^2|v|^2 + \frac{\eta^4}{2 \varepsilon^2} (1-|w|^2)^2 \right)
+  \label{def:mod_stress-energy}
+\end{align}
+
+We are going to express $\tilde{\mathbb{T}}$ in terms of the unmodulated stress-energy tensor and terms of the form $v-\frac{j}{N}$.
+\begin{align}
+  \tilde{\mathbb{T}}(w)_{kl} &= \eta^2 ( \partial_k w - i w N v_k, \partial_l w - i w N v_l) + N^2 \eta^2 (1-|w|^2) v_k v_l \nonumber \\
+  &\quad \quad - \frac{1}{2} \delta_{kl} \left( \eta^2 | \nabla w |^2 - 2 \eta^2 N v \cdot j + \eta^2 N^2 |v|^2 + \frac{\eta^4}{2\varepsilon^2} \left(
+  1-|w|^2 \right)^2 \right) \nonumber \\
+  &= { \color{blue} \eta^2 (\partial_k w, \partial_l w) } - \eta^2 N v_k (\partial_l w, w ) - \eta^2 N v_l (\partial_k w, w) + N^2 \eta^2 v_k v_l
+  \nonumber \\
+  &\quad \quad { \color{blue} - \frac{1}{2} \delta_{kl} \left( \eta^2 |\nabla w|^2 + \frac{\eta^4}{2 \varepsilon^2} (1-|w|^2)^2 \right) }
+  -\frac{1}{2} \delta_{kl} \left( - 2 \eta^2 N v \cdot j + \eta^2 N^2 |v|^2 \right) \nonumber \\
+  &= \mathbb{T}(w)_{kl} - N \eta^2 v_k j_l - N \eta^2 v_l j_k + N^2 \eta^2 v_k v_l \nonumber \\
+  &\quad \quad - \frac{1}{2} \delta_{kl} \left( - 2 N \eta^2 v \cdot j + N^2 \eta^2 |v|^2 \right) \nonumber \\
+  &= \mathbb{T}(w)_{kl} + N^2 \eta^2 v_k \left( v_l - \frac{j_l}{N} \right) + N^2 \eta^2 v_l \left( v_k - \frac{j_k}{N} \right) - N^2 \eta^2 v_k v_l
+  \nonumber \\
+  &\quad \quad - \frac{1}{2} \delta_{kl} \left( 2 N^2 \eta^2 v \cdot \left( v - \frac{j}{N} \right) - N^2 \eta^2 |v|^2 \right)
+  \label{eq:mod_stress_energy}
+\end{align}
+
+Reorganizing gives
+\begin{align}
+  \mathbb{T}(w)_{kl} &= \tilde{\mathbb{T}}(w)_{kl} - N^2 \eta^2 v_k \left( v_l - \frac{j_l}{N} \right) - N^2 \eta^2 v_l \left( v_k -
+  \frac{j_k}{N} \right) + N^2 \eta^2 v_k v_l \nonumber \\
+  &\quad \quad + \frac{1}{2} \delta_{kl} \left( 2 N^2 \eta^2 v \cdot \left( v - \frac{j}{N} \right) - N^2 \eta^2 |v|^2 \right)
+  \label{eq:stress-energy}
+\end{align}
+
+We can use \eqref{eq:V_l} to compute $N \eta^2 V \cdot v$, but first we need to compute $\div \mathbb{T} \cdot v$.
+From \eqref{eq:stress-energy}, we have
+\begin{align}
+  [ \div \mathbb{T} (w) ]_l &= \partial_k \mathbb{T}(w)_{kl} \nonumber \\
+  &= \partial_k \tilde{\mathbb{T}}(w)_{kl} - \partial_k \left( N^2 \eta^2 v_k \left( v_l - \frac{j_l}{N} \right) \right) - \partial_k \left( N^2
+  \eta^2 v_l \left( v_k - \frac{j_k}{N} \right) \right) + \partial_k ( N^2 \eta^2 v_k v_l ) \nonumber \\
+  &\quad \quad + \frac{1}{2} \partial_l \left( 2 N^2 \eta^2 v_k \left( v_k - \frac{j_k}{N} \right) - N^2 \eta^2 v_k v_k \right) \nonumber \\
+  &= [ \div \tilde{\mathbb{T}}(w) ]_l - N^2 \eta^2 \partial_k \left( v_k \left( v_l - \frac{j_l}{N} \right) \right) - \eta^2 N^2 \partial_k \left( v_l
+  \left( v_k - \frac{j_k}{N} \right) \right) + N^2 \eta^2 \partial_k (v_k v_l) \nonumber \\
+  &\quad \quad + N^2 \eta^2 \partial_l \left( v_k \left( v_k - \frac{j_k}{N} \right) \right) - \frac{1}{2} N^2 \eta^2 \partial_l (v_k v_k) \nonumber \\
+  &\quad \quad - N^2 \eta^2 \partial_k (\log \eta^2) \left( v_k \left( v_l - \frac{j_l}{N} \right) + v_l \left( v_k - \frac{j_k}{N} \right) -
+  v_k v_l \right) \nonumber \\
+  &\quad \quad + N^2 \eta^2 \partial_l (\log \eta^2) \left( v_k \left( v_k - \frac{j_k}{N} \right) - \frac{1}{2} v_k v_k \right)
+  \label{eq:div_stress-energy}
+\end{align}
+
+Taking the dot product with $v$ gives
+\begin{align}
+  v \cdot \div \mathbb{T}(w) &= v \cdot \div \tilde{\mathbb{T}}(w) - N^2 \eta^2 v_l \partial_k \left( v_k \left( v_l - \frac{j_l}{N} \right) \right) -
+  N^2 \eta^2 v_l \partial_k \left( v_l \left( v_k - \frac{j_k}{N} \right) \right) + N^2 \eta^2 v_l \partial_k (v_k v_l) \nonumber \\
+  &\quad \quad + N^2 \eta^2 v_l \partial_l \left( v_k \left( v_k - \frac{j_k}{N} \right) \right) - \frac{1}{2} N^2 \eta^2 v_l \partial_l (v_k v_k)
+  \nonumber \\
+  &\quad \quad - N^2 \eta^2 \partial_k( \log \eta^2 ) \left( v_l v_k \left( v_l - \frac{j_l}{N} \right) + v_l v_l \left( v_k - \frac{j_k}{N} \right) -
+  v_k v_l v_l \right) \nonumber \\
+  &\quad \quad + N^2 \eta^2 \partial_l (\log \eta^2) \left( v_k v_l \left( v_k - \frac{j_k}{N} \right) - \frac{1}{2} v_k v_k v_l \right) \nonumber \\
+  &= v \cdot \div \tilde{\mathbb{T}}(w) - N^2 \eta^2 v_l \partial_k \left( v_k \left( v_l - \frac{j_l}{N} \right) \right) -
+  N^2 \eta^2 v_l \partial_k \left( v_l \left( v_k - \frac{j_k}{N} \right) \right) + N^2 \eta^2 v_l \partial_k (v_k v_l) \nonumber \\
+  &\quad \quad + N^2 \eta^2 v_l \partial_l \left( v_k \left( v_k - \frac{j_k}{N} \right) \right) - \frac{1}{2} N^2 \eta^2 v_l \partial_l (v_k v_k)
+  \nonumber \\
+  &\quad \quad - N^2 \eta^2 \partial_l (\log \eta^2) \bigg( v_l v_k \left( v_k - \frac{j_k}{N} \right) + v_k v_k \left( v_l - \frac{j_l}{N} \right) -
+  v_k v_k v_l \nonumber \\
+  &\hspace{5cm} - v_k v_l \left( v_k - \frac{j_k}{N} \right) + \frac{1}{2} v_k v_k v_l \bigg) \nonumber \\
+  &= v \cdot \div \tilde{\mathbb{T}}(w) - N^2 \eta^2 v_l \partial_k \left( v_k \left( v_l - \frac{j_l}{N} \right) \right) -
+  N^2 \eta^2 v_l \partial_k \left( v_l \left( v_k - \frac{j_k}{N} \right) \right) + N^2 \eta^2 v_l \partial_k (v_k v_l) \nonumber \\
+  &\quad \quad + N^2 \eta^2 v_l \partial_l \left( v_k \left( v_k - \frac{j_k}{N} \right) \right) - \frac{1}{2} N^2 \eta^2 v_l \partial_l (v_k v_k)
+  \nonumber \\
+  &\quad \quad - N^2 \eta^2 \partial_l (\log \eta^2) \left( v_k v_k \left( v_l - \frac{j_l}{N} \right) - \frac{1}{2} v_k v_k v_l \right)
+  \label{eq:v_div_T}
+\end{align}
+
+Combining \eqref{eq:V_l-final} with \eqref{eq:v_div_T} gives
+\begin{align}
+  \frac{1}{2} M \eta^2 V \cdot v &= v \cdot \div \tilde{\mathbb{T}}(w) - N^2 \eta^2 v_l \partial_k \left( v_k \left( v_l - \frac{j_l}{N} \right) \right) -
+  N^2 \eta^2 v_l \partial_k \left( v_l \left( v_k - \frac{j_k}{N} \right) \right) + N^2 \eta^2 v_l \partial_k (v_k v_l) \nonumber \\
+  &\quad \quad + N^2 \eta^2 v_l \partial_l \left( v_k \left( v_k - \frac{j_k}{N} \right) \right) - \frac{1}{2} N^2 \eta^2 v_l \partial_l (v_k v_k)
+  \nonumber \\
+  &\quad \quad { \color{blue} - N^2 \eta^2 \partial_l (\log \eta^2) \left( v_k v_k \left( v_l - \frac{j_l}{N} \right) - \frac{1}{2} v_k v_k v_l
+  \right) } \nonumber \\
+  &\quad \quad { \color{blue} - N^2 \eta^2 \partial_l (\log \eta^2) \left( v_k v_l \left( v_k - \frac{j_k}{N} \right) + \frac{1}{2} v_k v_k v_l
+  \right) } \nonumber \\
+  &\quad \quad + \frac{1}{2} v_l \partial_l (\log \eta^2) \left( \eta^2 |\nabla w - i w N v|^2 + N^2 \eta^2 |v|^2(1-|w|^2) +
+  \frac{\eta^4}{\varepsilon^2} \left( 1 - |w|^2 \right)^2 \right) \nonumber \\
+  &= v \cdot \div \tilde{\mathbb{T}}(w) - N^2 \eta^2 v_l \partial_k \left( v_k \left( v_l - \frac{j_l}{N} \right) \right) -
+  N^2 \eta^2 v_l \partial_k \left( v_l \left( v_k - \frac{j_k}{N} \right) \right) + N^2 \eta^2 v_l \partial_k (v_k v_l) \nonumber \\
+  &\quad \quad + N^2 \eta^2 v_l \partial_l \left( v_k \left( v_k - \frac{j_k}{N} \right) \right) - \frac{1}{2} N^2 \eta^2 v_l \partial_l (v_k v_k)
+  \nonumber \\
+  &\quad \quad - N^2 \eta^2 \partial_l (\log \eta^2) \left( v_k v_k \left( v_l - \frac{j_l}{N} \right) + v_k v_l \left( v_k - \frac{j_k}{N} \right) \right) \nonumber \\
+  &\quad \quad + \frac{1}{2} v_l \partial_l (\log \eta^2) \left( \eta^2 |\nabla w - i w N v|^2 + N^2 \eta^2 |v|^2(1-|w|^2) +
+  \frac{\eta^4}{\varepsilon^2} \left( 1 - |w|^2 \right)^2 \right)
+  \label{eq:M_V_dot_v}
+\end{align}
+
+$-N \eta^2 V \cdot v$ can be obtained from here by multiplying by $-2 \frac{N}{M}$.
+\end{document}
+
+
