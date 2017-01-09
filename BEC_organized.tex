@@ -120,8 +120,7 @@ We know
 
 Therefore, we have
 \begin{equation}
-  \div \mathbb{T} (w) = \frac{1}{2} M \eta^2 V + \frac{1}{2} \nabla ( \log \eta^2 ) \left( \eta^2 |\nabla w|^2 + \frac{\eta^4}{\varepsilon^2} ( 1 -
-  |w|^2 )^2 \right)
+  M \eta^2 V = 2 \div \mathbb{T} + \nabla( \log \eta^2 ) \left( \eta^2 |\nabla w|^2 + \frac{\eta^4}{\varepsilon^2} (1-|w|^2)^2 \right)
   \label{eq:stress-energy-div}
 \end{equation}
 
@@ -169,8 +168,13 @@ Now we need to calculate the divergence of the remaining terms in \eqref{eq:mod_
 and
 \[ \overline{R} = \frac{1}{\eta^2} \left((\eta^2 v) \otimes (\eta^2 j) + (\eta^2 j) \otimes (\eta^2 v) - (\eta^2 j \cdot \eta^2 v)I \right) .\]
 
-For general vector fields $X_1$ and $X_2$, we have the identity
-\[ \div( X_1 \otimes X_2 ) = X_2 \div X_1 + (X_1 \cdot \nabla) X_2 .\]
+For general vector fields $X$ and $Y$, we have the identity
+\[ \div( X \otimes Y ) = Y \div X + (X \cdot \nabla) Y ,\]
+that is,
+\begin{align*}
+  [ \div (X \otimes Y) ]_l &= \partial_k ( X_k Y_l ) \nonumber \\
+  &= Y_l \partial_k X_k + X_k \partial_k Y_l
+\end{align*}
 
 This lets us compute
 \begin{align}
@@ -203,60 +207,100 @@ and seeing some cancellation in the remaining terms. This leaves
   \label{eq:v_dot_div_R}
 \end{align}
 
-We are now ready to start putting this together in a way that's useful for our modulated stress-energy tensor.
-\begin{align}
-  -N \eta^2 v \cdot V &= -2 \frac{N}{M} \div \mathbb{T}(w) \cdot v + \frac{M}{N} v \cdot \nabla (\log \eta^2) \left( \eta^2 |\nabla w|^2 +
-  \frac{\eta^4}{\varepsilon^2} (1 - |w|^2)^2  \right) \nonumber \\
-  &= -2 \frac{N}{M} \div \tilde{\mathbb{T}}(w) \cdot v + 2 \frac{N^3}{M} \div \overline{S}_v \cdot v - 2 \frac{N^2}{M} \div \overline{R} \cdot v
-  \nonumber \\
-  &\hspace{\smallspace} + \frac{N}{M} v \cdot \nabla( \log \eta^2 ) \left( \eta^2 |\nabla w|^2 + \frac{\eta^4}{\varepsilon^2} ( 1 - |w|^2) w \right) \nonumber \\
-  &= -2 \frac{N}{M} \div \tilde{\mathbb{T}} \cdot v + 2 \frac{N^3}{M} \left( |v|^2 \div (\eta^2 v) - \eta^4 \partial_l ( \log \eta^2 ) (S_v)_{lk} v_k
-  \right) \nonumber \\
-  &\hspace{\smallspace} - 2 \frac{N^2}{M} \left( v \cdot j \div(\eta^2 v) + |v|^2 \div (\eta^2 j) + v \cdot j^\perp \curl( \eta^2 v) - \eta^4
-  \partial_l ( \log \eta^2 ) \overline{R}_{lk} v_k \right) \nonumber \\
-  &\hspace{\smallspace} + \frac{N}{M} v \cdot \nabla ( \log \eta^2 ) \left( \eta^2 | \nabla w |^2 + \frac{\eta^4}{\varepsilon^2} ( 1 - |w|^2 )^2
-  \right)
-  \label{eq:v_dot_V}
-\end{align}
-
 We would to combine terms to get $v - \frac{j}{N}$ as Sylvia does. To start, we want to express the $\div \overline{R} \cdot v$ term in terms of $\div
-\overline{S}_v \cdot j$. By writing out each term, we find
+\overline{S}_v \cdot j$. By writing out each term and using \eqref{eq:v_dot_div_R}, we find
 \begin{align}
-  \div \overline{R} \cdot v &= 2 v \cdot j \div ( \eta^2 v ) + |v|^2 \div (\eta^2 j) - \div \overline{S}_v \cdot j - \nabla ( \log \eta^2 )
-  \overline{S}_v j - \nabla( \log \eta^2 ) \overline{R} v
+  \div \overline{R} \cdot v &= 2 v \cdot j \div ( \eta^2 v ) + |v|^2 \div (\eta^2 j) - \div \overline{S}_v \cdot j - \partial_l ( \log \eta^2 )
+  (\overline{S}_v)_{lk} j_k - \partial_l( \log \eta^2 ) \overline{R}_{lk} v_k
   \label{eq:Rv_Sj}
 \end{align}
 
-Substituting this into \eqref{eq:v_dot_V} gives
+Taking the divergence of \eqref{eq:mod_stress-energy}, we can compute the divergence of the modulated stress-energy tensor as
+\begin{align*}
+  \div \tilde{\mathbb{T}}(w) &= \div \mathbb{T}(w) + N^2 \div{\overline{S}_v}- N \div{\overline{R}}
+\end{align*}
+Combining with \eqref{eq:Rv_Sj}, we have
 \begin{align}
-  -N \eta^2 v \cdot V &= -2 \frac{N}{M} \div \tilde{\mathbb{T}} (w) \cdot v + 2 \frac{N^3}{M} \div \overline{S}_v \cdot v - 4 \frac{N^2}{M} v \cdot j
-  \div (\eta^2 v) \nonumber \\
-  &\hspace{\smallspace} - 2 \frac{N^2}{M} |v|^2 \div (\eta^2 j) + 2 \frac{N^2}{M} \div \overline{S}_v \cdot j + 2 \frac{N^2}{M} \nabla (\log \eta^2)
-  \overline{S}_v j + 2 \frac{N^2}{M} \nabla ( \log \eta^2 ) \overline{R} v \nonumber \\
-  &\hspace{\smallspace} + \frac{N}{M} v \cdot \nabla ( \log \eta^2 ) \left( \eta^2 | \nabla w |^2 + \frac{\eta^4}{\varepsilon^2} ( 1 - |w|^2 )^2
-  \right) \nonumber \\
-  &= -2 \frac{N}{M} \div \tilde{\mathbb{T}}(w) \cdot v - 2 \frac{N^3}{M} \div \overline{S}_v \cdot \left( v - \frac{j}{N} \right) + 4
-  \frac{N^3}{M}  \div \overline{S}_v \cdot v \nonumber \\
-  &\hspace{\smallspace} - 4 \frac{N^2}{M} v \cdot j \div (\eta^2 v) - 2 \frac{N^2}{M} |v|^2 \div( \eta^2 j) + 2 \frac{N^2}{M} \nabla ( \log
-  \eta^2) \overline{S}_v j + 2 \frac{N^2}{M} \nabla ( \log \eta^2 ) \overline{R} v \nonumber \\
-  &\hspace{\smallspace} + \frac{N}{M} v \cdot \nabla( \log \eta^2 ) \left( \eta^2 | \nabla w |^2 + \frac{\eta^4}{\varepsilon^2} ( 1 - |w|^2 )^2
-  \right) \nonumber \\
-  &= -2 \frac{N}{M} \div \tilde{\mathbb{T}}(w) \cdot v - 2 \frac{N^3}{M} \div \overline{S}_v \cdot \left( v - \frac{j}{N} \right) + 4
-  \frac{N^3}{M}  \div \overline{S}_v \cdot v \nonumber \\
-  &\hspace{\smallspace} - 4 \frac{N^2}{M} v \cdot j \div (\eta^2 v) - 2 \frac{N^2}{M} |v|^2 \div( \eta^2 j) + 2 \frac{N^2}{M} \nabla ( \log
-  \eta^2) \overline{S}_v j + 2 \frac{N^2}{M} \nabla ( \log \eta^2 ) \overline{R} v \nonumber \\
+  \div{\mathbb{T}}(w) \cdot v &= \div{\tilde{\mathbb{T}}}(w) \cdot v - N^2 \div \overline{S}_v \cdot v + N \div \overline{R} \cdot v \nonumber \\
+  &= \div \tilde{\mathbb{T}}(w) \cdot v - N^2 \div \overline{S}_v \cdot v + 2N v \cdot j \div( \eta^2 v ) + N |v|^2 \div( \eta^2 j ) - N \div
+  \overline{S}_v \cdot j \nonumber \\
+  &\hspace{\smallspace} - N \partial_l (\log \eta^2) (\overline{S}_v)_{lk} j_k - N \partial_l (\log \eta^2) \overline{R}_{lk} v_k \nonumber \\
+  &= \div \tilde{\mathbb{T}}(w) \cdot v + N^2 \div \overline{S}_v \cdot \left( v - \frac{j}{N} \right) - 2 N^2 \div \overline{S}_v \cdot v + 2 N v
+  \cdot j \div (\eta^2 v) + N |v|^2 \div (\eta^2 j) \nonumber \\
+  &\hspace{\smallspace} - N \partial_l (\log \eta^2) ( \overline{S}_v )_{lk} j_k - N \partial_l (\log \eta^2) \overline{R}_{lk} v_k
+  \label{eq:div_mod_stress-energy}
+\end{align}
+
+We are now ready to start putting this together in a way that's useful for our modulated stress-energy tensor. By combining
+\eqref{eq:stress-energy-div} and \eqref{eq:div_mod_stress-energy}, we get
+\begin{align}
+  - N \eta^2 v \cdot V &= -2 \frac{N}{M} \div \mathbb{T}(w) \cdot v - 2 \frac{N}{M} v \cdot \nabla (\log \eta^2) \left( \eta^2 |\nabla w|^2 +
+  \frac{\eta^4}{\varepsilon^2} ( 1 - |w|^2 )^2 \right) \nonumber \\
+  &= -2 \frac{N}{M} \div \tilde{\mathbb{T}}(w) \cdot v - 2 \frac{N^3}{M} \div \overline{S}_v \cdot \left(v - \frac{j}{N} \right) + 4 \frac{N^3}{M}
+  \div \overline{S}_v \cdot v \nonumber \\
+  &\hspace{\smallspace} - 4 \frac{N^2}{M} v \cdot j \div (\eta^2 v) - 2 \frac{N^2}{M} |v|^2 \div (\eta^2 j) + 2 \frac{N^2}{M} \partial_l (\log
+  \eta^2) (\overline{S}_v)_{lk} j_k + 2 \frac{N^2}{M} \partial_l (\log \eta^2) \overline{R}_{lk} v_k \nonumber \\
+  &\hspace{\smallspace} - 2 \frac{N}{M} v \cdot \nabla (\log \eta^2) \left( \eta^2 |\nabla w|^2 + \frac{\eta^4}{\varepsilon^2} (1-|w|^2)^2 \right)
+  \nonumber \\
+  &= -2 \frac{N}{M} \div \tilde{\mathbb{T}}(w) \cdot v - 2 \frac{N^3}{M} \div \overline{S}_v \cdot \left(v - \frac{j}{N} \right) + 4 \frac{N^3}{M}
+  \div \overline{S}_v \cdot v \nonumber \\
+  &\hspace{\smallspace} - 4 \frac{N^2}{M} v \cdot j \div (\eta^2 v) - 2 \frac{N^2}{M} |v|^2 \div (\eta^2 j) + 2 \frac{N^2}{M} \partial_l (\log
+  \eta^2) (\overline{S}_v)_{lk} j_k + 2 \frac{N^2}{M} \partial_l (\log \eta^2) \overline{R}_{lk} v_k \nonumber \\
   &\hspace{\smallspace} + \frac{N}{M} v \cdot \nabla( \log \eta^2 ) \bigg( \eta^2 | \nabla w - i w N v |^2 + 2N \eta^2 v \cdot j - N^2 \eta^2 |v|^2
   \nonumber \\
   &\hspace{\horizspace} \hspace{\horizspace} \hspace{\horizspace} + N^2 \eta^2 |v|^2 (1 - |w|^2) + \frac{\eta^4}{\varepsilon^2} ( 1 - |w|^2 )^2
-  \bigg) \nonumber \\
-  \label{}
-\end{align}
+  \bigg)
+  \label{<++>}
+\end{align}<++>
+
+
+%\begin{align}
+%  -N \eta^2 v \cdot V &= -2 \frac{N}{M} \div \mathbb{T}(w) \cdot v + \frac{M}{N} v \cdot \nabla (\log \eta^2) \left( \eta^2 |\nabla w|^2 +
+%  \frac{\eta^4}{\varepsilon^2} (1 - |w|^2)^2  \right) \nonumber \\
+%  &= -2 \frac{N}{M} \div \tilde{\mathbb{T}}(w) \cdot v + 2 \frac{N^3}{M} \div \overline{S}_v \cdot v - 2 \frac{N^2}{M} \div \overline{R} \cdot v
+%  \nonumber \\
+%  &\hspace{\smallspace} + \frac{N}{M} v \cdot \nabla( \log \eta^2 ) \left( \eta^2 |\nabla w|^2 + \frac{\eta^4}{\varepsilon^2} ( 1 - |w|^2) w \right) \nonumber \\
+%  &= -2 \frac{N}{M} \div \tilde{\mathbb{T}} \cdot v + 2 \frac{N^3}{M} \left( |v|^2 \div (\eta^2 v) - \eta^4 \partial_l ( \log \eta^2 ) (S_v)_{lk} v_k
+%  \right) \nonumber \\
+%  &\hspace{\smallspace} - 2 \frac{N^2}{M} \left( v \cdot j \div(\eta^2 v) + |v|^2 \div (\eta^2 j) + v \cdot j^\perp \curl( \eta^2 v) - \eta^4
+%  \partial_l ( \log \eta^2 ) \overline{R}_{lk} v_k \right) \nonumber \\
+%  &\hspace{\smallspace} + \frac{N}{M} v \cdot \nabla ( \log \eta^2 ) \left( \eta^2 | \nabla w |^2 + \frac{\eta^4}{\varepsilon^2} ( 1 - |w|^2 )^2
+%  \right)
+%  \label{eq:v_dot_V}
+%\end{align}
+%
+%Substituting this into \eqref{eq:v_dot_V} gives
+%\begin{align}
+%  -N \eta^2 v \cdot V &= -2 \frac{N}{M} \div \tilde{\mathbb{T}} (w) \cdot v + 2 \frac{N^3}{M} \div \overline{S}_v \cdot v - 4 \frac{N^2}{M} v \cdot j
+%  \div (\eta^2 v) \nonumber \\
+%  &\hspace{\smallspace} - 2 \frac{N^2}{M} |v|^2 \div (\eta^2 j) + 2 \frac{N^2}{M} \div \overline{S}_v \cdot j + 2 \frac{N^2}{M} \partial_l (\log \eta^2)
+%  (\overline{S}_v)_{lk} j_k + 2 \frac{N^2}{M} \partial_l ( \log \eta^2 ) \overline{R}_{lk} v_k \nonumber \\
+%  &\hspace{\smallspace} + \frac{N}{M} v \cdot \nabla ( \log \eta^2 ) \left( \eta^2 | \nabla w |^2 + \frac{\eta^4}{\varepsilon^2} ( 1 - |w|^2 )^2
+%  \right) \nonumber \\
+%  &= -2 \frac{N}{M} \div \tilde{\mathbb{T}}(w) \cdot v - 2 \frac{N^3}{M} \div \overline{S}_v \cdot \left( v - \frac{j}{N} \right) + 4
+%  \frac{N^3}{M}  \div \overline{S}_v \cdot v \nonumber \\
+%  &\hspace{\smallspace} - 4 \frac{N^2}{M} v \cdot j \div (\eta^2 v) - 2 \frac{N^2}{M} |v|^2 \div( \eta^2 j) + 2 \frac{N^2}{M} \partial_l ( \log
+%  \eta^2) (\overline{S}_v)_{lk} j_k + 2 \frac{N^2}{M} \partial_l ( \log \eta^2 ) \overline{R}_{lk} v_k \nonumber \\
+%  &\hspace{\smallspace} + \frac{N}{M} v \cdot \nabla( \log \eta^2 ) \left( \eta^2 | \nabla w |^2 + \frac{\eta^4}{\varepsilon^2} ( 1 - |w|^2 )^2
+%  \right) \nonumber \\
+%  &= -2 \frac{N}{M} \div \tilde{\mathbb{T}}(w) \cdot v - 2 \frac{N^3}{M} \div \overline{S}_v \cdot \left( v - \frac{j}{N} \right) + 4
+%  \frac{N^3}{M}  \div \overline{S}_v \cdot v \nonumber \\
+%  &\hspace{\smallspace} - 4 \frac{N^2}{M} v \cdot j \div (\eta^2 v) - 2 \frac{N^2}{M} |v|^2 \div( \eta^2 j) + 2 \frac{N^2}{M} \partial_l ( \log
+%  \eta^2) (\overline{S}_v)_{lk} j_k + 2 \frac{N^2}{M} \partial_l ( \log \eta^2 ) \overline{R}_{lk} v_k \nonumber \\
+%  &\hspace{\smallspace} + \frac{N}{M} v \cdot \nabla( \log \eta^2 ) \bigg( \eta^2 | \nabla w - i w N v |^2 + 2N \eta^2 v \cdot j - N^2 \eta^2 |v|^2
+%  \nonumber \\
+%  &\hspace{\horizspace} \hspace{\horizspace} \hspace{\horizspace} + N^2 \eta^2 |v|^2 (1 - |w|^2) + \frac{\eta^4}{\varepsilon^2} ( 1 - |w|^2 )^2
+%  \bigg) \nonumber \\
+%  \label{}
+%\end{align}
 
 where we have used the modulation identity
 \begin{equation}
   | \nabla w - i w N v |^2 = | \nabla w |^2 - 2 N v \cdot j + N^2 |v|^2 - N^2 |v|^2 ( 1 - |w|^2 )
   \label{eq:mod_identity}
 \end{equation}
+
+{\Large{\textbf{THIS IS WHERE I ENDED}}}
 
 These terms will be combined as follows
 \begin{align}
