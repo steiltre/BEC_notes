@@ -240,19 +240,17 @@ We are now ready to start putting this together in a way that's useful for our m
   \div \overline{S}_v \cdot v \nonumber \\
   &\hspace{\smallspace} - 4 \frac{N^2}{M} v \cdot j \div (\eta^2 v) - 2 \frac{N^2}{M} |v|^2 \div (\eta^2 j) + 2 \frac{N^2}{M} \partial_l (\log
   \eta^2) (\overline{S}_v)_{lk} j_k + 2 \frac{N^2}{M} \partial_l (\log \eta^2) \overline{R}_{lk} v_k \nonumber \\
-  &\hspace{\smallspace} - 2 \frac{N}{M} v \cdot \nabla (\log \eta^2) \left( \eta^2 |\nabla w|^2 + \frac{\eta^4}{\varepsilon^2} (1-|w|^2)^2 \right)
+  &\hspace{\smallspace} - \frac{N}{M} v \cdot \nabla (\log \eta^2) \left( \eta^2 |\nabla w|^2 + \frac{\eta^4}{\varepsilon^2} (1-|w|^2)^2 \right)
   \nonumber \\
   &= -2 \frac{N}{M} \div \tilde{\mathbb{T}}(w) \cdot v - 2 \frac{N^3}{M} \div \overline{S}_v \cdot \left(v - \frac{j}{N} \right) + 4 \frac{N^3}{M}
   \div \overline{S}_v \cdot v \nonumber \\
   &\hspace{\smallspace} - 4 \frac{N^2}{M} v \cdot j \div (\eta^2 v) - 2 \frac{N^2}{M} |v|^2 \div (\eta^2 j) + 2 \frac{N^2}{M} \partial_l (\log
   \eta^2) (\overline{S}_v)_{lk} j_k + 2 \frac{N^2}{M} \partial_l (\log \eta^2) \overline{R}_{lk} v_k \nonumber \\
-  &\hspace{\smallspace} + \frac{N}{M} v \cdot \nabla( \log \eta^2 ) \bigg( \eta^2 | \nabla w - i w N v |^2 + 2N \eta^2 v \cdot j - N^2 \eta^2 |v|^2
+  &\hspace{\smallspace} - \frac{N}{M} v \cdot \nabla( \log \eta^2 ) \bigg( \eta^2 | \nabla w - i w N v |^2 + 2N \eta^2 v \cdot j - N^2 \eta^2 |v|^2
   \nonumber \\
   &\hspace{\horizspace} \hspace{\horizspace} \hspace{\horizspace} + N^2 \eta^2 |v|^2 (1 - |w|^2) + \frac{\eta^4}{\varepsilon^2} ( 1 - |w|^2 )^2
-  \bigg)
-  \label{<++>}
-\end{align}<++>
-
+  \bigg) \nonumber
+\end{align}
 
 %\begin{align}
 %  -N \eta^2 v \cdot V &= -2 \frac{N}{M} \div \mathbb{T}(w) \cdot v + \frac{M}{N} v \cdot \nabla (\log \eta^2) \left( \eta^2 |\nabla w|^2 +
@@ -300,31 +298,29 @@ where we have used the modulation identity
   \label{eq:mod_identity}
 \end{equation}
 
-{\Large{\textbf{THIS IS WHERE I ENDED}}}
-
 These terms will be combined as follows
+
 \begin{align}
-  -N \eta^2 v \cdot V
-  &= -2 \frac{N}{M} \div \tilde{\mathbb{T}}(w) \cdot v - 2 \frac{N^3}{M} \div \overline{S}_v \cdot \left( v - \frac{j}{N} \right)
-  + \color{red}{ 4 \frac{N^3}{M}  \div \overline{S}_v \cdot v } \nonumber \\
-  &\hspace{\smallspace} - 4 \frac{N^2}{M} v \cdot j \div (\eta^2 v) - 2 \frac{N^2}{M} |v|^2 \div( \eta^2 j) + \color{blue} { 2 \frac{N^2}{M} \nabla ( \log
-  \eta^2) \overline{S}_v j } + \color{red} { 2 \frac{N^2}{M} \nabla ( \log \eta^2 ) \overline{R} v } \nonumber \\
-  &\hspace{\smallspace} + \frac{N}{M} v \cdot \nabla( \log \eta^2 ) \bigg( \eta^2 | \nabla w - i w N v |^2 + \color{blue} { 2N \eta^2 v \cdot j - N^2
+  - N \eta^2 v \cdot V &= -2 \frac{N}{M} \div \tilde{\mathbb{T}}(w) \cdot v - 2 \frac{N^3}{M} \div \overline{S}_v \cdot \left(v - \frac{j}{N} \right)
+  + { \color{red} 4 \frac{N^3}{M} \div \overline{S}_v \cdot v } \nonumber \\
+  &\hspace{\smallspace} - 4 \frac{N^2}{M} v \cdot j \div (\eta^2 v) - 2 \frac{N^2}{M} |v|^2 \div (\eta^2 j) + { \color{blue} 2 \frac{N^2}{M} \partial_l (\log
+  \eta^2) (\overline{S}_v)_{lk} j_k } + { \color{red} 2 \frac{N^2}{M} \partial_l (\log \eta^2) \overline{R}_{lk} v_k } \nonumber \\
+  &\hspace{\smallspace} - \frac{N}{M} v \cdot \nabla( \log \eta^2 ) \bigg( \eta^2 | \nabla w - i w N v |^2 + { \color{blue} 2N \eta^2 v \cdot j - N^2
   \eta^2 |v|^2 } \nonumber \\
   &\hspace{\horizspace} \hspace{\horizspace} \hspace{\horizspace} + N^2 \eta^2 |v|^2 (1 - |w|^2) + \frac{\eta^4}{\varepsilon^2} ( 1 - |w|^2 )^2
-  \bigg) \nonumber \\
-  \label{eq:v_dot_V_color}
+  \bigg)
+  \label{eq:colored_terms}
 \end{align}
 
 \section*{Red Terms}
 By \eqref{eq:v_dot_div_S}, we have
-\[ \div \overline{S}_v \cdot v = |v|^2 \div( \eta^2 v ) - \nabla ( \log \eta^2 ) \overline{S}_v v .\]
+\[ \div \overline{S}_v \cdot v = |v|^2 \div( \eta^2 v ) - \partial_l ( \log \eta^2 ) (\overline{S}_v)_{lk} v_k .\]
 
 Combining this with the definition of $\overline{R}$, we have
 \begin{align}
-  4 \frac{N^3}{M} \div \overline{S}_v \cdot v + 2 \frac{N^2}{M} \nabla (\log \eta^2) \overline{R} v &= 4 |v|^2 \div(\eta^2 v) + 2 \nabla
-  (\log \eta^2) \left( \frac{1}{N} \overline{R} v - 2 \overline{S}_v v \right) \nonumber \\
-  &= 4 |v|^2 \div ( \eta^2 v ) - 2 \nabla ( \log \eta^2 ) H v
+  4 \frac{N^3}{M} \div \overline{S}_v \cdot v + 2 \frac{N^2}{M} \partial_l (\log \eta^2) \overline{R}_{lk} v_k &= 4 \frac{N^3}{M} |v|^2 \div(\eta^2 v) + 2
+  \frac{N^3}{M} \partial_l (\log \eta^2) \left( \frac{1}{N} \overline{R}_{lk} v_k - 2 (\overline{S}_v)_{lk} v_k \right) \nonumber \\
+  &= 4 \frac{N^3}{M} |v|^2 \div ( \eta^2 v ) - 2 \frac{N^3}{M} \partial_l ( \log \eta^2 ) H_{lk} v_k
   \label{eq:red_terms}
 \end{align}
 where
@@ -338,7 +334,7 @@ where
 
 We expand terms to get
 \begin{equation}
-  2 N \nabla ( \log \eta^2 ) \overline{S}_v j = \frac{2N}{\eta^2} \partial_l ( \log \eta^2 ) \left( \eta^4 v_k j_k v_l - \frac{1}{2} \eta^4 v_k v_k j_l
+  2 N \partial_l ( \log \eta^2 ) (\overline{S}_v)_{lk} j_k = \frac{2N}{\eta^2} \partial_l ( \log \eta^2 ) \left( \eta^4 v_k j_k v_l - \frac{1}{2} \eta^4 v_k v_k j_l
   \right)
   \label{eq:S_v_j}
 \end{equation}
@@ -351,20 +347,26 @@ and
 
 Combining these, we get
 \begin{align}
-  & 2 \frac{N^2}{M} \nabla( \log \eta^2 ) \overline{S}_v j + \frac{N}{M} v \cdot \nabla ( \log \eta^2 ) \left( 2 N \eta^2 v \cdot j - N^2 \eta^2 |v|^2
+  & 2 \frac{N^2}{M} \nabla( \log \eta^2 ) \overline{S}_v j - \frac{N}{M} v \cdot \nabla ( \log \eta^2 ) \left( 2 N \eta^2 v \cdot j - N^2 \eta^2 |v|^2
   \right) \nonumber \\
-  &\hspace{\smallspace} = \frac{N^2}{M} \eta^2 \partial_l ( \log \eta^2 ) \left( 4 v_l v_k \frac{j_k}{N} - v_k v_k \frac{j_l}{N} - v_k v_k v_l \right)
+  &\hspace{\smallspace} = \frac{N^2}{M} \eta^2 \partial_l ( \log \eta^2 ) \left( 2 v_k \frac{j_k}{N} v_l - v_k v_k \frac{j_l}{N} - 2 v_k \frac{j_k}{N} v_l + v_k v_k v_l \right)
   \nonumber \\
-  &\hspace{\smallspace} = \frac{N^2}{M} \eta^2 \partial_l ( \log \eta^2 ) \left( 4 v_l v_k \frac{j_k}{N} - v_k v_k \left( v_l - \frac{j_l}{N} \right)
-  - 2 v_k v_k \frac{j_l}{N} \right) \nonumber \\
-  &\hspace{\smallspace} = \frac{N^2}{M} \eta^2 \nabla (\log \eta^2) \left( 4 \left( v \cdot \frac{j}{N} \right)v - |v|^2 \left( v -
-  \frac{j}{N} \right) - 2 |v|^2 \frac{j}{N} \right)
+  &\hspace{\smallspace} = \frac{N^2}{M} \eta^2 \partial_l ( \log \eta^2 ) v_k v_k \left( v_l - \frac{j_l}{N} \right) \nonumber \\
+  &\hspace{\smallspace} = \frac{N^2}{M} \eta^2 |v|^2 \nabla (\log \eta^2) \cdot \left( v - \frac{j}{N} \right)
   \label{eq:blue_terms}
 \end{align}
 
-These terms didn't combine like I had hoped (they combine much nicer if the blue terms have opposite signs). I have tried looking at the red and blue terms all at once, and the number of terms involving only $v$
-and the number of terms involving a combination of $v$ and $j$ are not the same. So we may not be able to combine all of the $\nabla (\log \eta^2)$ in
-a way that gives only terms involving $v - \frac{j}{N}$ (unless there is a missing negative somewhere in my work).
+\section*{Combining Terms}
+Substituting \eqref{eq:red_terms} and \eqref{eq:blue_terms} back into \eqref{eq:colored_terms} gives
+\begin{align}
+  -N \eta^2 v \cdot v &= -2 \frac{N}{M} \div \tilde{\mathbb{T}}(w) \cdot v - 2 \frac{N^3}{M} \div \overline{S}_v \cdot \left(v - \frac{j}{N} \right)
+  + \frac{N^2}{M} \eta^2 |v|^2 \nabla (\log \eta^2) \cdot \left( v - \frac{j}{N} \right) \nonumber \\
+  &\hspace{\smallspace} - 4 \frac{N^2}{M} v \cdot j \div (\eta^2 v) - 2 \frac{N^2}{M} |v|^2 \div (\eta^2 j) + 4 \frac{N^3}{M} |v|^2 \div (\eta^2 v) -
+  2 \frac{N^3}{M} \partial_l (\log \eta^2) H_{lk} v_k \nonumber \\
+  &\hspace{\smallspace} - \frac{N}{M} v \cdot \nabla( \log \eta^2 ) \bigg( \eta^2 | \nabla w - i w N v |^2 + N^2 \eta^2 |v|^2 (1 - |w|^2) + \frac{\eta^4}{\varepsilon^2} ( 1 - |w|^2 )^2
+  \bigg)
+  \label{V_dot_v}
+\end{align}
 
 \section{Modulated Energy}
 
