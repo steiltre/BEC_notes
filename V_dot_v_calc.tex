@@ -66,7 +66,7 @@ The quantity we need to understand is $-N \eta^2 V \cdot v$ where
 We define the stress-energy tensor as
 \begin{equation}
   \mathbb{T}(w)_{kl} = \eta^2 (\partial_k w, \partial_l w) - \frac{1}{2} \delta_{kl} \left( \eta^2 | \nabla w |^2 + \frac{\eta^4}{2 \varepsilon^2}
-  (1-|w|^w)^w \right)
+  (1-|w|^2)^2 \right)
   \label{def:T}
 \end{equation}
 
@@ -99,7 +99,7 @@ First,
 
 Next,
 \begin{align}
-  \frac{\eta^4}{\varepsilon^2} (1-|w|^w) (\partial_l w, w) &= \frac{\eta^4}{2 \varepsilon^2 } (1 - |w|^w) \partial_l ( |\nabla w|^2 ) \nonumber \\
+  \frac{\eta^4}{\varepsilon^2} (1-|w|^2) (\partial_l w, w) &= \frac{\eta^4}{2 \varepsilon^2 } (1 - |w|^2) \partial_l ( |\nabla w|^2 ) \nonumber \\
   &= - \frac{\eta^4}{4 \varepsilon^2} \partial_l \left( (1-|w|^2)^2 \right) \nonumber \\
   &= - \partial_l \left( \frac{\eta^4}{4 \varepsilon^2} (1-|w|^2)^2 \right) + \partial_l (\eta^4) \frac{1}{4 \varepsilon^2} (1-|w|^2)^2 \nonumber \\
   &= { \color{blue} - \partial_l \left( \frac{\eta^4}{4 \varepsilon^2} (1-|w|^2)^2 \right) } + \partial_l (\eta^2) \frac{\eta^2}{2 \varepsilon^2}
@@ -115,7 +115,7 @@ Combining the blue terms above gives $[\div \mathbb{T}]_l$. Using this and $\par
   \nonumber \\
   &\hspace{5cm} + N^2 \eta^2 |v|^2 (1-|w|^2) + \frac{\eta^4}{\varepsilon^2} (1-|w|^2)^2 \bigg) \nonumber \\
   &= [ \div \mathbb{T}(w) ]_l + \frac{1}{2} \partial_l (\log \eta^2) \bigg( \eta^2 |\nabla w - i w N v|^2 - 2N^2 \eta^2 v \cdot \left( v -
-  \frac{j}{N} \right) - N^2 \eta^2 |v|^2 \nonumber \\
+  \frac{j}{N} \right) + N^2 \eta^2 |v|^2 \nonumber \\
   &\hspace{5cm} + N^2 \eta^2 |v|^2 (1-|w|^2) + \frac{\eta^4}{\varepsilon^2} (1-|w|^2)^2 \bigg)
   \label{eq:V_l-final}
 \end{align}
