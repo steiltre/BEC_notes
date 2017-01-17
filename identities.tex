@@ -1,0 +1,108 @@
+%        File: identities.tex
+%     Created: Mon Jan 16 03:00 PM 2017 C
+% Last Change: Mon Jan 16 03:00 PM 2017 C
+%
+
+\documentclass[a4paper]{article}
+
+\title{BEC Useful Identities}
+\date{\today}
+\author{Trevor Steil}
+
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{esint}
+\usepackage{enumitem}
+\usepackage{algorithm}
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
+\usepackage{bbm}
+\usepackage{xcolor}
+\usepackage{cancel}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem*{claim}{Claim}
+\newtheorem*{problem}{Problem}
+%\newtheorem*{lemma}{Lemma}
+\newtheorem{definition}{Definition}[section]
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\supp}[1]{\mathop{\mathrm{supp}}\left(#1\right)}
+\newcommand{\lip}[1]{\mathop{\mathrm{Lip}}\left(#1\right)}
+\newcommand{\curl}{\mathrm{curl}}
+\newcommand{\la}{\left \langle}
+\newcommand{\ra}{\right \rangle}
+\renewcommand{\vec}[1]{\mathbf{#1}}
+\renewcommand{\div}{\mathrm{div}}
+
+\newenvironment{solution}[1][]{\emph{Solution #1}}
+
+\algnewcommand{\Or}{\textbf{ or }}
+\algnewcommand{\And}{\textbf{ or }}
+
+\newlength{\smallspace}
+
+\begin{document}
+\maketitle
+
+\setlength{\smallspace}{.7cm}
+
+\section{Summary}
+
+\section{Details}
+
+For general $v$, let
+\begin{equation*}
+  \overline{S}_v = \frac{1}{\eta^2} \left( \eta^2 v \otimes \eta^2 v - \frac{1}{2} |\eta^2 v|^2 I \right)
+\end{equation*}
+
+Taking the divergence, we have
+\begin{align}
+  [\div \overline{S}_v]_l &= \frac{1}{\eta^2} \partial_k (\eta^2 v_k \eta^2 v_l) + \eta^4 \partial_k (\eta^{-2}) v_k v_l - \frac{1}{2 \eta^2}
+  \partial_l (\eta^2 v_k \eta^2 v_k) - \frac{1}{2} \eta^4 \partial_l (\eta^{-2}) v_k v_k \nonumber \\
+  &= v_k \partial_k (\eta^2 v_l) + v_l \partial_k (\eta^2 v_k) - \eta^2 \partial_k (\log \eta^2)  v_k v_l \nonumber \\
+  &\hspace{\smallspace} - v_k \partial_l (\eta^2 v_k) + \frac{1}{2} \eta^2 \partial_l (\log \eta^2) v_k v_k
+  \label{eq:div_S}
+\end{align}
+
+\begin{claim}
+  \[ \div \overline{S}_v \cdot v = |v|^2 \div (\eta^2 v) - \frac{\eta^2}{2} |v|^2 v \cdot \nabla (\log \eta^2) \]
+\end{claim}
+
+\begin{proof}
+  Using \eqref{eq:div_S}, we have
+  \begin{align*}
+    \div \overline{S}_v \cdot v &= \cancel{ v_k v_l \partial_k (\eta^2 v_l) } + v_l v_l \partial_k (\eta^2 v_k) - \eta^2 \partial_k (\log \eta^2) v_k v_l v_l
+    \nonumber \\
+    &\hspace{\smallspace} - \cancel{ v_k v_l \partial_l (\eta^2 v_k) } + \frac{\eta^2}{2} \partial_l (\log \eta^2) v_k v_k v_l \nonumber \\
+    &= v_l v_l \partial_k (\eta^2 v_k) - \frac{\eta^2}{2} \partial_l (\log \eta^2) v_k v_k v_l \nonumber \\
+    &= |v|^2 \div (\eta^2 v) - \frac{\eta^2}{2} |v|^2 v \cdot \nabla (\log \eta^2)
+  \end{align*}
+\end{proof}
+
+\begin{claim}
+  For general $v$ and $j$,
+  \[ \div \overline{S}_v \cdot j = \]
+\end{claim}
+
+\begin{proof}
+  Using \eqref{eq:div_S}, we have
+  \begin{align*}
+    \div \overline{S}_v \cdot j &= v_k j_l \partial_k (\eta^2 v_l) + v_l j_l \partial_k (\eta^2 v_k) - \eta^2 \partial_k (\log \eta^2) v_k v_l j_l
+    \nonumber \\
+    &\hspace{\smallspace} - v_k j_l \partial_l (\eta^2 v_k) + \frac{1}{2} \eta^2 \partial_l (\log \eta^2) v_k v_k j_l \nonumber \\
+    &=
+  \end{align*}<++>
+\end{proof}
+\end{document}
+
+
