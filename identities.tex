@@ -91,7 +91,8 @@ Taking the divergence, we have
 
 \begin{claim}
   For general $v$ and $j$,
-  \[ \div \overline{S}_v \cdot j = \]
+  \[ \div \overline{S}_v \cdot j = v_k j_l \partial_k (\eta^2 v_l) + v_l j_l \partial_k (\eta^2 v_k) - v_k j_l \partial_l (\eta^2 v_k) + \eta^2
+  \partial_l (\log \eta^2) \left( \frac{1}{2} v_k v_k j_l - v_k v_l j_k \right) \]
 \end{claim}
 
 \begin{proof}
@@ -100,7 +101,8 @@ Taking the divergence, we have
     \div \overline{S}_v \cdot j &= v_k j_l \partial_k (\eta^2 v_l) + v_l j_l \partial_k (\eta^2 v_k) - \eta^2 \partial_k (\log \eta^2) v_k v_l j_l
     \nonumber \\
     &\hspace{\smallspace} - v_k j_l \partial_l (\eta^2 v_k) + \frac{1}{2} \eta^2 \partial_l (\log \eta^2) v_k v_k j_l \nonumber \\
-    &=
+    &= v_k j_l \partial_k (\eta^2 v_l) + v_l j_l \partial_k (\eta^2 v_k) - v_k j_l \partial_l (\eta^2 v_k) \nonumber \\
+    &\hspace{\smallspace} + \eta^2 \partial_l (\log \eta^2) \left( \frac{1}{2} v_k v_k j_l - v_k v_l j_k \right) \nonumber \\
   \end{align*}<++>
 \end{proof}
 \end{document}

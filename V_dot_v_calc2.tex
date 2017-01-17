@@ -180,11 +180,11 @@ Now we take the dot product with $v$ to get
   &\hspace{\smallspace} - N^2 \eta^2 \partial_k (\log \eta^2) \left( v_k v_l \frac{j_l}{N} + v_l v_l \frac{j_k}{N} - v_k v_l v_l \right) - N^2 \eta^2
   \partial_l (\log \eta^2) \left( -v_k v_l \frac{j_k}{N} + \frac{1}{2} v_k v_k v_l \right) \nonumber \\
   &= \div \tilde{\mathbb{T}}(w) \cdot v + N j_l v_l \partial_k (\eta^2 v_k) + N v_l v_l \partial_k (\eta^2 j_k) \nonumber \\
-  &\hspace{\smallspace}+ N j_k v_l \partial_k (\eta^2 v_l) - N^2 v_l v_l \partial_k (\eta^2 v_k) - N j_k v_k \partial_l (\eta^2 v_k) \nonumber \\
+  &\hspace{\smallspace}+ N j_k v_l \partial_k (\eta^2 v_l) - N^2 v_l v_l \partial_k (\eta^2 v_k) - N j_k v_l \partial_l (\eta^2 v_k) \nonumber \\
   &\hspace{\smallspace} - N^2 \eta^2 \partial_l (\log \eta^2) \left( \cancel{ v_l v_k \frac{j_k}{N} } + v_k v_k \frac{j_l}{N} - v_l v_k v_k - \cancel{ v_k v_l
   \frac{j_k}{N} } + \frac{1}{2} v_k v_k v_l \right) \nonumber \\
   &= \div \tilde{\mathbb{T}}(w) \cdot v + N j_l v_l \partial_k (\eta^2 v_k) + N v_l v_l \partial_k (\eta^2 j_k) \nonumber \\
-  &\hspace{\smallspace}+ N j_k v_l \partial_k (\eta^2 v_l) - N^2 v_l v_l \partial_k (\eta^2 v_k) - N j_k v_k \partial_l (\eta^2 v_k) \nonumber \\
+  &\hspace{\smallspace}+ N j_k v_l \partial_k (\eta^2 v_l) - N^2 v_l v_l \partial_k (\eta^2 v_k) - N j_k v_l \partial_l (\eta^2 v_k) \nonumber \\
   &\hspace{\smallspace} + N^2 \eta^2 \partial_l (\log \eta^2) \left( - v_k v_k \frac{j_l}{N} + \frac{1}{2} v_k v_k v_l \right)
   \label{eq:div_stress-energy_dot_v}
 \end{align}
@@ -196,19 +196,41 @@ Substituting \eqref{eq:div_stress-energy_dot_v} into \eqref{eq:V_l-final} after 
   &\hspace{\smallspace} + \frac{1}{2} v_l \partial_l (\log \eta^2) \left( \eta^2 |\nabla w - i w N v|^2 + N^2 \eta^2 |v|^2 (1-|w|^2) +
   \frac{\eta^4}{\varepsilon^2} (1-|w|^2)^2 \right) \nonumber \\
   &= \div \tilde{\mathbb{T}}(w) \cdot v + N j_l v_l \partial_k (\eta^2 v_k) + N v_l v_l \partial_k (\eta^2 j_k) \nonumber \\
-  &\hspace{\smallspace}+ N j_k v_l \partial_k (\eta^2 v_l) - N^2 v_l v_l \partial_k (\eta^2 v_k) - N j_k v_k \partial_l (\eta^2 v_k) \nonumber \\
+  &\hspace{\smallspace}+ N j_k v_l \partial_k (\eta^2 v_l) - N^2 v_l v_l \partial_k (\eta^2 v_k) - N j_k v_l \partial_l (\eta^2 v_k) \nonumber \\
   &\hspace{\smallspace} + N^2 \eta^2 \partial_l (\log \eta^2) \left( - v_k v_k \frac{j_l}{N} + \frac{1}{2} v_k v_k v_l \right) \nonumber \\
   &\hspace{\smallspace} + N^2 \eta^2 \partial_l (\log \eta^2) \left( v_k v_l \frac{j_k}{N} - \frac{1}{2} v_k v_k v_l \right) \nonumber \\
   &\hspace{\smallspace} + \frac{1}{2} v_l \partial_l (\log \eta^2) \left( \eta^2 |\nabla w - i w N v|^2 + N^2 \eta^2 |v|^2 (1-|w|^2) +
   \frac{\eta^4}{\varepsilon^2} (1-|w|^2)^2 \right) \nonumber \\
   &= \div \tilde{\mathbb{T}}(w) \cdot v + N j_l v_l \partial_k (\eta^2 v_k) + N v_l v_l \partial_k (\eta^2 j_k) \nonumber \\
-  &\hspace{\smallspace}+ N j_k v_l \partial_k (\eta^2 v_l) - N^2 v_l v_l \partial_k (\eta^2 v_k) - N j_k v_k \partial_l (\eta^2 v_k) \nonumber \\
+  &\hspace{\smallspace}+ N j_k v_l \partial_k (\eta^2 v_l) - N^2 v_l v_l \partial_k (\eta^2 v_k) - N j_k v_l \partial_l (\eta^2 v_k) \nonumber \\
   &\hspace{\smallspace} + N^2 \eta^2 \partial_l (\log \eta^2) \left( v_k v_l \frac{j_k}{N} - v_k v_k \frac{j_l}{N} \right) \nonumber \\
   &\hspace{\smallspace} + \frac{1}{2} v_l \partial_l (\log \eta^2) \left( \eta^2 |\nabla w - i w N v|^2 + N^2 \eta^2 |v|^2 (1-|w|^2) +
   \frac{\eta^4}{\varepsilon^2} (1-|w|^2)^2 \right)
   \label{eq:V_dot_v}
+\end{align}
+
+By using the identities given in BEC Useful Identities, we are able to group terms and simplify as
+\begin{align}
+  \frac{1}{2} M \eta^2 V \cdot v &= \div \tilde{\mathbb{T}}(w) \cdot v { \color{red} + N j_l v_l \partial_k (\eta^2 v_k) } + N v_l v_l \partial_k
+  (\eta^2 j_k) \nonumber \\
+  &\hspace{\smallspace} { \color{red} + N j_k v_l \partial_k (\eta^2 v_l) } { \color{blue} - N^2 v_l v_l \partial_k (\eta^2 v_k) } { \color{red} - N j_k
+  v_l \partial_l (\eta^2 v_k) } \nonumber \\
+  &\hspace{\smallspace} { \color{red} + N \eta^2 \partial_l (\log \eta^2) \left( v_k v_l j_k - v_k v_k j_l \right) } \nonumber \\
+  &\hspace{\smallspace} + \frac{1}{2} v_l \partial_l (\log \eta^2) \left( \eta^2 |\nabla w - i w N v|^2 + N^2 \eta^2 |v|^2 (1-|w|^2) +
+  \frac{\eta^4}{\varepsilon^2} (1 - |w|^2)^2 \right) \nonumber \\
+  &= \div \tilde{\mathbb{T}}(w) \cdot v { \color{blue} + N^2 \div \overline{S}_v \cdot v - 2 N^2 |v|^2 \div (\eta^2 v) + N^2 \frac{\eta^2}{2}
+  \partial_l (\log \eta^2) v_k v_k v_l } \nonumber \\
+  &\hspace{\smallspace} { \color{red} - N \div \overline{S}_v \cdot j + 2 N v_l j_l \partial_k (\eta^2 v_k) - N \frac{\eta^2}{2} \partial_l (\log
+  \eta^2) v_k v_k j_l } \nonumber \\
+  &\hspace{\smallspace} + N v_l v_l \partial_k (\eta^2 j_k) \nonumber \\
+  &\hspace{\smallspace} + \frac{1}{2} v_l \partial_l (\log \eta^2) \left( \eta^2 |\nabla w - i w N v|^2 + N^2 \eta^2 |v|^2 (1-|w|^2) +
+  \frac{\eta^4}{\varepsilon^2} (1-|w|^2)^2 \right) \nonumber \\
+  &= \div \tilde{\mathbb{T}}(w) \cdot v + N^2 \div \overline{S}_v \cdot \left( v - \frac{j}{N} \right) - 2 N^2 |v|^2 \div (\eta^2 v) + 2 N v \cdot j
+  \div (\eta^2 v) + N |v|^2 \div (\eta^2 j) \nonumber \\
+  &\hspace{\smallspace} + N^2 \frac{\eta^2}{2} |v|^2 \nabla (\log \eta^2) \cdot \left( v - \frac{j}{N} \right) \nonumber \\
+  &\hspace{\smallspace} + \frac{1}{2} v_l \partial_l (\log \eta^2) \left( \eta^2 |\nabla w - i w N v|^2 + N^2 \eta^2 |v|^2 (1-|w|^2) +
+  \frac{\eta^4}{\varepsilon^2} (1-|w|^2)^2 \right)
+  \label{<++>}
 \end{align}<++>
 
 \end{document}
-
-
