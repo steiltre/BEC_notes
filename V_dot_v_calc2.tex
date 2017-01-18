@@ -61,7 +61,7 @@
 
 We have the equation
 \begin{equation}
-  i M \partial_t w = \div (\eta^2 \nabla w) + \frac{\eta^4}{\varepsilon^2} (1-|w|^2)^2 w
+  i \eta^2 M \partial_t w = \div (\eta^2 \nabla w) + \frac{\eta^4}{\varepsilon^2} (1-|w|^2)^2 w
   \label{eq:PDE}
 \end{equation}
 
@@ -97,9 +97,9 @@ We will look at each of these terms and try to express them in terms of $\div \m
 
 First,
 \begin{align}
-  ( \partial_l w, \partial_k ( \eta^2 \partial_k w ) ) &= \partial_k ( \partial_l w, \eta^2 \partial_k 2) - \eta^2 ( \partial_l \partial_k w,
+  ( \partial_l w, \partial_k ( \eta^2 \partial_k w ) ) &= \partial_k ( \partial_l w, \eta^2 \partial_k w) - \eta^2 ( \partial_l \partial_k w,
   \partial_k w ) \nonumber \\
-  &= \partial_k ( \partial_l w, \eta2 \partial_k w) - \frac{1}{2} \eta^2 \partial_l ( | \nabla w |^2 ) \nonumber \\
+  &= \partial_k ( \partial_l w, \eta^2 \partial_k w) - \frac{1}{2} \eta^2 \partial_l ( | \nabla w |^2 ) \nonumber \\
   &= { \color{blue} \partial_k ( \partial_l w, \eta^2 \partial_k w) - \frac{1}{2} \partial_l ( \eta^2 |\nabla w|^2 ) } + \frac{1}{2} \partial_l
   (\eta^2) | \nabla w |^2
   \label{eq:V_l_term1}
@@ -117,7 +117,7 @@ Next,
 
 Combining the blue terms above gives $[\div \mathbb{T}]_l$. Using this and $\partial_l (\eta^2) = \eta^2 \partial_l (\log \eta^2)$, we have
 \begin{align}
-  \frac{1}{2} M \eta^2 V_l &= [ \div \mathbb{T}(w) ]_l + \frac{1}{2} \partial(\log \eta^2) \left( \eta^2 |\nabla w|^2 + \frac{\eta^4}{\varepsilon^2}
+  \frac{1}{2} M \eta^2 V_l &= [ \div \mathbb{T}(w) ]_l + \frac{1}{2} \partial_l (\log \eta^2) \left( \eta^2 |\nabla w|^2 + \frac{\eta^4}{\varepsilon^2}
   (1-|w|^2)^2 \right) \nonumber \\
   &= [ \div \mathbb{T}(w) ]_l + \frac{1}{2} \partial_l (\log \eta^2) \bigg( \eta^2 | \nabla w - i w N v |^2 + 2 N \eta^2 v \cdot j - N^2 \eta^2 |v|^2
   \nonumber \\
@@ -150,19 +150,19 @@ We want to express the modulated stress-energy tensor in terms of the unmodulate
 
 Taking the divergence gives
 \begin{align}
-  [ \div \mathbb{T} (w) ]_l &= [ \tilde{\mathbb{T}}(w) ]_l + N \partial_k ( \eta^2 v_k j_l ) + N \partial_k (\eta^2 v_l j_k) \nonumber \\
+  [ \div \mathbb{T} (w) ]_l &= \div [ \tilde{\mathbb{T}}(w) ]_l + N \partial_k ( \eta^2 v_k j_l ) + N \partial_k (\eta^2 v_l j_k) \nonumber \\
   &\hspace{\smallspace} - N^2 \partial_k (\eta^2 v_k v_l) - N \partial_l (\eta^2 v_k j_k) + \frac{1}{2} N^2 \partial_l (\eta^2 v_k v_k) \nonumber \\
-  &= [ \tilde{\mathbb{T}}(w) ]_l + N \partial_k \left( \frac{\eta^2 v_k \eta^2 j_l}{\eta^2} \right) + N \partial_k \left( \frac{\eta^2 v_l \eta^2
+  &= \div [ \tilde{\mathbb{T}}(w) ]_l + N \partial_k \left( \frac{\eta^2 v_k \eta^2 j_l}{\eta^2} \right) + N \partial_k \left( \frac{\eta^2 v_l \eta^2
   j_k}{\eta^2} \right) \nonumber \\
   &\hspace{\smallspace} - N^2 \partial_k \left( \frac{\eta^2 v_k \eta^2 v_l}{\eta^2} \right) - N \partial_l \left( \frac{\eta^2 v_k \eta^2
   j_k}{\eta^2} \right) + \frac{1}{2} N^2 \partial_l \left( \frac{\eta^2 v_k \eta^2 v_k}{\eta^2} \right) \nonumber \\
-  &= [\tilde{\mathbb{T}}(w)]_l + N v_k \partial_k (\eta^2 j_l) + N j_l \partial_k (\eta^2 v_k) + N v_l \partial_k (\eta^2 j_k) + N j_k \partial_k
+  &= \div [\tilde{\mathbb{T}}(w)]_l + N v_k \partial_k (\eta^2 j_l) + N j_l \partial_k (\eta^2 v_k) + N v_l \partial_k (\eta^2 j_k) + N j_k \partial_k
   (\eta^2 v_l) \nonumber \\
   &\hspace{\smallspace} - N^2 v_k \partial_k (\eta^2 v_l) - N^2 v_l \partial_k (\eta^2 v_k) - N v_k \partial_l (\eta^2 j_k) - N j_k \partial_l (\eta^2
   v_k) + N^2 v_k \partial_l (\eta^2 v_k) \nonumber \\
   &\hspace{\smallspace} + N^2 \eta^4 \partial_k (\eta^{-2} ) \left( v_k \frac{j_l}{N} + v_l \frac{j_k}{N} - v_k v_l \right) + N^2 \eta^4 \partial_l
   (\eta^{-2}) \left( -v_k \frac{j_k}{N} + \frac{1}{2} v_k v_k \right) \nonumber \\
-  &= [\tilde{\mathbb{T}}(w)]_l + N v_k \partial_k (\eta^2 j_l) + N j_l \partial_k (\eta^2 v_k) + N v_l \partial_k (\eta^2 j_k) + N j_k \partial_k
+  &= \div [\tilde{\mathbb{T}}(w)]_l + N v_k \partial_k (\eta^2 j_l) + N j_l \partial_k (\eta^2 v_k) + N v_l \partial_k (\eta^2 j_k) + N j_k \partial_k
   (\eta^2 v_l) \nonumber \\
   &\hspace{\smallspace} - N^2 v_k \partial_k (\eta^2 v_l) - N^2 v_l \partial_k (\eta^2 v_k) - N v_k \partial_l (\eta^2 j_k) - N j_k \partial_l (\eta^2
   v_k) + N^2 v_k \partial_l (\eta^2 v_k) \nonumber \\
