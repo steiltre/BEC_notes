@@ -1,0 +1,174 @@
+%        File: partial_t_E.tex
+%     Created: Sun Jan 22 05:00 PM 2017 C
+% Last Change: Sun Jan 22 05:00 PM 2017 C
+%
+
+\documentclass[a4paper]{article}
+
+\title{$\partial_t E$ }
+\date{\today}
+\author{Trevor Steil}
+
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{esint}
+\usepackage{enumitem}
+\usepackage{algorithm}
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
+\usepackage{bbm}
+\usepackage{xcolor}
+\usepackage{cancel}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem*{claim}{Claim}
+\newtheorem*{problem}{Problem}
+%\newtheorem*{lemma}{Lemma}
+\newtheorem{definition}{Definition}[section]
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\supp}[1]{\mathop{\mathrm{supp}}\left(#1\right)}
+\newcommand{\lip}[1]{\mathop{\mathrm{Lip}}\left(#1\right)}
+\newcommand{\curl}{\mathrm{curl}}
+\newcommand{\la}{\left \langle}
+\newcommand{\ra}{\right \rangle}
+\renewcommand{\vec}[1]{\mathbf{#1}}
+\renewcommand{\div}{\mathrm{div}}
+
+\newenvironment{solution}[1][]{\emph{Solution #1}}
+
+\algnewcommand{\Or}{\textbf{ or }}
+\algnewcommand{\And}{\textbf{ or }}
+
+\newlength{\horizspace}
+\newlength{\smallspace}
+
+\begin{document}
+\maketitle
+
+% Initialize variables to hold length for horizontal spacing of expressions spanning multiple lines
+\setlength{\horizspace}{1.5cm}
+\setlength{\smallspace}{.7cm}
+
+
+\section{Setup}
+Consider
+\begin{equation} \label{eq:GP}
+  i \partial_t u = \Delta u + \frac{1}{\varepsilon^2} u (p^2 - |u|^2).
+\end{equation}
+This leads to the Thomas-Fermi profile $\eta$ satisfying
+\begin{equation} \label{eq:Thomas-Fermi}
+  0 = \Delta \eta + \frac{1}{\varepsilon^2} \eta (p^2 - \eta^2).
+\end{equation}
+
+We can express solutions to \eqref{eq:GP} as $u = \eta w$ where $w$ satisfies
+\begin{equation} \label{eq:PDE}
+  i \eta^2 \partial_t w = \div ( \eta^2 \nabla w ) + \frac{\eta^4}{\varepsilon^2} ( 1 - |w|^2 ) w.
+\end{equation}
+
+To get nontrivial limiting equations, we must rescale this equation to give
+\begin{equation}
+  i M \eta^2 \partial_t w = \div ( \eta^2 \nabla w ) + \frac{\eta^4}{\varepsilon^2}(1 - |w|^2)w
+  \label{eq:rescaled_PDE}
+\end{equation}
+where we expect $M = N$, that is, we are rescaling by the number of vortices.
+
+\section{Defining Modulated Energy}
+
+We begin by defining the modulated energy
+\begin{equation}
+  E(w) = \int_{}^{} \chi ( \frac{1}{2} \eta^2 | \nabla w - i w N v|^2 + \frac{\eta^4}{4 \varepsilon^2} (1 - |w|^2)^2 + f )
+  \label{eq:modulated_energy1}
+\end{equation}
+where $f$ is some function to be determined later.
+
+We can write
+\begin{align*}
+  | \nabla w - i w N v |^2 &= |\nabla w|^2 - 2 N v \cdot ( \nabla w, iw ) + N^2 |v|^2 - N^2 |v|^2 (1-|w|^2) \\
+  &= | \nabla w |^2 - 2N v \cdot j + N^2 |v|^2 - N^2 |v|^2 ( 1 -|w|^2 )
+\end{align*}
+
+We are interested in $\partial_t E$, so we will calculate derivatives of terms in $E$.
+First,
+\begin{align*}
+  \partial_t j &= \partial_t ( \nabla w, iw ) \\
+  &= ( \nabla \partial_t w, iw ) + ( \nabla w, i \partial_t w) \\
+  &= \nabla ( \partial_t w, iw ) - ( \partial_t w, i \nabla w ) + ( \nabla w, i \partial_t w ) \\
+  &= \nabla ( \partial_t w, iw ) + 2( i \partial_t w, \nabla w ) \\
+  &= \nabla q + V
+\end{align*}
+where $q = (\partial_t w, iw )$ and $V = 2 (i \partial_t w, \nabla w)$.
+
+Next, we have
+\begin{align*}
+  \partial_t \left( \frac{1}{2} \eta^2 |\nabla w|^2 + \frac{\eta^4}{4\varepsilon^2} ( 1 - |w|^2)^2 \right)
+  &= \eta^2 ( \nabla w, \nabla \partial_t w ) + \frac{\eta^4}{\varepsilon^2} ( 1 - |w|^2 )(\partial_t w, w) \\
+  &= \div \left[ \eta^2 ( \nabla w, \partial_t w) \right] - ( \div(\eta^2 \nabla w), \partial_t w) - \frac{\eta^4}{\varepsilon^2} ( \partial_t w,
+  (1-|w|^2)w) \\
+  &= \div \left[ \eta^2 ( \nabla w, \partial_t w) \right] - ( \partial_t w, i M \eta^2 \partial_t w ) \\
+  &= \div \left[ \eta^2 ( \nabla w, \partial_t w) \right]
+\end{align*}
+
+Combining the above calculations, we get
+\begin{align}
+  \partial_t E(w) &= \int_{}^{} \chi \bigg( \div \left[ \eta^2 ( \nabla w, \partial_t w) \right] - N \eta^2 j \cdot \partial_t v - N \eta^2 v \cdot ( \nabla q + V ) + N^2 \eta^2 v \cdot \partial_t v
+  \nonumber \\
+  &\hspace{\horizspace} - \frac{1}{2} N^2 \partial_t ( \eta^2 |v|^2 ( 1 - |w|^2 ) ) + \partial_t
+  f \bigg) \nonumber \\
+  &= \int_{}^{} \chi \bigg( \div \left[ \eta^2 ( \partial_t w, \nabla w - i w N v) \right] + \div \left[ \eta^2 ( \partial_t w, i w N v ) \right]
+  \nonumber \\
+  &\hspace{\horizspace} - N \eta^2 j \cdot \partial_t v - N \eta^2 v \cdot ( \nabla q + V ) + N^2 \eta^2 v \cdot \partial_t v \nonumber \\
+  &\hspace{\horizspace} - \frac{1}{2} N^2 \partial_t \left( \eta^2 |v|^2 ( 1 - |w|^2 ) \right) + \partial_t f \bigg) \quad
+  \parbox{4cm}{\textbf{modulate}} \nonumber \\
+  &= \int_{}^{} - \nabla \chi \cdot \eta^2 ( \partial_t w, \nabla w - i w N v ) \nonumber \\
+  &\quad + \int_{}^{} \chi \bigg( \div \left[ \eta^2 ( \partial_t w, i w N v) \right] - N \eta^2 j \cdot \partial_t v - \eta^2 N v \cdot ( \nabla q + V
+  ) \nonumber \\
+  &\hspace{\horizspace} + N^2 \eta^2 v \cdot \partial_t v - \frac{1}{2} N^2 \partial_t ( \eta^2 |v|^2 (1-|w|^2)) + \partial_t f \bigg) \quad
+  \parbox{5cm}{\textbf{integrate by parts}} \nonumber \\
+  &= \int_{}^{} - \nabla \chi \cdot \eta^2 ( \partial_t w, \nabla w - i w N v ) \nonumber \\
+  &\quad + \int_{}^{} \chi \bigg( N \div(\eta^2 v) ( \partial_t w, iw ) + N \eta^2 v \cdot \cancel{ \nabla ( \partial_t w, iw )} \nonumber \\
+  &\hspace{\horizspace} - N \eta^2 j \cdot \partial_t v - N \eta^2 v \cdot ( \cancel{\nabla q} + V ) + N^2 \eta^2 v \cdot \partial_t v \nonumber \\
+  &\hspace{\horizspace} - \frac{1}{2} N^2 \partial_t ( \eta^2 |v|^2 ( 1 - |w|^2 ) ) + \partial_t f \bigg) \quad \parbox{5cm}{\textbf{product rule}} \nonumber \\
+  &= \int_{}^{} - \nabla \chi \cdot \eta^2 ( \partial_t w, \nabla w - i w N v ) \nonumber \\
+  &\quad + \int_{}^{} \chi \bigg( N \div( \eta^2 v) q - N \eta^2 j \cdot \partial_t v - N \eta^2 v \cdot V + N^2 \eta^2 v \cdot \partial_t v \nonumber
+  \\
+  &\hspace{\horizspace} - \frac{1}{2} N^2 \partial_t ( \eta^2 |v|^2 ( 1 - |w|^2 )) + \partial_t f \bigg)
+  \label{eq:deriv_mod_energy}
+\end{align}
+
+We have the result found in ``V\_dot\_v\_calc.tex''
+\begin{align}
+  - N \eta^2 V \cdot v &= -2 \frac{N}{M} \div \tilde{\mathbb{T}}(w) \cdot v - 2 \frac{N^3}{M} \div \overline{S}_v \cdot  \left( v -
+  \frac{j}{N} \right) + 4 \frac{N^3}{M} |v|^2 \div(\eta^2 v) - 4 \frac{N^2}{M} v \cdot j \div (\eta^2 v) \nonumber \\
+  &\hspace{\smallspace} - 2 \frac{N^2}{M} |v|^2 \div (\eta^2 j) - \frac{N^3}{M} \eta^2 |v|^2 \nabla (\log \eta^2) \left( v - \frac{j}{N} \right) \nonumber \\
+  &\hspace{\smallspace} - \frac{N}{M} v \cdot \nabla (\log \eta^2) \left( \eta^2 |\nabla w - i w N v|^2 + N^2 \eta^2 |v|^2 (1-|w|^2) +
+  \frac{\eta^4}{\varepsilon^2} (1-|w|^2)^2 \right)
+  \label{eq:-V_dot_v}
+\end{align}
+
+Substituting \eqref{eq:-V_dot_v} into \eqref{eq:deriv_mod_energy} gives
+\begin{align}
+  \partial_t E &= \int_{}{} - \nabla \chi \cdot \eta^2 (\partial_t w, \nabla w - i w N v) \nonumber \\
+  &\quad + \int_{}^{} \chi \bigg( N^2 \left( \eta^2 \partial_t v - 2 \frac{N}{M} \div \overline{S}_v - \frac{N}{M} |v|^2 \nabla
+  (\eta^2) \right) \cdot \left( v - \frac{j}{N} \right) \nonumber \\
+  &\hspace{\horizspace} + N \div (\eta^2 v) q - 2\frac{N}{M} \div \tilde{\mathbb{T}}(w) \cdot v + 4 \frac{N^3}{M} |v|^2 \div (\eta^2 v) - 4
+  \frac{N^2}{M} v \cdot j \div (\eta^2 v) \nonumber \\
+  &\hspace{\horizspace} - 2 \frac{N^2}{M} |v|^2 \div (\eta^2 j) \nonumber \\
+  &\hspace{\horizspace} - \frac{N}{M} v \cdot \nabla(\log \eta^2) \left( \eta^2 |\nabla w - i w N v|^2 + N^2 \eta^2 |v|^2 (1-|w|^2) +
+  \frac{\eta^4}{\varepsilon^2} (1-|w|^2)^2 \right) \nonumber \\
+  &\hspace{\horizspace} - \frac{1}{2} N^2 \partial_t \left( \eta^2 |v|^2 (1 - |w|^2) \right) + \partial_t f \bigg)
+  \label{<++>}
+\end{align}<++>
+
+\end{document}
+
+
