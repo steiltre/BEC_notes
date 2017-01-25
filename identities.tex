@@ -103,6 +103,22 @@ Taking the divergence, we have
     &\hspace{\smallspace} - v_k j_l \partial_l (\eta^2 v_k) + \frac{1}{2} \eta^2 \partial_l (\log \eta^2) v_k v_k j_l \nonumber \\
     &= v_k j_l \partial_k (\eta^2 v_l) + v_l j_l \partial_k (\eta^2 v_k) - v_k j_l \partial_l (\eta^2 v_k) \nonumber \\
     &\hspace{\smallspace} + \eta^2 \partial_l (\log \eta^2) \left( \frac{1}{2} v_k v_k j_l - v_k v_l j_k \right) \nonumber \\
+  \end{align*}
+\end{proof}
+
+\begin{claim}
+  For $j = (\nabla w, iw)$, we have
+  \[ \div (\eta^2 j) = -\frac{1}{2} M \eta^2 \partial_t (1 - |w|^2) .\]
+\end{claim}
+
+\begin{proof}
+  \begin{align*}
+    \div (\eta^2 j) &= \partial_k \left( \eta^2 (\partial_k w, iw) \right) \\
+    &= \left( \div (\eta^2 \nabla w) , iw \right) + \eta^2 \cancel{(\partial_k w, i \partial_k w)} \\
+    &= \left( i M \eta^2 \partial_t w - \frac{\eta^4}{\varepsilon^2} (1-|w|^2)w, iw \right) \\
+    &= M \eta^2 (\partial_t w, w) - \frac{\eta^4}{\varepsilon^2} (1-|w|^2) \cancel{(w, iw)} \\
+    &=\frac{1}{2} M \eta^2 \partial_t |w|^2 \\
+    &= - \frac{1}{2} M \eta^2 \partial_t (1-|w|^2)
   \end{align*}<++>
 \end{proof}
 \end{document}

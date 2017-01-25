@@ -166,6 +166,83 @@ Substituting \eqref{eq:-V_dot_v} into \eqref{eq:deriv_mod_energy} gives
   &\hspace{\horizspace} - \frac{N}{M} v \cdot \nabla(\log \eta^2) \left( \eta^2 |\nabla w - i w N v|^2 + N^2 \eta^2 |v|^2 (1-|w|^2) +
   \frac{\eta^4}{\varepsilon^2} (1-|w|^2)^2 \right) \nonumber \\
   &\hspace{\horizspace} - \frac{1}{2} N^2 \partial_t \left( \eta^2 |v|^2 (1 - |w|^2) \right) + \partial_t f \bigg)
+  \label{eq:deriv_mod_energy2}
+\end{align}
+
+From here we try to choose equations $v$ must satisfy in order to control the terms we have. Because of similarities to Sylvia's problem, we will
+assume $\div (\eta^2 v) = 0$. To control the $\partial_t v$ term, we assume that
+\[ \eta^2 \partial_t v = 2 \frac{N}{M} \div \overline{S}_v - \frac{N}{M} |v|^2 \nabla (\eta^2) + \eta^2 \nabla p \]
+for some pressure $p$.
+We have the relation
+\begin{equation}
+  \div \overline{S}_v = v \div (\eta^2 v) + \eta^2 (v \cdot \nabla) v - \frac{1}{2} \eta^2 \nabla(|v|^2) - \frac{1}{2} |v|^2 \nabla (\eta^2)
+  \label{eq:div_S}
+\end{equation}
+If we make the assumption that $M=N$, we can use \eqref{eq:div_S}, the divergence-free condition, and absorb the $\eta^2 \nabla (|v|^2)$ term into the
+pressure to rewrite the equations for $\partial_t v$ as
+\begin{equation}
+  \begin{cases}
+  \eta^2 \partial_t v &= 2 \eta^2 (v \cdot \nabla) v + \eta^2 \nabla p \\
+  \div (\eta^2 v) &= 0
+  \end{cases}
+  \label{eq:partial_t_v}
+\end{equation}
+
+Using the equations for $v$ in \eqref{eq:deriv_mod_energy}, we have
+\begin{align}
+  \partial_t E &= \int_{}^{} - \nabla \chi \cdot \eta^2 (\partial_t w, \nabla w - i w N v) \\
+  &\hspace{\smallspace} + \int_{}^{} \chi \bigg( N^2 \eta^2 \nabla p \left( v - \frac{j}{N} \right) - 2 \frac{N}{M} \div \tilde{\mathbb{T}}(w) \cdot v
+  - 2 \frac{N^2}{M} |v|^2 \div (\eta^2 j) \\
+  &\hspace{\horizspace} - \frac{N}{M} v \cdot \nabla (\log \eta^2) \left( \eta^2 |\nabla w - i w N v|^2 + N^2 \eta^2 |v|^2 (1-|w|^2) +
+  \frac{\eta^4}{\varepsilon^2} (1-|w|^2)^2 \right) \\
+  &\hspace{\horizspace} - \frac{1}{2} N^2 \partial_t (\eta^2 |v|^2 (1-|w|^2)) + \partial_t f \bigg)
+  \label{eq:deriv_mod_energy3}
+\end{align}
+
+Integration by parts gives
+\begin{align*}
+  \int_{}^{} \chi N^2 \eta^2 \nabla p \left( v - \frac{j}{N} \right) &= - \int_{}^{} \nabla \chi N \eta^2 \left( v - \frac{j}{N} \right) -
+  \int_{}^{} \chi N p \left( N \cancel{\div (\eta^2 v)} - \div (\eta^2 j) \right) \\
+  &= - \int_{}^{} \nabla \chi \cdot N^2 \eta^2 \left( v - \frac{j}{N} \right) + \int_{}^{} N \chi p \div (\eta^2 j)
+\end{align*}
+
+We know
+\[ \div (\eta^2 j) = - \frac{1}{2} M \eta^2 \partial_t (1-|w|^2) \]
+so we can combine terms to get
+\begin{align}
+  \int_{}^{} \chi \left( N^2 \eta^2 \nabla p \left( v - \frac{j}{N} \right) - 2 \frac{N^2}{M} |v|^2 \div (\eta^2 j) \right) &= -
+  \int_{}^{} \nabla \chi \cdot N^2 \eta^2 \left(v - \frac{j}{N} \right) \nonumber \\
+  &\hspace{\smallspace} + \int_{}^{} \chi \left( N p - 2\frac{N^2}{M} |v|^2 \right) \div (\eta^2 j) \nonumber \\
+  &= - \int_{}^{} \nabla \chi \cdot N^2 \eta^2 \left( v - \frac{j}{N} \right) \nonumber \\
+  &\hspace{\smallspace} + \int_{}^{} \chi \left( N^2 |v|^2 - \frac{1}{2} M N p \right) \eta^2 \partial_t (1 - |w|^2)
+  \label{eq:IBP_pressure}
+\end{align}
+
+Substituting \eqref{eq:IBP_pressure} into \eqref{eq:deriv_mod_energy}, we have
+\begin{align}
+  \partial_t E &= \int_{}^{} - \nabla \chi \left( \eta^2 (\partial_t w, \nabla w - i w N v) + N^2 \eta^2 \left( v - \frac{j}{N} \right) \right)
+  \nonumber \\
+  &\hspace{\smallspace} \int_{}^{} \chi \bigg( - 2 \frac{N}{M} \div \tilde{\mathbb{T}}(w) \cdot v \nonumber \\
+  &\hspace{\horizspace} - \frac{N}{M} v \cdot \nabla (\log \eta^2) \left( \eta^2 |\nabla w - i w N v|^2 + N^2 \eta^2 |v|^2 (1-|w|^2) +
+  \frac{\eta^4}{\varepsilon^2} (1-|w|^2)^2 \right) \nonumber \\
+  &\hspace{\horizspace} \left( N^2 |v|^2 - \frac{1}{2} M N p \right) \eta^2 \partial_t (1-|w|^2) - \frac{1}{2} N^2 \eta^2 \partial_t (|v|^2 (1-|w|^2))
+  + \partial_t f
+  \label{eq:deriv_mod_energy4}
+\end{align}
+
+Following Sylvia's example, we want to choose $f$ to cancel all terms involving $\partial_t (1-|w|^2)$. For this reason, we choose
+\begin{equation}
+  f = \frac{1}{2} \eta^2 (1-|w|^2) (M N p - N^2 |v|^2)
+  \label{eq:f}
+\end{equation}
+
+With this definition, the terms in the last line of \eqref{eq:deriv_mod_energy} become
+\begin{align}
+  \left( N^2 |v|^2 - \frac{1}{2} M N p \right) &\eta^2 \partial_t (1-|w|^2) - \frac{1}{2} N^2 \eta^2 \partial_t \left( |v|^2 (1-|w|^2) \right) +
+  \partial_t f \nonumber \\
+  &= \left( N^2 |v|^2 - \frac{1}{2} M N p \right) \eta^2 \partial_t (1-|w|^2) - \frac{1}{2} N^2 \eta^2 \partial_t \left( |v|^2 (1-|w|^2) \right) +
+  \frac{1}{2} \eta^2 \partial_t \left( (1-|w|^2) (M N p - N^2 |v|^2 ) \right) \nonumber \\
+  &=
   \label{<++>}
 \end{align}<++>
 
