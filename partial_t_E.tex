@@ -190,11 +190,11 @@ pressure to rewrite the equations for $\partial_t v$ as
 
 Using the equations for $v$ in \eqref{eq:deriv_mod_energy}, we have
 \begin{align}
-  \partial_t E &= \int_{}^{} - \nabla \chi \cdot \eta^2 (\partial_t w, \nabla w - i w N v) \\
+  \partial_t E &= \int_{}^{} - \nabla \chi \cdot \eta^2 (\partial_t w, \nabla w - i w N v) \nonumber \\
   &\hspace{\smallspace} + \int_{}^{} \chi \bigg( N^2 \eta^2 \nabla p \left( v - \frac{j}{N} \right) - 2 \frac{N}{M} \div \tilde{\mathbb{T}}(w) \cdot v
-  - 2 \frac{N^2}{M} |v|^2 \div (\eta^2 j) \\
+  - 2 \frac{N^2}{M} |v|^2 \div (\eta^2 j) \nonumber \\
   &\hspace{\horizspace} - \frac{N}{M} v \cdot \nabla (\log \eta^2) \left( \eta^2 |\nabla w - i w N v|^2 + N^2 \eta^2 |v|^2 (1-|w|^2) +
-  \frac{\eta^4}{\varepsilon^2} (1-|w|^2)^2 \right) \\
+  \frac{\eta^4}{\varepsilon^2} (1-|w|^2)^2 \right) \nonumber \\
   &\hspace{\horizspace} - \frac{1}{2} N^2 \partial_t (\eta^2 |v|^2 (1-|w|^2)) + \partial_t f \bigg)
   \label{eq:deriv_mod_energy3}
 \end{align}
@@ -218,14 +218,14 @@ so we can combine terms to get
   \label{eq:IBP_pressure}
 \end{align}
 
-Substituting \eqref{eq:IBP_pressure} into \eqref{eq:deriv_mod_energy}, we have
+Substituting \eqref{eq:IBP_pressure} into \eqref{eq:deriv_mod_energy3}, we have
 \begin{align}
-  \partial_t E &= \int_{}^{} - \nabla \chi \left( \eta^2 (\partial_t w, \nabla w - i w N v) + N^2 \eta^2 \left( v - \frac{j}{N} \right) \right)
+  \partial_t E &= \int_{}^{} - \nabla \chi \cdot \left( \eta^2 (\partial_t w, \nabla w - i w N v) + N^2 \eta^2 \left( v - \frac{j}{N} \right) \right)
   \nonumber \\
   &\hspace{\smallspace} \int_{}^{} \chi \bigg( - 2 \frac{N}{M} \div \tilde{\mathbb{T}}(w) \cdot v \nonumber \\
   &\hspace{\horizspace} - \frac{N}{M} v \cdot \nabla (\log \eta^2) \left( \eta^2 |\nabla w - i w N v|^2 + N^2 \eta^2 |v|^2 (1-|w|^2) +
   \frac{\eta^4}{\varepsilon^2} (1-|w|^2)^2 \right) \nonumber \\
-  &\hspace{\horizspace} \left( N^2 |v|^2 - \frac{1}{2} M N p \right) \eta^2 \partial_t (1-|w|^2) - \frac{1}{2} N^2 \eta^2 \partial_t (|v|^2 (1-|w|^2))
+  &\hspace{\horizspace} + \left( N^2 |v|^2 - \frac{1}{2} M N p \right) \eta^2 \partial_t (1-|w|^2) - \frac{1}{2} N^2 \eta^2 \partial_t (|v|^2 (1-|w|^2))
   + \partial_t f
   \label{eq:deriv_mod_energy4}
 \end{align}
@@ -240,12 +240,40 @@ With this definition, the terms in the last line of \eqref{eq:deriv_mod_energy} 
 \begin{align}
   \left( N^2 |v|^2 - \frac{1}{2} M N p \right) &\eta^2 \partial_t (1-|w|^2) - \frac{1}{2} N^2 \eta^2 \partial_t \left( |v|^2 (1-|w|^2) \right) +
   \partial_t f \nonumber \\
-  &= \left( N^2 |v|^2 - \frac{1}{2} M N p \right) \eta^2 \partial_t (1-|w|^2) - \frac{1}{2} N^2 \eta^2 \partial_t \left( |v|^2 (1-|w|^2) \right) +
-  \frac{1}{2} \eta^2 \partial_t \left( (1-|w|^2) (M N p - N^2 |v|^2 ) \right) \nonumber \\
-  &=
-  \label{<++>}
-\end{align}<++>
+  &= \left( N^2 |v|^2 - \frac{1}{2} M N p \right) \eta^2 \partial_t (1-|w|^2) - \frac{1}{2} N^2 \eta^2 \partial_t \left( |v|^2 (1-|w|^2) \right)
+  \nonumber \\
+  &\hspace{\smallspace} + \frac{1}{2} \eta^2 \partial_t \left( (1-|w|^2) (M N p - N^2 |v|^2 ) \right) \nonumber \\
+  &=\left( N^2 |v|^2 - \frac{1}{2} M N p \right) \eta^2 \partial_t (1-|w|^2) \nonumber \\
+  &\hspace{\smallspace} - \frac{1}{2} N^2 \eta^2 |v|^2 \partial_t (1-|w|^2) -
+  \frac{1}{2} N^2 \eta^2 (1-|w|^2) \partial_t (|v|^2) \nonumber \\
+  &\hspace{\smallspace} + \frac{1}{2} \eta^2 (M N p - N^2 |v|^2) \partial_t (1-|w|^2) + \frac{1}{2} \eta^2 (1-|w|^2) \partial_t (M N p - N^2 |v|^2)
+  \nonumber \\
+  &= \eta^2 (1-|w|^2) \partial_t \left( \frac{1}{2} M N p - N^2 |v|^2 \right)
+  \label{eq:f_cancel}
+\end{align}
 
+Inserting \eqref{eq:f_cancel} into \eqref{eq:deriv_mod_energy4}, we have
+\begin{align}
+  \partial_t E &= \int_{}^{} - \nabla \chi \cdot \left( \eta^2 (\partial_t w, \nabla w - i w N v) + N^2 \eta^2 \left( v - \frac{j}{N} \right) \right)
+  \nonumber \\
+  &\hspace{\smallspace} + \int_{}^{} \chi \bigg( - 2 \frac{N}{M} \div \tilde{\mathbb{T}}(w) \cdot v \nonumber \\
+  &\hspace{\horizspace} - \frac{N}{M} v \cdot \nabla (\log \eta^2) \left( \eta^2 |\nabla w - i w N v|^2 + N^2 \eta^2 |v|^2 (1-|w|^2) +
+  \frac{\eta^4}{\varepsilon^2} (1-|w|^2)^2 \right) \nonumber \\
+  &\hspace{\horizspace} + \eta^2 (1-|w|^2) \partial_t \left( \frac{1}{2} M N p - N^2 |v|^2 \right) \bigg)
+  \label{eq:deriv_mod_energy5}
+\end{align}
+
+Integrating the $\div \tilde{\mathbb{T}}$ term by parts leaves
+\begin{align}
+  \partial_t E &= \int_{}^{} - \nabla \chi \cdot \left( \eta^2 (\partial_t w, \nabla w - i w N v) + N^2 \eta^2 \left( v - \frac{j}{N} \right) - 2
+  \frac{N}{M} \tilde{\mathbb{T}} v \right) \nonumber \\
+  &\hspace{\smallspace} + \int_{}^{} \chi \bigg( 2 \frac{N}{M} \tilde{\mathbb{T}} : \nabla v + \eta^2 (1-|w|^2) \partial_t \left(
+  \frac{1}{2} M N p - N^2 |v|^2 \right) \nonumber \\
+  &\hspace{\horizspace} - \frac{N}{M} v \cdot \nabla (\log \eta^2) \left( \eta^2 |\nabla w - i w N v|^2 + N^2 \eta^2 |v|^2 (1-|w|^2) +
+  \frac{\eta^4}{\varepsilon^2} (1-|w|^2)^2 \right)
+  \label{eq:deriv_mod_energy6}
+\end{align}
+where for 2 $\times$ 2 matrices $A$ and $B$, we define $A:B = \sum_{kl} A_{kl} B_{kl}$.
 \end{document}
 
 
